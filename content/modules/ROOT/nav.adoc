@@ -32,13 +32,3 @@
 ** xref:module-08-workingvms.adoc#lb_config[Load Balancer Configuration]
 ** xref:module-08-workingvms.adoc#service_route[Exposing an Application with a Service/Route]
 ** xref:module-08-workingvms.adoc#expose_db[Expose the Database Externally]
-
-// * xref:module-03-baremetal.adoc[Bare Metal Management ]
-// ** xref:module-03-baremetal.adoc#review_nodes[Review Nodes and Machines]
-// ** xref:module-03-baremetal.adoc#review_hosts[Review Bare Metal Hosts]
-// ** xref:module-03-baremetal.adoc#scaling_cluster[Scaling the Cluster with a New Bare Metal Host]
-
-// * xref:module-06-network.adoc[6. Network Management]
-// ** xref:module-06-network.adoc#create_netattach[Create a Network Attachment Definition]
-// ** xref:module-06-network.adoc#connect_external_net[Connect a Virtual Machine to an External Network]
-// ** xref:module-06-network.adoc#multinetwork_policy[Using a Multinetwork Policy]

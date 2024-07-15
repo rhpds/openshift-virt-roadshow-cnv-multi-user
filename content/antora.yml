@@ -13,8 +13,6 @@ asciidoc:
   page-links:
   - url: https://redhat.com
     text: Red Hat
-  - url: https://www.redhat.com/en/summit
-    text: Summit
 
   extensions:
   - ./content/lib/tab-block.js

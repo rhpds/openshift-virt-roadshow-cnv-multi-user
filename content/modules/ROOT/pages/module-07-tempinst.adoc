@@ -11,6 +11,17 @@ The *Templates* page displays four types of virtual machine templates:
 * *Red Hat Provided* templates have limited support from Red Hat.
 * *User Provided* templates are *Red Hat Provided* templates that were cloned and created by users.
 
+[[prepare_templates_lab]]
+== Prepare for the lab
+
+The VM you are about to create is a bit larger than previous VMs. To ensure that your environment has enough resources stop all other running VMs.
+
+. Navigate to *Virtualization -> Virtualmachines*
+. Make sure you select *All Projects* to see all VMs in the environment.
+. If any VMs are showing a status of *Running* click the three dots to the right and select *Stop*.
+
+Now all VMs should be in *Stopped* state.
+
 [[clone_customize_template]]
 == Clone and Customize a Template
 
@@ -44,23 +55,19 @@ image::module-07-tempinst/05_Clone_Details.png[link=self, window=blank, width=10
 +
 image::module-07-tempinst/06_Edit_CPU_Mem.png[link=self, window=blank, width=100%]
 
-// Commenting out that next section makes the numbers restart at 1... Remove the section later
-// . Navigate to the *Network Interfaces* tab, to the right of the *default* interface, select the three-dot menu and the edit option.
-// +
-// image::module-07-tempinst/07_Edit_Network.png[link=self, window=blank, width=100%]
-
-// . When the *Edit network interface* menu appears, set the *Network* value to the *vmexamples/vlan0* network, and click the *Save* button.
-// +
-// image::module-07-tempinst/08_Edit_Net_Int.png[link=self, window=blank, width=100%]
-
 . Next click on the *Scripts* tab at the top, and in the section called *Cloud-init* click the *Edit* button.
 +
 image::module-07-tempinst/09_Scripts_CloudInit.png[link=self, window=blank, width=100%]
 
-. When the *Cloud-init* dialog opens, click the radio button to *Configure via: Script* then add the following YAML snippet to the end of the script.
+. When the *Cloud-init* dialog opens, click the radio button to *Configure via: Script* then *replace* the YAML with the following YAML snippet.
 +
 [source,yaml,role=execute]
 ----
+userData: |-
+  #cloud-config
+  user: centos
+  password: ${CLOUD_USER_PASSWORD}
+  chpasswd: { expire: False }
   packages:
   - mariadb-server
   runcmd:
@@ -80,9 +87,7 @@ image::module-07-tempinst/11_User_Templates.png[link=self, window=blank, width=1
 image::module-07-tempinst/12_Quick_Create_Template.png[link=self, window=blank, width=100%]
 
 . When the virtual machine boots you can see on the *Overview* page that it was created from our template, and has the system resources we defined, and is already attached to the
-Pod
-// *vmexamples/vlan0*
-network with an assigned IP address.
+Pod network with an assigned IP address.
 +
 image::module-07-tempinst/13_VM_From_Template.png[link=self, window=blank, width=100%]
 
@@ -112,6 +117,7 @@ This process can be streamlined after the initial operating system installation 
 +
 image::module-07-tempinst/16_Template_Catalog.png[link=self, window=blank, width=100%]
 
+. Make sure you are in the *vmexamples* project.
 . Scroll down until you find the *Microsoft Windows Server 2019 VM* tile.
 +
 image::module-07-tempinst/17_Windows_2k19_Tile.png[link=self, window=blank, width=100%]
@@ -126,7 +132,7 @@ image::module-07-tempinst/18_Windows_2k19_Dialog.png[link=self, window=blank, wi
 .. Specify the name *windows*
 .. Enable the checkbox *Boot from CD*
 .. Choose URL *(creates PVC)* from the drop-down menu
-.. Specify the url: https://www.opentlc.com/download/ocp4_virt_foundations/Windows2019.iso
+.. Specify the *image URL*: https://catalog-item-assets.s3.us-east-2.amazonaws.com/qcow_images/Windows2019.iso
 .. Reduce the CD disk size to *5 GiB*
 .. Keep the *Disk source* size disk to the default value *60 GiB*
 .. Ensure the *Mount Windows drivers disk* checkbox is enabled. **This is required to install Windows systems, which will provide the drivers for VirtIO.**
@@ -134,7 +140,7 @@ image::module-07-tempinst/18_Windows_2k19_Dialog.png[link=self, window=blank, wi
 image::module-07-tempinst/19_Windows_2k19_Parameters.png[link=self, window=blank, width=100%]
 
 . With the options filled out, we want to click on the *Customize VirtualMachine* button at the bottom to continue configuring our Template.
-. On the *Customize and create VirtualMachine screen, click on the *Scripts* tab, and then scroll down to the *Sysprep* section and click on the *Edit* button.
+. On the *Customize and create VirtualMachine* screen, click on the *Scripts* tab, and then scroll down to the *Sysprep* section and click on the *Edit* button.
 +
 image::module-07-tempinst/20_Customize_Scripts.png[link=self, window=blank, width=100%]
 
@@ -306,7 +312,7 @@ image::module-07-tempinst/26_Windows_2k19_Console.png[link=self, window=blank, w
 +
 IMPORTANT: The VM is marked as "Not migratable" because a CD-ROM disk is attached.
 
-. Once the VM installation process is complete, go ahead and power it off with the stop button. We can now take a snapshot of the root disk, and use that to create a bootable volume template that we can use to boot other Windows 2k19 machines.
+. Once the VM installation process is complete (this will take a few minutes), go ahead and power it off with the stop button. We can now take a snapshot of the root disk, and use that to create a bootable volume template that we can use to boot other Windows 2k19 machines.
 . Click on *Storage* -> *PersistentVolumeClaims* to see a list of PVCs available in the vmexamples namespace.
 +
 image::module-07-tempinst/27_Windows_PVC.png[link=self, window=blank, width=100%]
@@ -356,6 +362,17 @@ image::module-07-tempinst/34_VM_Details.png[link=self, window=blank, width=100%]
 . You will be directed to the virtual machine overview page, and see that the VM provisioned using an instance type is now up and running.
 +
 image::module-07-tempinst/35_VM_Overview.png[link=self, window=blank, width=100%]
+
+[[cleanup]]
+== Cleanup
+
+To save resources for the next lab, stop the VMs that you created in this module.
+
+. Navigate to *Virtualization -> Virtualmachines*
+. Make sure you select *All Projects* to see all VMs in the environment.
+. If any VMs are showing a status of *Running* click the three dots to the right and select *Stop*.
+
+Now all VMs should be in *Stopped* state.
 
 == Summary
 

@@ -2,8 +2,11 @@
 
 == Introduction
 
-This section of our lab is dedicated to the Day-2 operations that many administrators would need to perform when working with virtual machines in their OpenShift Virtualization environment. We will make use of the understanding we have developed throughout this roadshow of how VMs operate in an OpenShift environment, and use those skills to complete the tasks in this section. In this particular case, we are going to work with the three virtual machines that we imported from VMware vSphere earlier in this roadshow, and we are going to make some minor configuration changes to enable the applications hosted on those servers to be accessed as they now run in OpenShift Virtualization. To accomplish this, we will install and configure a loadbalancer, and we will expose our applications using the service/route method that is the default when making use of the OpenShift SDN pod network so that the application is reachable from outside of the cluster.
+This section of our lab is dedicated to the Day-2 operations that many administrators would need to perform when working with virtual machines in their OpenShift Virtualization environment. We will make use of the understanding we have developed throughout this roadshow of how VMs operate in an OpenShift environment, and use those skills to complete the tasks in this section. In this particular case, we are going to work with the three virtual machines that we imported from VMware vSphere earlier in this roadshow, and we are going to make some minor configuration changes to enable the applications hosted on those servers to be accessed as they now run in OpenShift Virtualization. To accomplish this,
+// we will install and configure a loadbalancer, and
+we will expose our applications using the service/route method that is the default when making use of the OpenShift SDN pod network so that the application is reachable from outside of the cluster.
 
+////
 [[lb_concepts]]
 ==  MetalLB concepts
 
@@ -92,6 +95,7 @@ image::module-08-workingvms/09_MetalLB_L2Advertisement.png[link=self, window=bla
 image::module-08-workingvms/10_L2Advertisement_Complete.png[link=self, window=blank, width=100%]
 
 With MetalLB installed and configured we can now prepare to make the applications on our imported VM's available from outside of the cluster.
+////
 
 [[service_route]]
 == Exposing an Application with a Service/Route
@@ -133,6 +137,7 @@ IMPORTANT: Make sure to get the indentation exactly right - just like in the scr
 image::module-08-workingvms/12_Imported_VMs_YAML.png[link=self, window=blank, width=100%]
 
 . *Repeat* the process for the VM *winweb02*.
+. Start the *database* virtual machine if it's not already running.
 . Start, or restart if already running, the *winweb01* and *winweb02* virtual machines.
 +
 NOTE: Ensure the VMs are properly working by accessing to the console tab of each VM.
@@ -161,7 +166,7 @@ spec:
     targetPort: 80
 ----
 +
-IMPORTANT: Ensure the namespace with your virtual machines, *vmexamples* or *vmimported*, is the one used in the Service YAML.
+IMPORTANT: Ensure the *namespace* with your virtual machines, *vmexamples* or *vmimported*, is the one used in the Service YAML.
 +
 image::module-08-workingvms/14_Service_YAML.png[link=self, window=blank, width=100%]
 
@@ -189,6 +194,7 @@ image::module-08-workingvms/17_Route_Navigation.png[link=self, window=blank, wid
 .. *Target port*: *80 -> 80 (TCP)*
 .. *Secure Route*: *Enabled*
 .. *TLS termination*: *Edge*
+.. *Insecure traffic*: *Redirect*
 +
 image::module-08-workingvms/18_Create_Route.png[link=self, window=blank, width=100%]
 
@@ -232,6 +238,7 @@ IMPORTANT: Ensure the namespace with your virtual machines, *vmexamples* or *vmi
 +
 image::module-08-workingvms/22_WebApp_Success.png[link=self, window=blank, width=100%]
 
+////
 [[expose_db]]
 == Expose the Database Externally
 
@@ -284,6 +291,7 @@ NOTE: Be sure to replace the ip address in the sample above with the address bei
 When successful, you should be able to login to the database and view the mysql prompt.
 +
 image::module-08-workingvms/26_DB_Login.png[link=self, window=blank, width=100%]
+////
 
 == Summary
 
