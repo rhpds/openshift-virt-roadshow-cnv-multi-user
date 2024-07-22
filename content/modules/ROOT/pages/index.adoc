@@ -78,7 +78,7 @@ If you would like to learn more about OpenShift Virtualization, please visit the
 
 Your OpenShift cluster console is available {console_url}[here^].
 
-Administrator login is available with:
+Your login is available with:
 
 * *User:* {user}
 * *Password:* {password}

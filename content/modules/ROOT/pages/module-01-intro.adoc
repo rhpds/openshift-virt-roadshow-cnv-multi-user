@@ -13,17 +13,21 @@ The beginning section of this lab will introduce you to the basics of creating a
 
 As a reminder, here are your credentials for the OpenShift Console:
 
-Your OpenShift cluster console is available {openshift_cluster_console_url}[here^].
+Your OpenShift cluster console is available {console_url}[here^].
 
-Administrator login is available with:
+Your login is available with:
 
-* *User:* {openshift_cluster_admin_username}
-* *Password:* {openshift_cluster_admin_password}
+* *User:* {user}
+* *Password:* {password}
 
 [[create_project]]
 == Create a New Project
 
 Like other objects in OpenShift, Projects (which are an abstraction for Kubnernetes namespaces), are the boundaries for permissions and other aspects of using and manaing the resources. Creating a Project is an important first step for any deployment.
+
+. The first time you log into the console you will see the *Developer* perspective. Click *Skip tour* to dismiss the prompt. Then click on *Developer* and switch to *Administrator*.
++
+image::module-01-intro/00_Admin_Perpspective.png[link=self, window=blank, width=100%]
 
 . Browse to *Virtualization* -> *VirtualMachines* using the left navigation menu:
 +
@@ -37,6 +41,11 @@ The *Virtualization* tab is available only when Red Hat OpenShift Virtualization
 . Examine the *VirtualMachines* dashboard that appears. There are currently several VMs listed, but they are not turned on:
 +
 image::module-01-intro/02_VM_List.png[link=self, window=blank, width=100%]
++
+[NOTE]
+====
+If you don't see any VMs make sure to switch to the project `vmimported-{user}`.
+====
 
 . Before creating a VM we need to create a new project. Virtual machines are deployed to a specific project, or namespace, where by default, users without permission to the namespace cannot access, manage, or control them. Administrators can access all projects, and therefore view all virtual machines, however regular users must be given access to projects as needed.
 +
@@ -44,7 +53,7 @@ image::module-01-intro/02_VM_List.png[link=self, window=blank, width=100%]
 +
 image::module-01-intro/02_All_Projects.png[link=self, window=blank, width=100%]
 
-.. In the *Name* field, type *vmexamples* to name the project, then click *Create*.
+.. In the *Name* field, type *vmexamples-{user}* to name the project, then click *Create*.
 +
 image::module-01-intro/03_Create_Project.png[link=self, window=blank, width=100%]
 
@@ -163,6 +172,11 @@ In this section, we will migrate the VM from one OpenShift node to another witho
 . Navigate to the *Overview* tab to see where the worker node is running:
 +
 image::module-01-intro/20_VM_Info_Node.png[link=self, window=blank, width=100%]
++
+[NOTE]
+====
+Only cluster administrators can see the Node - the screenshot is an example of what an admin would see. But you can still migrate the VM - you just won't see the node change.
+====
 
 . Using the *Actions* menu, select the option to *Migrate*.
 +

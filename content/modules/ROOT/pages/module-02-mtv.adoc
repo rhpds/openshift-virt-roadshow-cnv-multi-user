@@ -81,7 +81,7 @@ image::module-02-mtv/02_vSphere_Datastore.png[link=self, window=blank, width=100
 The *Migration Toolkit for Virtualization* (*MTV*) uses the VMware Virtual Disk Development Kit (*VDDK*) SDK to transfer virtual disks from VMware vSphere. The VDDK has already been configured for you in this environment.
 
 . Navigate in the left menu to *Migration* -> *Providers for virtualization*
-. Select project *openshift-mtv* (You may need to toggle the *Show default projects* slider.)
+. Select project *mtv-{user}*
 +
 image::module-02-mtv/03_MTV_Providers.png[link=self, window=blank, width=100%]
 +
@@ -121,7 +121,8 @@ image::module-02-mtv/17_VM_Select_VMWARE_Plan.png[link=self, window=blank, width
 Please fill in your migration plan with the following values:
 
 * Plan name: *move-webapp-vmware*
-* Target namespace: *vmexamples*
+* Target provider: *host*
+* Target namespace: *vmexamples-{user}*
 * Network map: *Pod Networking*
 * Storage map: *ocs-external-storagecluster-ceph-rbd*
 +
@@ -135,7 +136,7 @@ image::module-02-mtv/18_Create_Migration_Plan.png[link=self, window=blank, width
 +
 image::module-02-mtv/19_Migration_Plan_Unready.png[link=self, window=blank, width=100%]
 
-. After a few moments the plan will become *Ready*, click on the green "Play" button in the center of the window to start the migration process.
+. After a few moments the plan will become *Ready*, click on the blue "Start Migration" button to start the migration process.
 +
 image::module-02-mtv/20_Migration_Plan_Ready.png[link=self, window=blank, width=100%]
 
@@ -155,7 +156,12 @@ image::module-02-mtv/23_VMs_Migrating_Details.png[link=self, window=blank, width
 +
 image::module-02-mtv/24_VM_Migration_Stages.png[link=self, window=blank, width=100%]
 +
-*IMPORTANT:* Having many participants performing the same task in parallel in a simulated lab environment can cause this task to perform much slower than in a real environment. For this lab instance we have limited the number of in-flight VMs to 2 at a time. Please be patient with this process as it completes. You may continue with other sections in the roadshow as the migrations complete.
+[IMPORTANT]
+====
+Having many participants performing the same task in parallel in a simulated lab environment can cause this task to perform much slower than in a real environment. For this lab instance we have limited the number of in-flight VMs to 2 at a time. Please be patient with this process as it completes. You may continue with other sections in the roadshow as the migrations complete.
+
+Also the Migration Toolkit Documentation suggests at least a 10Gb connection between the data centers - which is not something that is available in this demo.
+====
 
 . After several minutes the migration has completed.
 +
