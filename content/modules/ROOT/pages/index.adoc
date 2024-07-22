@@ -23,13 +23,9 @@ These are the *six* main sections that will be covered:
 
 * _Migrating Existing Virtual Machines_: In this section, we will use the Migration Toolkit for Virtualization (MTV) to migrate a VM from an existing VMware vSphere environment to OpenShift Virtualization.
 
-// * _Bare Metal Infrastructure Management_: In this section, an administrator will learn how to scale their OpenShift environment by adding in an additional worker node to host virtualized workloads.
-
 * _Storage Management_: The storage paradigm familiar to many administrators changes with OpenShift Virtualization. This section will explore many actions related to storage management for virtual machines.
 
 * _Backup and Recovery for Virtual Machines_: This unit introduces and demonstrates additional concepts around backing up VMs to external sites and restoring them in the event of a disaster.
-
-// * _Network Management_: By default VMs are connected to the pod network in OpenShift. In this section we will explore creating new L2 network mappings, and configuring microsegmentation policies for multiple networks.
 
 * _Template and InstanceType Management_: In order to streamline deployment of virtual machines, administrators will often create Templates or define InstanceTypes to ease deployment operations. This section will focus on those processes.
 
@@ -80,23 +76,12 @@ If you would like to learn more about OpenShift Virtualization, please visit the
 
 === Credentials for the OpenShift Console
 
-Your OpenShift cluster console is available {openshift_cluster_console_url}[here^].
+Your OpenShift cluster console is available {console_url}[here^].
 
 Administrator login is available with:
 
-* *User:* {openshift_cluster_admin_username}
-* *Password:* {openshift_cluster_admin_password}
-
-////
-=== Command Line Access
-
-To the right you see a Terminal window. Out of the box you are logged in as a service account - that can't do much. However you can log into OpenShift as the cluster administrator using the following command (hit `y` when prompted if you want to connect to an insecure server):
-
-[source,sh,subs="attributes",role=execute]
-----
-oc login -u {openshift_cluster_admin_username} -p {openshift_cluster_admin_password} {openshift_api_server_url}
-----
-////
+* *User:* {user}
+* *Password:* {password}
 
 === vCenter Access
 
