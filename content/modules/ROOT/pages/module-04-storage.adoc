@@ -14,9 +14,7 @@ image::module-04-storage/00_disk_concepts.png[link=self, window=blank, width=100
 
 In this lab, we are going to take a closer look at the storage behind the virtual machine we just created *fedora01*.
 
-. Start by clicking on the left menu for *Storage* -> *Persistent Volume Claims*. Make sure you are in the *vmexamples* namespace, you should see the *fedora01* VM from the previous section listed.
-+
-//add image
+. Start by clicking on the left menu for *Storage* -> *Persistent Volume Claims*. Make sure you are in the *vmexamples-{user}* namespace, you should see the *fedora01* VM from the previous section listed.
 +
 . Click on the *fedora01* VM and you will be presented with a screen that shows additional details about the storage volume backing the VM.
 +
@@ -52,7 +50,7 @@ With the VM snapshots feature, cluster administrators and application developers
 
 === Creating and Using Snapshots
 
-. Navigate back to *Virtualization* -> *VirtualMachines* and select the virtual machine, *fedora01* in the project *vmexamples*.
+. Navigate back to *Virtualization* -> *VirtualMachines* and select the virtual machine, *fedora01* in the project *vmexamples-{user}*.
 +
 image::module-04-storage/03_VM_Overview.png[link=self, window=blank, width=100%]
 
@@ -95,10 +93,13 @@ sudo rm -rf /boot/grub2; sudo shutdown -r now
 ----
 +
 . The virtual machine will no longer be able to boot.
-
++
 image::module-04-storage/10_Bootloader_Broken.png[link=self, window=blank, width=100%]
 +
-IMPORTANT: In the previous step, the operating system was shutdown from within the guest. However, OpenShift Virtualization will restart it automatically by default. This behavior can be changed globally or on a per-VM basis.
+[IMPORTANT]
+====
+In the previous step, the operating system was shutdown from within the guest. However, OpenShift Virtualization will restart it automatically by default. This behavior can be changed globally or on a per-VM basis.
+====
 
 . Using the *Actions* dropdown menu or the shortcut button in the top right corner, *Stop* the VM. This process can take a long time since it attempts a graceful shutdown and the machine is in an unstable state. If you click on the *Actions* dropdown menu again you will have the option to *Force stop*. Please make use of this option in order to continue with the lab.
 
@@ -135,7 +136,7 @@ Cloning creates a new VM that uses it's own disk image for storage, but most of 
 +
 image::module-04-storage/17_Overview_Actions_Clone.png[link=self, window=blank, width=100%]
 
-. Press *Clone* from the *Actions* menu, and a dialog will open. Name the cloned VM *fedora02*, and select the check box to *Start VirtualMachine on clone*.
+. Press *Clone* from the *Actions* menu, and a dialog will open. Name the cloned VM *fedora02*, and select the check box to *Start VirtualMachine on clone*, then click *Clone*.
 +
 image::module-04-storage/18_VM_Clone_Dialog.png[link=self, window=blank, width=100%]
 

@@ -86,7 +86,11 @@ The *Migration Toolkit for Virtualization* (*MTV*) uses the VMware Virtual Disk 
 image::module-02-mtv/03_MTV_Providers.png[link=self, window=blank, width=100%]
 +
 [TIP]
+====
 MTV 2.4 and later are project/namespace aware and do not require administrator privileges. You can delegate VM imports to application teams and VM users so that they can self-serve and migrate at their own pace!
+
+Also you may ignore the Inventory server warning. It is not necessary for the remainder of this lab.
+====
 
 . By default, there is a provider called *host* which represents *OpenShift Virtualization* as a target platform.
 +
