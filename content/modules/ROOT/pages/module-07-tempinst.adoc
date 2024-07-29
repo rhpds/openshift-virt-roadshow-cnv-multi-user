@@ -27,7 +27,7 @@ Now all VMs should be in *Stopped* state.
 
 By default pre-configured templates provided by Red Hat OpenShift Virtualization cannot be customized. However you can clone a template and make adjustments to it for your particular workload in order to make it easier to request specific types of virtual machines for specific workloads. In this section of the lab we are going to do just this, by creating a template that will provide a database server on demand for our end users.
 
-. To begin, navigate to *Virtualization* -> *Templates* and select *openshift* for your project.
+. To begin, navigate to *Virtualization* -> *Templates* and select *openshift* for your project (you may need to open the *Project* drop-down and click the radio button next to *Show default projects*).
 +
 image::module-07-tempinst/01_Template_List.png[link=self, window=blank, width=100%]
 

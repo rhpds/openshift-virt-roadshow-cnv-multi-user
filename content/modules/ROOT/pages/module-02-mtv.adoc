@@ -160,7 +160,7 @@ image::module-02-mtv/24_VM_Migration_Stages.png[link=self, window=blank, width=1
 +
 [IMPORTANT]
 ====
-Having many participants performing the same task in parallel in a simulated lab environment can cause this task to perform much slower than in a real environment. For this lab instance we have limited the number of in-flight VMs to 2 at a time. Please be patient with this process as it completes. You may continue with other sections in the roadshow as the migrations complete.
+Having many participants performing the same task in parallel in a simulated lab environment can cause this task to perform much slower than in a real environment. Please be patient with this process as it completes. You may continue with other sections in the roadshow as the migrations complete.
 
 Also the Migration Toolkit Documentation suggests at least a 10Gb connection between the data centers - which is not something that is available in this demo.
 ====

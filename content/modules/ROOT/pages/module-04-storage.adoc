@@ -14,9 +14,9 @@ image::module-04-storage/00_disk_concepts.png[link=self, window=blank, width=100
 
 In this lab, we are going to take a closer look at the storage behind the virtual machine we just created *fedora01*.
 
-. Start by clicking on the left menu for *Storage* -> *Persistent Volume Claims*. Make sure you are in the *vmexamples-{user}* namespace, you should see the *fedora01* VM from the previous section listed.
+. Start by clicking on the left menu for *Storage* -> *Persistent Volume Claims*. Make sure you are in the *vmexamples-{user}* namespace, you should see the *fedora01* PVC that was created when you created the *fedora01* VM in the previous section.
 +
-. Click on the *fedora01* VM and you will be presented with a screen that shows additional details about the storage volume backing the VM.
+. Click on the *fedora01* PVC and you will be presented with a screen that shows additional details about the storage volume backing the VM.
 +
 . Notice the following information about the persistent volume claim:
 .. The PVC is currently bound successfuly
@@ -103,7 +103,7 @@ In the previous step, the operating system was shutdown from within the guest. H
 
 . Using the *Actions* dropdown menu or the shortcut button in the top right corner, *Stop* the VM. This process can take a long time since it attempts a graceful shutdown and the machine is in an unstable state. If you click on the *Actions* dropdown menu again you will have the option to *Force stop*. Please make use of this option in order to continue with the lab.
 
-. You can click on the *Overview* tab to confirm that the VM has stopped. You can also see the snapshot we recently took listed in the *Snapshots* tile. (You may need to Force Stop the VM via the dropdown. This is fine as we are about to restore the snapshot.)
+. You can click on the *Overview* tab to confirm that the VM has stopped. You can also see the snapshot we recently took listed in the *Snapshots* tile. (You may need to *Force Stop* the VM via the dropdown. This is fine as we are about to restore the snapshot.)
 +
 image::module-04-storage/11_VM_Stopped_Snapshot.png[link=self, window=blank, width=100%]
 
