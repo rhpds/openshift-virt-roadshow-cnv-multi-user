@@ -317,7 +317,7 @@ image::module-07-tempinst/26_Windows_2k19_Console.png[link=self, window=blank, w
 +
 IMPORTANT: The VM is marked as "Not migratable" because a CD-ROM disk is attached.
 
-. Once the VM installation process is complete (this will take about 10 minutes), go ahead and power it off with the stop button. We can now take a snapshot of the root disk, and use that to create a bootable volume template that we can use to boot other Windows 2k19 machines.
+. Once the VM installation process is complete (provisioning will take about 3 minutes, starting and configuring will take about 10 minutes), go ahead and power it off with the stop button. We can now take a snapshot of the root disk, and use that to create a bootable volume template that we can use to boot other Windows 2k19 machines.
 . Click on *Storage* -> *PersistentVolumeClaims* to see a list of PVCs available in the *vmexamples-{user}* namespace.
 +
 image::module-07-tempinst/27_Windows_PVC.png[link=self, window=blank, width=100%]
