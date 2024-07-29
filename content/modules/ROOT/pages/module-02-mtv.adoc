@@ -42,8 +42,6 @@ NOTE: The *Migration Toolkit for Virtualization* will automatically assign a new
 
 A three-tier application has been deployed on VMware for you to migrate to OpenShift.
 
-The application is accessible from the following link: http://webapp.vc.opentlc.com/[WebApp^]. It will display a visitor counter, and the hostname of the webserver that returned your request.
-
 The application consists of the following four virtual machines:
 
 * One HAproxy system that redirects traffic to the web servers
