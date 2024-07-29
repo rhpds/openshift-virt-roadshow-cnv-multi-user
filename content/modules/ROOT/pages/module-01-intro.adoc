@@ -38,18 +38,15 @@ image::module-01-intro/01_Left_Menu.png[link=self, window=blank, width=100%]
 The *Virtualization* tab is available only when Red Hat OpenShift Virtualization is installed and properly configured. In this lab environment the installation and configuration has already been performed for us.
 ====
 
+. From the *Projects* dropdown switch to the project `vmimported-{user}`.
+
 . Examine the *VirtualMachines* dashboard that appears. There are currently several VMs listed, but they are not turned on:
 +
 image::module-01-intro/02_VM_List.png[link=self, window=blank, width=100%]
-+
-[NOTE]
-====
-If you don't see any VMs make sure to switch to the project `vmimported-{user}`.
-====
 
 . Before creating a VM we need to create a new project. Virtual machines are deployed to a specific project, or namespace, where by default, users without permission to the namespace cannot access, manage, or control them. Administrators can access all projects, and therefore view all virtual machines, however regular users must be given access to projects as needed.
 +
-.. Click *Project: All Projects* at the lop left of the window and then click *Create Project*.
+.. Click *Project: vmimported-{user}* at the lop left of the window and then click *Create Project*.
 +
 image::module-01-intro/02_All_Projects.png[link=self, window=blank, width=100%]
 
