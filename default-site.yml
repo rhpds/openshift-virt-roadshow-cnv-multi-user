@@ -1,6 +1,6 @@
 ---
 site:
-  title: "Experience Red Hat OpenShift Virtualization"
+  title: Experience Red Hat OpenShift Virtualization
   start_page: modules::index.adoc
 
 content:
