@@ -42,9 +42,10 @@ These are the *eight* main sections that will be covered:
 
 This edition of the  OpenShift Virtualization Roadshow has been developed using the following software versions:
 
-* Red Hat OpenShift 4.15.16
-* Red Hat OpenShift Virtualization 4.15.2
-* Red Hat OpenShift Data Foundation 4.15.3
-* Red Hat OADP 1.1.8
-* Red Hat Migration Toolkit for Virtual Machines 2.6.2
+* Red Hat OpenShift 4.16.5
+* Red Hat OpenShift Virtualization 4.16.1
+* Red Hat OpenShift Data Foundation 4.16.0
+* Red Hat OADP 1.4.0
+* Red Hat Migration Toolkit for Virtual Machines 2.6.3
 
+(Accurate as of Aug 16, 2024)
