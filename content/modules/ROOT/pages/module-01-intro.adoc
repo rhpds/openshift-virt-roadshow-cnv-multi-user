@@ -20,6 +20,10 @@ Your login is available with:
 * *User:* {user}
 * *Password:* {password}
 
+== Switch to Administrator View
+
+After logging in you will show up in the Developer view, 
+
 [[create_project]]
 == Create a New Project
 
@@ -39,6 +43,11 @@ The *Virtualization* tab is available only when Red Hat OpenShift Virtualization
 ====
 
 . From the *Projects* dropdown switch to the project `vmimported-{user}`.
++
+[NOTE]
+====
+The images in this lab guide may show different user numbers than your own. Do not worry, just create projects, etc with your user number.
+====
 
 . Examine the *VirtualMachines* dashboard that appears. There are currently several VMs listed, but they are not turned on:
 +
@@ -182,6 +191,11 @@ image::module-01-intro/21_VM_Dialog_Migrate.png[link=self, window=blank, width=1
 . After a few seconds, the VM will change the status to *Migrating*. A few seconds later, it will return to the *Running* status, but on a new node. The VM has been successfully live migrated!
 +
 image::module-01-intro/22_Migrated.png[link=self, window=blank, width=100%]
+
+. You can see the VM moving between nodes if you look at the Pod that is running the VM. Blink and you'll miss it though!
++
+image::module-01-intro/22_1Pod.png[link=self, window=blank, width=100%]
+image::module-01-intro/22_2Pod.png[link=self, window=blank, width=100%]
 
 == Summary
 
