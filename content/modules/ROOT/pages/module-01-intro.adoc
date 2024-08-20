@@ -194,8 +194,8 @@ image::module-01-intro/22_Migrated.png[link=self, window=blank, width=100%]
 
 . You can see the VM moving between nodes if you look at the Pod that is running the VM. Blink and you'll miss it though!
 +
-image::module-01-intro/22_1Pod.png[link=self, window=blank, width=100%]
-image::module-01-intro/22_2Pod.png[link=self, window=blank, width=100%]
+image::module-01-intro/23_PodLink.png[link=self, window=blank, width=100%]
+image::module-01-intro/24_Pod.png[link=self, window=blank, width=100%]
 
 == Summary
 
