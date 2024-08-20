@@ -36,44 +36,6 @@ image::module-07-tempinst/01_Template_List.png[link=self, window=blank, width=10
 image::module-07-tempinst/02_Search_Centos9.png[link=self, window=blank, width=100%]
 
 . Click on the template name for *centos-stream90-server-small*, you will be prompted with a message that default templates cannot be edited and asked if you'd like to clone. Click the *Create a new custom Template* option.
-image::module-07-tempinst/= Template and InstanceType Management
-
-== Introduction
-
-Pre-configured Red Hat virtual machine templates are listed in the *Virtualization* -> *Templates* page. These templates are available for different versions of Red Hat Enterprise Linux, Fedora, CentOS, Microsoft Windows Desktop, and Microsoft Windows Server editions. Each Red Hat virtual machine template is preconfigured with an operating system image, the default settings for the operating system, the flavor (CPU and memory), and the workload type (server).
-
-The *Templates* page displays four types of virtual machine templates:
-
-* *Red Hat Supported* templates are fully supported by Red Hat.
-* *User Supported* templates are *Red Hat Supported* templates that were cloned and created by users.
-* *Red Hat Provided* templates have limited support from Red Hat.
-* *User Provided* templates are *Red Hat Provided* templates that were cloned and created by users.
-
-[[prepare_templates_lab]]
-== Prepare for the lab
-
-. The tasks that we are about to perform will require us to provision a few additional VMs. In preparation we are going to ask that you shut down the existing *fedora01* and *fedora02* virtual machines to ensure that your shared environment has enough resources to complete the lab.
-
-. Navigate to *Virtualization -> Virtualmachines*
-. Make sure you check every project that you have access to to see all VMs in the environment. At a minimum you should check projects `vmimported-{user}` and `vmexamples-{user}`
-. If any VMs are showing a status of *Running* click the three dots to the right and select *Stop*.
-
-Now all VMs should be in *Stopped* state.
-
-[[clone_customize_template]]
-== Clone and Customize a Template
-
-By default pre-configured the templates provided by Red Hat OpenShift Virtualization cannot be customized. However you can clone a template and make adjustments to it for your particular workload in order to make it easier to request specific types of virtual machines for specific workloads. In this section of the lab we are going to do just this, by creating a template that will provide a preconfigured database server on demand for our end users.
-
-. To begin, navigate to *Virtualization* -> *Templates* and select *openshift* for your project (you may need to open the *Project* drop-down and click the radio button next to *Show default projects*).
-+
-image::module-07-tempinst/01_Template_List.png[link=self, window=blank, width=100%]
-
-. In the search bar type in *centos9* and in the list of templates that appear find the template for *centos-stream9-server-small*.
-+
-image::module-07-tempinst/02_Search_Centos9.png[link=self, window=blank, width=100%]
-
-. Click on the template name for *centos-stream90-server-small*, you will be prompted with a message that default templates cannot be edited and asked if you'd like to clone. Click the *Create a new custom Template* option.
 +
 image::module-07-tempinst/03_Create_Custom_Template.png[link=self, window=blank, width=100%]
 
@@ -107,10 +69,10 @@ userData: |-
   password: ${CLOUD_USER_PASSWORD}
   chpasswd: { expire: False }
   packages:
-  - mariadb-server
+    - mariadb-server
   runcmd:
-  - systemctl enable mariadb
-  - systemctl start mariadb
+    - systemctl enable mariadb
+    - systemctl start mariadb
 ----
 +
 image::module-07-tempinst/10_Cloud_Init_Script.png[link=self, window=blank, width=100%]
