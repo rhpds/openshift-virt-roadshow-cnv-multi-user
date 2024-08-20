@@ -69,7 +69,7 @@ There is a warning about the *cloudinitdisk* not being included in the snapshot.
 +
 image::module-04-storage/06_VM_Snapshot_Dialog.png[link=self, window=blank, width=100%]
 
-. Press *Save* and wait till the _Snapshot_ has been created and the *status* shows as *Succeeded*.
+. Press *Save* and wait till the _Snapshot_ has been created and the *status* shows as *Operation complete*.
 +
 image::module-04-storage/07_VM_Snapshot_Taken.png[link=self, window=blank, width=100%]
 
