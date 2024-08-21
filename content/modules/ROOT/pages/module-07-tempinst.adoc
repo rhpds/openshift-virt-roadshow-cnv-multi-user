@@ -116,7 +116,7 @@ This process can be streamlined after the initial operating system installation 
 NOTE: The specific process for preparing the guest operating system to be used as a template will vary, be sure to follow your organization's guidelines and requirements when preparing a template OS.
 
 IMPORTANT: Please make sure that you are in the *vmexamples-{user}* project for this portion of lab.
-+
+
 
 . From the left menu, navigate to *Virtualization* -> *Catalog*, and click on the *Template catalog* tab near the top..
 
