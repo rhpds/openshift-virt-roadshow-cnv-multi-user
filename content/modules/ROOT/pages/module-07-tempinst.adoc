@@ -36,6 +36,7 @@ image::module-07-tempinst/01_Template_List.png[link=self, window=blank, width=10
 image::module-07-tempinst/02_Search_Centos9.png[link=self, window=blank, width=100%]
 
 . Click on the template name for *centos-stream90-server-small*, you will be prompted with a message that default templates cannot be edited and asked if you'd like to clone. Click the *Create a new custom Template* option.
++
 image::module-07-tempinst/= Template and InstanceType Management
 
 == Introduction
@@ -150,7 +151,6 @@ image::module-07-tempinst/15_MariaDB_Login.png[link=self, window=blank, width=10
 In this segment of our lab, we will install Microsoft Windows Server 2019 using an ISO hosted on a web server. This represents one way to install an operating system to a virtual machine that takes advantage of the ability to source disks from many locations, including a web server, object storage, or other persistent volumes in the cluster.
 
 This process can be streamlined after the initial operating system installation by creating a template from the virtual machine. The specific process for preparing the guest operating system to be used as a template will vary, be sure to follow your organization's guidelines and requirements when preparing a template OS.
-
 
 IMPORTANT: Please make sure that you are in the *vmexamples-{user}* project for this portion of lab.
 +
