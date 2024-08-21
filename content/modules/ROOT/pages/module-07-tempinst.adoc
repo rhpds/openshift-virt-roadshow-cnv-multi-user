@@ -37,6 +37,45 @@ image::module-07-tempinst/02_Search_Centos9.png[link=self, window=blank, width=1
 
 . Click on the template name for *centos-stream90-server-small*, you will be prompted with a message that default templates cannot be edited and asked if you'd like to clone. Click the *Create a new custom Template* option.
 +
+image::module-07-tempinst/= Template and InstanceType Management
+
+== Introduction
+
+Pre-configured Red Hat virtual machine templates are listed in the *Virtualization* -> *Templates* page. These templates are available for different versions of Red Hat Enterprise Linux, Fedora, CentOS, Microsoft Windows Desktop, and Microsoft Windows Server editions. Each Red Hat virtual machine template is preconfigured with an operating system image, the default settings for the operating system, the flavor (CPU and memory), and the workload type (server).
+
+The *Templates* page displays four types of virtual machine templates:
+
+* *Red Hat Supported* templates are fully supported by Red Hat.
+* *User Supported* templates are *Red Hat Supported* templates that were cloned and created by users.
+* *Red Hat Provided* templates have limited support from Red Hat.
+* *User Provided* templates are *Red Hat Provided* templates that were cloned and created by users.
+
+[[prepare_templates_lab]]
+== Prepare for the lab
+
+. The tasks that we are about to perform will require us to provision a few additional VMs. In preparation we are going to ask that you shut down the existing *fedora01* and *fedora02* virtual machines to ensure that your shared environment has enough resources to complete the lab.
+
+. Navigate to *Virtualization -> Virtualmachines*
+. Make sure you check every project that you have access to to see all VMs in the environment. At a minimum you should check projects `vmimported-{user}` and `vmexamples-{user}`
+. If any VMs are showing a status of *Running* click the three dots to the right and select *Stop*.
+
+Now all VMs should be in *Stopped* state.
+
+[[clone_customize_template]]
+== Clone and Customize a Template
+
+By default pre-configured the templates provided by Red Hat OpenShift Virtualization cannot be customized. However you can clone a template and make adjustments to it for your particular workload in order to make it easier to request specific types of virtual machines for specific workloads. In this section of the lab we are going to do just this, by creating a template that will provide a preconfigured database server on demand for our end users.
+
+. To begin, navigate to *Virtualization* -> *Templates* and select *openshift* for your project (you may need to open the *Project* drop-down and click the radio button next to *Show default projects*).
++
+image::module-07-tempinst/01_Template_List.png[link=self, window=blank, width=100%]
+
+. In the search bar type in *centos9* and in the list of templates that appear find the template for *centos-stream9-server-small*.
++
+image::module-07-tempinst/02_Search_Centos9.png[link=self, window=blank, width=100%]
+
+. Click on the template name for *centos-stream90-server-small*, you will be prompted with a message that default templates cannot be edited and asked if you'd like to clone. Click the *Create a new custom Template* option.
++
 image::module-07-tempinst/03_Create_Custom_Template.png[link=self, window=blank, width=100%]
 
 . A new menu called *Clone template* will appear, fill in the the following values, and when finished click on the *Clone* button.
@@ -69,10 +108,10 @@ userData: |-
   password: ${CLOUD_USER_PASSWORD}
   chpasswd: { expire: False }
   packages:
-    - mariadb-server
+  - mariadb-server
   runcmd:
-    - systemctl enable mariadb
-    - systemctl start mariadb
+  - systemctl enable mariadb
+  - systemctl start mariadb
 ----
 +
 image::module-07-tempinst/10_Cloud_Init_Script.png[link=self, window=blank, width=100%]
@@ -113,34 +152,44 @@ In this segment of our lab, we will install Microsoft Windows Server 2019 using 
 
 This process can be streamlined after the initial operating system installation by creating a template from the virtual machine. The specific process for preparing the guest operating system to be used as a template will vary, be sure to follow your organization's guidelines and requirements when preparing a template OS.
 
-. From the left menu, navigate to *Virtualization* -> *Catalog*, and click on the *Template catalog* tab near the top..
+IMPORTANT: Please make sure that you are in the *vmexamples-{user}* project for this portion of lab.
 +
-image::module-07-tempinst/16_Template_Catalog.png[link=self, window=blank, width=100%]
 
-. Make sure you are in the *vmexamples-{user}* project.
-. Scroll down until you find the *Microsoft Windows Server 2019 VM* tile.
+. From the left menu, navigate to *Virtualization* -> *Catalog*, and click on the *Template catalog* tab near the top..
+
+. Type the word *win* in the search bar, or scroll down until you find the *Microsoft Windows Server 2019 VM* tile.
 +
-image::module-07-tempinst/17_Windows_2k19_Tile.png[link=self, window=blank, width=100%]
+image::module-07-tempinst/16_Windows_2k19_Tile.png[link=self, window=blank, width=100%]
 
 . A dialog will appear showing the default configuration related to the template.
 +
 NOTE: Notice that there is intially no option to quick create this VM, and we must customize the VM to fit our needs.
 +
-image::module-07-tempinst/18_Windows_2k19_Dialog.png[link=self, window=blank, width=100%]
+image::module-07-tempinst/17_Windows_2k19_Dialog.png[link=self, window=blank, width=100%]
 +
 . In this dialog:
-.. Specify the name *windows*
+.. Specify the name *win-sysprep*
 .. Enable the checkbox *Boot from CD*
 .. Choose URL *(creates PVC)* from the drop-down menu
 .. Specify the *image URL*: https://catalog-item-assets.s3.us-east-2.amazonaws.com/qcow_images/Windows2019.iso
 .. Reduce the CD disk size to *5 GiB*
-.. Keep the *Disk source* size disk to the default value *60 GiB*
+.. Keep the *Disk source* size disk set to the default value *60 GiB*
 .. Ensure the *Mount Windows drivers disk* checkbox is enabled. **This is required to install Windows systems, which will provide the drivers for VirtIO.**
 +
-image::module-07-tempinst/19_Windows_2k19_Parameters.png[link=self, window=blank, width=100%]
 
 . With the options filled out, we want to click on the *Customize VirtualMachine* button at the bottom to continue configuring our Template.
-. On the *Customize and create VirtualMachine* screen, click on the *Scripts* tab, and then scroll down to the *Sysprep* section and click on the *Edit* button.
++
+image::module-07-tempinst/18_Windows_2k19_Parameters.png[link=self, window=blank, width=100%]
+
+. On the *Customize and create VirtualMachine* screen, click on the edit pencil by the *Boot mode* option. 
++
+image::module-07-tempinst/19_Boot_Mode.png[link=self, window=blank, width=100%]
+
+. When the *Boot mode* menu pops up, select the *BIOS* boot mode from the drop-down menu.
++
+image::module-07-tempinst/19a_Boot_BIOS.png[link=self, window=blank, width=100%]
+
+. Now click on the *Scripts* tab, and then scroll down to the *Sysprep* section and click on the *Edit* button.
 +
 image::module-07-tempinst/20_Customize_Scripts.png[link=self, window=blank, width=100%]
 
@@ -293,40 +342,39 @@ image::module-07-tempinst/21_Sysprep.png[link=self, window=blank, width=100%]
 +
 image::module-07-tempinst/22_Windows_2k19_Sysprep.png[link=self, window=blank, width=100%]
 
-. You will be returned to the *Customize and create Virtual Machine* screen, Click on the *Disks* tab, and locate the line for the *installation-CDROM*, click the three-dot menu on the right, and select *Edit*.
+. Click the *Create VirtualMachine* button at the bottom of the screen.
 +
-image::module-07-tempinst/23_Edit_Boot_Media.png[link=self, window=blank, width=100%]
+image::module-07-tempinst/23_Create_VirtualMachine.png[link=self, window=blank, width=100%]
 
-. Select the option for *Use this disk as a boot source*, and click on the *Save* button at the bottom.
-+
-image::module-07-tempinst/24_Boot_Source.png[link=self, window=blank, width=100%]
-+
-[NOTE]
-====
-The disk may already be selected as boot source - in that case the checkbox is pre-checked and grayed out. In that case continue without changing anything.
-====
-
-. When you return to the *Disks* tab, click on the *Create VirtualMachine* button at the bottom.
 . The Virtual Machine will start the provisioning process by downloading the ISO image, configuring, and starting the instance.
 +
-image::module-07-tempinst/25_Windows_2k19_Provisioning.png[link=self, window=blank, width=100%]
+image::module-07-tempinst/24_Windows_2k19_Provisioning.png[link=self, window=blank, width=100%]
 
-. After a few minutes, the Virtual VM will be in *Running* status. Switch to the *Console* tab:
+. This process may take a few minutes. You can check on the progress of the ISO download by clicking the *Diagnostics* tab.
++
+image::module-07-tempinst/25_CD_Import.png[link=self, window=blank, width=100%]
+
+. After a few minutes, the virtual machine will start, and the status will change to *Running*. Click  to the *Console* tab to view the autoattend installation process:
 +
 image::module-07-tempinst/26_Windows_2k19_Console.png[link=self, window=blank, width=100%]
-+
-IMPORTANT: The VM is marked as "Not migratable" because a CD-ROM disk is attached.
 
-. Once the VM installation process is complete (provisioning will take about 3 minutes, starting and configuring will take about 10 minutes), go ahead and power it off with the stop button. We can now take a snapshot of the root disk, and use that to create a bootable volume template that we can use to boot other Windows 2k19 machines.
+. Once the VM installation process is complete (provisioning will take 3-5 minutes, starting and configuring will take about 10 minutes), go ahead and power it off with the stop button. 
++
+image::module-07-tempinst/27_Stop_Button.png[link=self, window=blank, width=100%]
+
+. With the machine powered down we want to make a clone of the root volume that we can use for future Windows template-based installs, without having to run through the customization process.
+
 . Click on *Storage* -> *PersistentVolumeClaims* to see a list of PVCs available in the *vmexamples-{user}* namespace.
 +
-image::module-07-tempinst/27_Windows_PVC.png[link=self, window=blank, width=100%]
+image::module-07-tempinst/28_Storage_PVC.png[link=self, window=blank, width=100%]
 
-. Find the *windows* PVC that is listed and using the three-dot menu on the right select *Clone PVC*. On the menu that pops up, name the new PVC *windows-2k19-template*.
+. Find the *windows* PVC that is listed and using the three-dot menu on the right select *Clone PVC*. On the menu that pops up, name the new PVC *windows-2k19-sysprep-template*, and set the *Access mode* to *Shared access (RWX)* then click the *Clone* button.
 +
-image::module-07-tempinst/28_Clone_Windows_PVC.png[link=self, window=blank, width=100%]
+image::module-07-tempinst/29_Clone_Menu.png[link=self, window=blank, width=100%]
 
-. Once this is saved, you can return to the *Virtualization -> Catalog* menu, and use this cloned PVC as a future boot source for creating new Virtual Machines by selecting the option for *PVC (clone PVC)* as the *Disk source*, and selecting the *Windows-2k19-Template* PVC as the *PVC name* to clone.
+. Once this is saved, you can use it to quickly create Windows VMs in the future.
+
+. Return to the *Virtualization -> Catalog* menu, and use this cloned PVC as a boot source for quick-creating new virtual machines by selecting the option for *PVC (clone PVC)* as the *Disk source*, and selecting the *Windows-2k19-Sysprep-Template* PVC as the *PVC name* to clone, and click the *Quick create VirtualMachine* button.
 +
 image::module-07-tempinst/29_Windows_Template.png[link=self, window=blank, width=100%]
 
