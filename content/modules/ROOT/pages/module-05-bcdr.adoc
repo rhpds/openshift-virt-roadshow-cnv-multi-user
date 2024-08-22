@@ -39,7 +39,7 @@ image::module-05-bcdr/02_DPA.png[link=self, window=blank, width=100%]
 +
 image::module-05-bcdr/03_OADP_YAML.png[link=self, window=blank, width=100%]
 +
-Notice that *OADP* has been configured by adding the *kubevirt* plugin and it has been configured to use the internal object storage bucket provided by a *Minio* instance running on your cluster.
+Notice that *OADP* has been configured by adding the *kubevirt* plugin and it has been configured to use the internal object storage bucket provided by OpenShift Data Foundations running on your cluster.
 +
 IMPORTANT: For the sake of convenience our lab is setup to perform the backups to a local object bucket, however in a production environment you would want to ensure that backups are directed to an external storage system, or a cloud-based object storage bucket.
 
