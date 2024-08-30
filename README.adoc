@@ -20,19 +20,15 @@ In this event we will explore many common management activities that virtual adm
 
 == What Content Is Covered In The Roadshow?
 
-These are the *eight* main sections that will be covered:
+These are the *six* main sections that will be covered:
 
 * _Virtual Machine Management_: In this section we will provide a review of virtual machine management fundamentals, including creating a virtual machine, and modifying it's allotted resources.
 
 * _Migrating Existing Virtual Machines_: In this section, we will use the Migration Toolkit for Virtualization (MTV) to migrate a VM from an existing VMware vSphere environment to OpenShift Virtualization.
 
-* _Bare Metal Infrastructure Management_: In this section, an administrator will learn how to scale their OpenShift environment by adding in an additional worker node to host virtualized workloads.
-
 * _Storage Management_: The storage paradigm familiar to many administrators changes with OpenShift Virtualization, this section will explore many actions related to storage management for virtual machines.
 
 * _Backup and Recovery for Virtual Machines_: This unit introduces and demonstrates additional concepts around backing up VMs to external sites and restoring them in the event of a disaster.
-
-* _Network Management_: By default VMs are connected to the pod network in OpenShift, in this section we will explore creating new L2 network mappings, and configuring microsegmentation policies for multiple networks.
 
 * _Template and InstanceType Management_: In order to streamline deployment of virtual machines, administrators will often create Templates or define InstanceTypes to ease deployment operations. This section will focus on those processes.
 
