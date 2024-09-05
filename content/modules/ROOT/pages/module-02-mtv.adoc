@@ -110,9 +110,13 @@ image::module-02-mtv/16_VMware_Source_Provider.png[link=self, window=blank, widt
 
 . On the next page select the three VMs you would like to move:
 
-* database
-* winweb01
-* winweb02
+.. Filter the list of VMs by your user number by entering `{user}` in the *Filter by name* box.
+
+.. Select the three VMs you would like to migrate.
+
+* database-{guid}-{user}
+* winweb01-{guid}-{user}
+* winweb02-{guid}-{user}
 
 . Click *Next*.
 +

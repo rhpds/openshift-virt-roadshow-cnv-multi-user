@@ -9,7 +9,7 @@ This section of our lab is dedicated to the Day-2 operations that many administr
 
 By default, virtual machines are connected to the SDN, which is a convenient and easy way to give them access to the rest of the network, but can be challenging for the virtual machines, and other pods in the OpenShift cluster, to find and connect to the virtualized applications. To solve this, we will use a *Service* to balance connections across the two Windows-based web servers, and create a DNS entry for each service discovery, then create a *Route* to allow external clients to access the application hosted within the virtual machines.
 
-IMPORTANT: If you have not completed the module *Migrating Existing Virtual Machines*, it is recommended that you do that module first. If you have not completed it, or the migration process is still pending, you can use pre-existing virtual machines that have been prepared for you, which are available in the *vmimported* project. If you are using these pre-imported virtual machines, please replace all instances of the *vmexamples* namespace with *vmimported* in the examples below.
+IMPORTANT: If you have not completed the module *Migrating Existing Virtual Machines*, it is recommended that you do that module first. If you have not completed it, or the migration process is still pending, you can use pre-existing virtual machines that have been prepared for you, which are available in the *vmimported* project. If you are using these pre-imported virtual machines, please replace all instances of the *vmexamples* namespace with *vmimported* in the examples below.  You will also need to shorten the names of the virtual machines to match what's in the *vmimported* namespace.
 
 === Introduction to Services
 
@@ -31,7 +31,7 @@ image::module-08-workingvms/11_Imported_VMs_List.png[link=self, window=blank, wi
 +
 NOTE: Ensure you select the correct project, *vmexamples-{user}* if you completed the *Migrating Existing Virtual Machines* module or *vmimported-{user}* if you did not.
 
-. Select to the *winweb01* VM and navigate to the *YAML* tab.
+. Select to the *winweb01-{guid}-{user}* VM and navigate to the *YAML* tab.
 . Find the *spec:* section and under the *template.metadata* add the following lines to *labels* section in the VM resources:
 +
 [source,yaml,role=execute]
@@ -44,8 +44,8 @@ IMPORTANT: Make sure to get the indentation exactly right - just like in the scr
 image::module-08-workingvms/12_Imported_VMs_YAML.png[link=self, window=blank, width=100%]
 
 . *Repeat* the process for the VM *winweb02*.
-. Start the *database* virtual machine if it's not already running.
-. Start, or restart if already running, the *winweb01* and *winweb02* virtual machines.
+. Start the *database-{guid}-{user}* virtual machine if it's not already running.
+. Start, or restart if already running, the *winweb01-{guid}-{user}* and *winweb02-{guid}-{user}* virtual machines.
 +
 NOTE: Ensure the VMs are properly working by accessing to the console tab of each VM.
 
@@ -126,14 +126,16 @@ metadata:
   namespace: vmexamples-{user}
 spec:
   selector:
-    vm.kubevirt.io/name: database
+    vm.kubevirt.io/name: database-{guid}-{user}
   ports:
   - protocol: TCP
     port: 3306
     targetPort: 3306
 ----
 +
-NOTE: This time we used the name of the virtual machine to attach it to the service we are creating, since there is only one VM named *database* in the namespace with this name it is safe to do so without having to customize the YAML of the VM or rebooting the guest.
+NOTE: This time we used the name of the virtual machine to attach it to the service we are creating, since there is only one VM named *database-{guid}-{user}* in the namespace with this name it is safe to do so without having to customize the YAML of the VM or rebooting the guest.
++
+CAUTION: If you are using the *vmimported-{user}* project, make sure you select the correct `selector` value: `vm.kubevirt.io/name: database`.
 +
 image::module-08-workingvms/21_Database_YAML.png[link=self, window=blank, width=100%]
 
