@@ -10,6 +10,7 @@ asciidoc:
     lab_name: Experience OpenShift Virtualization
     release-version: master
     page-pagination: true
+    user: userN
   page-links:
   - url: https://redhat.com
     text: Red Hat
