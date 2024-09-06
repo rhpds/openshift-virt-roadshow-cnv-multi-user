@@ -13,7 +13,7 @@ The beginning section of this lab will introduce you to the basics of creating a
 
 As a reminder, here are your credentials for the OpenShift Console:
 
-Your OpenShift cluster console is available {console_url}[here^].
+Access your {console_url}[OpenShift cluster console].
 
 Your login is available with:
 
@@ -22,7 +22,7 @@ Your login is available with:
 
 == Switch to Administrator View
 
-After logging in you will show up in the Developer view, 
+After logging in you will show up in the Developer view,
 
 [[create_project]]
 == Create a New Project

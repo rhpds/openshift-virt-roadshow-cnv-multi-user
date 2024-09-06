@@ -76,7 +76,7 @@ If you would like to learn more about OpenShift Virtualization, please visit the
 
 === Credentials for the OpenShift Console
 
-Your OpenShift cluster console is available {console_url}[here^].
+Your {console_url}[OpenShift cluster console] is available.
 
 Your login is available with:
 

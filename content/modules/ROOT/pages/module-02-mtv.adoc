@@ -9,7 +9,7 @@ This portion of our lab uses the https://access.redhat.com/documentation/en-us/m
 
 NOTE: The migration toolkit has already been deployed to your cluster using the Operator available in OperatorHub.
 
-Documentation for how to install and configure the Operator can be found https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.6/html/installing_and_using_the_migration_toolkit_for_virtualization/installing-the-operator_mtv[here^].
+There is ample https://access.redhat.com/documentation/en-us/migration_toolkit_for_virtualization/2.6/html/installing_and_using_the_migration_toolkit_for_virtualization/installing-the-operator_mtv[documentation for how to install and configure the Operator.]
 
 If you would like to learn more about how to configure the Migration Toolkit for Virtualization for your own needs, please see the documentation at the following links for:
 
