@@ -4,11 +4,14 @@
 
 This section of our lab is dedicated to the Day-2 operations that many administrators would need to perform when working with virtual machines in their OpenShift Virtualization environment. We will make use of the understanding we have developed throughout this roadshow of how VMs operate in an OpenShift environment, and use those skills to complete the tasks in this section. In this particular case, we are going to work with the three virtual machines that we imported from VMware vSphere earlier in this roadshow, and we are going to make some minor configuration changes to enable the applications hosted on those servers to be accessed as they now run in OpenShift Virtualization. To accomplish this, we will expose our applications using the service/route method that is the default when making use of the OpenShift SDN pod network so that the application is reachable from outside of the cluster.
 
+[[service_route]]
+== Exposing an Application with a Service/Route
+
 By default, virtual machines are connected to the SDN, which is a convenient and easy way to give them access to the rest of the network, but can be challenging for the virtual machines, and other pods in the OpenShift cluster, to find and connect to the virtualized applications. To solve this, we will use a *Service* to balance connections across the two Windows-based web servers, and create a DNS entry for each service discovery, then create a *Route* to allow external clients to access the application hosted within the virtual machines.
 
 IMPORTANT: If you have not completed the module *Migrating Existing Virtual Machines*, it is recommended that you do that module first. If you have not completed it, or the migration process is still pending, you can use pre-existing virtual machines that have been prepared for you, which are available in the *vmimported* project. If you are using these pre-imported virtual machines, please replace all instances of the *vmexamples* namespace with *vmimported* in the examples below.
 
-=== Overview of Service creation
+=== Introduction to Services
 
 The *Service* identifies the source/target for traffic, and directs clients to, the endpoints based on labels. Currently, the VMs do not have a label assigned yet.
 
@@ -20,8 +23,7 @@ In order to successfully associate the  VMs with the Service, we need to do the 
 
 To begin, we'll add labels to the virtual machines by modifying their definition in the OpenShift Virtualization GUI.
 
-[[label_vms]]
-== Label the virtual machines
+=== Label the virtual machines
 
 . From the OpenShift console, navigate to *Virtualization* -> *VirtualMachines* and ensure the migrated VMs successfully imported and are running.
 +
@@ -47,8 +49,7 @@ image::module-08-workingvms/12_Imported_VMs_YAML.png[link=self, window=blank, wi
 +
 NOTE: Ensure the VMs are properly working by accessing to the console tab of each VM.
 
-[[create_service]]
-== Create the Service
+=== Create the Service
 
 . Navigate to *Networking* -> *Services* and press *Create Service*.
 +
@@ -85,8 +86,7 @@ image::module-08-workingvms/15_Imported_VMs_PodSelector.png[link=self, window=bl
 +
 image::module-08-workingvms/16_Imported_VMs_Pods.png[link=self, window=blank, width=100%]
 
-[[create_route]]
-== Create the Route
+=== Create the Route
 
 Now the Windows IIS servers are accessible from within the OpenShift cluster. Other virtual machines are able to access them using the DNS name *webapp.vmexamples*, which is determined by the name of the Service + the namespace. However, since these web servers are the front end to an application we want to be externally accessible, we will expose it using a *Route*.
 
