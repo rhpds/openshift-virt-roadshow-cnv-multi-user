@@ -11,6 +11,12 @@ asciidoc:
     release-version: master
     page-pagination: true
     user: userN
+    guid: GUID
+    console_url: console_url
+    password: password
+    vcenter_console: vcenter_console
+    vcenter_full_user: vcenter_full_user
+    vcenter_password: vcenter_password
   page-links:
   - url: https://redhat.com
     text: Red Hat
