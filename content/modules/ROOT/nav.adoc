@@ -28,7 +28,4 @@
 ** xref:module-07-tempinst.adoc#instance_types[Introduction to Instance Types]
 
 * xref:module-08-workingvms.adoc[Working with Virtual Machines and Applications]
-** xref:module-08-workingvms.adoc#lb_concepts[Load Balancer Concepts]
-** xref:module-08-workingvms.adoc#lb_config[Load Balancer Configuration]
 ** xref:module-08-workingvms.adoc#service_route[Exposing an Application with a Service/Route]
-** xref:module-08-workingvms.adoc#expose_db[Expose the Database Externally]
