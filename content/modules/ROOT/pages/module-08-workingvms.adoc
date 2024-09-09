@@ -23,7 +23,8 @@ In order to successfully associate the  VMs with the Service, we need to do the 
 
 To begin, we'll add labels to the virtual machines by modifying their definition in the OpenShift Virtualization GUI.
 
-=== Label the virtual machines
+
+=== Label the Virtual Machines
 
 . From the OpenShift console, navigate to *Virtualization* -> *VirtualMachines* and ensure the migrated VMs successfully imported and are running.
 +
