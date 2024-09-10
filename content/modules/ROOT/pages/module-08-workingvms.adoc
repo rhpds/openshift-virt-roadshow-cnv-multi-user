@@ -127,7 +127,7 @@ metadata:
   namespace: vmexamples-{user}
 spec:
   selector:
-    vm.kubevirt.io/name: database
+    vm.kubevirt.io/name: database-{guid}-{user}
   ports:
   - protocol: TCP
     port: 3306
