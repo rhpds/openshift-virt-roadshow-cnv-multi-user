@@ -188,13 +188,12 @@ Only cluster administrators can see the Node - the screenshot is an example of w
 +
 image::module-01-intro/21_VM_Dialog_Migrate.png[link=self, window=blank, width=100%]
 
-. After a few seconds, the VM will change the status to *Migrating*. A few seconds later, it will return to the *Running* status, but on a new node. The VM has been successfully live migrated!
-+
-image::module-01-intro/22_Migrated.png[link=self, window=blank, width=100%]
-
-. You can see the VM moving between nodes if you look at the Pod that is running the VM. Blink and you'll miss it though!
+. After a few seconds, the VM will change the status to *Migrating*. The migration process will be updated, and a few seconds later, it will return to the *Running* status, but on a new node. If you want to see it move nodes click on the Pod name on the right side of the window.
 +
 image::module-01-intro/23_PodLink.png[link=self, window=blank, width=100%]
+
+. When you are on the Pod Details screen you can see the Node that the virtual machine is current assigned to. If you watch closely when it finishes the migration you can see it change nodes. Blink and you'll miss it though!
++
 image::module-01-intro/24_Pod.png[link=self, window=blank, width=100%]
 
 == Summary
