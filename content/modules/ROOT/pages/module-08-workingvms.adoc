@@ -127,14 +127,14 @@ metadata:
   namespace: vmexamples-{user}
 spec:
   selector:
-    vm.kubevirt.io/name: database
+    vm.kubevirt.io/name: {DATABASE_VM_NAME}
   ports:
   - protocol: TCP
     port: 3306
     targetPort: 3306
 ----
 +
-NOTE: This time we used the name of the virtual machine to attach it to the service we are creating, since there is only one VM named *database* in the namespace with this name it is safe to do so without having to customize the YAML of the VM or rebooting the guest.
+NOTE: This time we used the name of the virtual machine to attach it to the service we are creating, make sure that you update the YAML when you copy/paste it to ensure that you are using the correct name for the database instance in your lab environment.
 +
 image::module-08-workingvms/21_Database_YAML.png[link=self, window=blank, width=100%]
 

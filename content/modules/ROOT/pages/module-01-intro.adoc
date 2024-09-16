@@ -188,13 +188,13 @@ Only cluster administrators can see the Node - the screenshot is an example of w
 +
 image::module-01-intro/21_VM_Dialog_Migrate.png[link=self, window=blank, width=100%]
 
-. After a few seconds, the VM will change the status to *Migrating*. A few seconds later, it will return to the *Running* status, but on a new node. The VM has been successfully live migrated!
+. After a few seconds, the VM will change the status to *Migrating*, and you can follow it's progress. When it is complete it will return to the *Running* status, but on a new node. 
 +
-image::module-01-intro/22_Migrated.png[link=self, window=blank, width=100%]
 
-. You can see the VM moving between nodes if you look at the Pod that is running the VM. Blink and you'll miss it though!
-+
 image::module-01-intro/23_PodLink.png[link=self, window=blank, width=100%]
+
+. If you would like to see the guest switch nodes, you can do so on the *Pod Details* screen by clicking on the pod name on the right. You can see the node the VM lives on, and it's new node when it changes. The cutover is fairly quick, blink and you may miss it!
++
 image::module-01-intro/24_Pod.png[link=self, window=blank, width=100%]
 
 == Summary
