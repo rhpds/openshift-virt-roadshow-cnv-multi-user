@@ -13,7 +13,7 @@ The beginning section of this lab will introduce you to the basics of creating a
 
 As a reminder, here are your credentials for the OpenShift Console:
 
-Your OpenShift cluster console is available {console_url}[here^].
+Your OpenShift cluster console is available {openshift_console_url}[here^].
 
 Your login is available with:
 
@@ -22,7 +22,7 @@ Your login is available with:
 
 == Switch to Administrator View
 
-After logging in you will show up in the Developer view, 
+After logging in you will show up in the Developer view,
 
 [[create_project]]
 == Create a New Project
@@ -188,7 +188,7 @@ Only cluster administrators can see the Node - the screenshot is an example of w
 +
 image::module-01-intro/21_VM_Dialog_Migrate.png[link=self, window=blank, width=100%]
 
-. After a few seconds, the VM will change the status to *Migrating*, and you can follow it's progress. When it is complete it will return to the *Running* status, but on a new node. 
+. After a few seconds, the VM will change the status to *Migrating*, and you can follow it's progress. When it is complete it will return to the *Running* status, but on a new node.
 +
 
 image::module-01-intro/23_PodLink.png[link=self, window=blank, width=100%]
