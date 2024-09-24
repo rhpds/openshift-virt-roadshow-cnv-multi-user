@@ -13,7 +13,7 @@ The beginning section of this lab will introduce you to the basics of creating a
 
 As a reminder, here are your credentials for the OpenShift Console:
 
-Your OpenShift cluster console is available {openshift_console_url}[here^].
+Your OpenShift cluster console is available {openshift_cluster_console_url}[here^].
 
 Your login is available with:
 
