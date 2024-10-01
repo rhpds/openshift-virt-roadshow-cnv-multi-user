@@ -128,7 +128,7 @@ image::module-01-intro/12_Configuration_Tab.png[link=self, window=blank, width=1
 +
 image::module-01-intro/13_Storage_Tab.png[link=self, window=blank, width=100%]
 +
-In this environment, the default StorageClass, which defines the source and type of storage used for the disk, is called *ocs-external-storagecluster-ceph-rbd*. This storage is the default type provided by OpenShift Data Foundation (ODF) for running virtual machines. Each storage provider has different storage classes that define the characteristics of the storage backing the VM disk.
+In this environment, the default StorageClass, which defines the source and type of storage used for the disk. This storage is the default type provided by OpenShift Data Foundation (ODF) for running virtual machines. Each storage provider has different storage classes that define the characteristics of the storage backing the VM disk.
 
 . Examine the network interfaces attached to the VM by clicking on the *Network* subtab:
 +
