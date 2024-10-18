@@ -35,7 +35,7 @@ image::module-07-tempinst/01_Template_List.png[link=self, window=blank, width=10
 +
 image::module-07-tempinst/02_Search_Centos9.png[link=self, window=blank, width=100%]
 
-. Click on the template name for *centos-stream90-server-small*, you will be prompted with a message that default templates cannot be edited and asked if you'd like to clone. Click the *Create a new custom Template* option.
+. Click on the template name for *centos-stream9-server-small*, you will be prompted with a message that default templates cannot be edited and asked if you'd like to clone. Click the *Create a new custom Template* option.
 +
 image::module-07-tempinst/03_Create_Custom_Template.png[link=self, window=blank, width=100%]
 
