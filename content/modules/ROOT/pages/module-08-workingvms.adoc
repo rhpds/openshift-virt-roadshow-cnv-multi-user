@@ -32,7 +32,7 @@ image::module-08-workingvms/11_Imported_VMs_List.png[link=self, window=blank, wi
 +
 NOTE: Ensure you select the correct project, *vmexamples-{user}* if you completed the *Migrating Existing Virtual Machines* module or *vmimported-{user}* if you did not.
 
-. Select to the *winweb01* VM and navigate to the *YAML* tab.
+. Select to the *winweb01-{user}* VM and navigate to the *YAML* tab.
 . Find the *spec:* section and under the *template.metadata* add the following lines to *labels* section in the VM resources:
 +
 [source,yaml,role=execute]
@@ -44,9 +44,9 @@ IMPORTANT: Make sure to get the indentation exactly right - just like in the scr
 +
 image::module-08-workingvms/12_Imported_VMs_YAML.png[link=self, window=blank, width=100%]
 
-. *Repeat* the process for the VM *winweb02*.
-. Start the *database* virtual machine if it's not already running.
-. Start, or restart if already running, the *winweb01* and *winweb02* virtual machines.
+. *Repeat* the process for the VM *winweb02-{user}*.
+. Start the *database-{user}* virtual machine if it's not already running.
+. Start, or restart if already running, the *winweb01-{user}* and *winweb02-{user}* virtual machines.
 +
 NOTE: Ensure the VMs are properly working by accessing to the console tab of each VM.
 
@@ -127,7 +127,7 @@ metadata:
   namespace: vmexamples-{user}
 spec:
   selector:
-    vm.kubevirt.io/name: {DATABASE_VM_NAME}
+    vm.kubevirt.io/name: database-{user}
   ports:
   - protocol: TCP
     port: 3306

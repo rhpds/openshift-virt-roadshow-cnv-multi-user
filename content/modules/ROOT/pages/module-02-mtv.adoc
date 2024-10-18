@@ -110,9 +110,9 @@ image::module-02-mtv/16_VMware_Source_Provider.png[link=self, window=blank, widt
 
 . On the next page select the three VMs you would like to move:
 
-* database
-* winweb01
-* winweb02
+* database-{user}
+* winweb01-{user}
+* winweb02-{user}
 
 . Click *Next*.
 +
