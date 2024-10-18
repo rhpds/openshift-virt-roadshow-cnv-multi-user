@@ -45,7 +45,7 @@ IMPORTANT: Make sure to get the indentation exactly right - just like in the scr
 image::module-08-workingvms/12_Imported_VMs_YAML.png[link=self, window=blank, width=100%]
 
 . *Repeat* the process for the VM *winweb02-{user}*.
-. Start the *database* virtual machine if it's not already running.
+. Start the *database-{user}* virtual machine if it's not already running.
 . Start, or restart if already running, the *winweb01-{user}* and *winweb02-{user}* virtual machines.
 +
 NOTE: Ensure the VMs are properly working by accessing to the console tab of each VM.
