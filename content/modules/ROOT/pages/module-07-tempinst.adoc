@@ -334,7 +334,7 @@ image::module-07-tempinst/27_Stop_Button.png[link=self, window=blank, width=100%
 +
 image::module-07-tempinst/28_Storage_PVC.png[link=self, window=blank, width=100%]
 
-. Find the *windows* PVC that is listed and using the three-dot menu on the right select *Clone PVC*. On the menu that pops up, name the new PVC *windows-2k19-sysprep-template*, and set the *Access mode* to *Shared access (RWX)* then click the *Clone* button.
+. Find the *windows* PVC that is listed and using the three-dot menu on the right select *Clone PVC*. On the menu that pops up, name the new PVC *windows-2k19-sysprep-template*, and set the *Access mode* to *Shared access (RWX)* then click the *Clone* button. Select the *StorageClass* named *ocs-external-storagecluster-ceph-rbd-immediate*
 +
 image::module-07-tempinst/29_Clone_Menu.png[link=self, window=blank, width=100%]
 
