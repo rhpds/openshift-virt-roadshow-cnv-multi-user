@@ -340,9 +340,13 @@ image::module-07-tempinst/29_Clone_Menu.png[link=self, window=blank, width=100%]
 
 . Once this is saved, you can use it to quickly create Windows VMs in the future.
 
-. Return to the *Virtualization -> Catalog* menu, and use this cloned PVC as a boot source for quick-creating new virtual machines by selecting the option for *PVC (clone PVC)* as the *Disk source*, and selecting the *Windows-2k19-Sysprep-Template* PVC as the *PVC name* to clone, and click the *Quick create VirtualMachine* button.
+. Return to the *Virtualization -> Catalog* menu, and use this cloned PVC as a boot source for quick-creating new virtual machines by selecting the option for *PVC (clone PVC)* as the *Disk source*, and selecting the *Windows-2k19-Sysprep-Template* PVC as the *PVC name* to clone, and click the *Customize VirtualMachine* button to configure boot mode *BIOS* instead *UEFI*.
 +
 image::module-07-tempinst/30_Windows_Template.png[link=self, window=blank, width=100%]
+
+. Configure BIOS and press *Create VirtualMachine*
++
+image::module-07-tempinst/30_Windows_Template_BIOS.png
 
 [[instance_types]]
 == Introduction to Instance Types
