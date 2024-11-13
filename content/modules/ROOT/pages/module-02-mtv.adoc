@@ -94,7 +94,7 @@ Also you may ignore the Inventory server warning. It is not necessary for the re
 +
 image::module-02-mtv/04_MTV_Provider_List.png[link=self, window=blank, width=100%]
 
-. The lab is already configured with the VMWare provider named *vmware* and it is marked as a migration source.
+. The lab is already configured with the VMware provider named *vmware* and it is marked as a migration source.
 
 === Create a Migration Plan
 
