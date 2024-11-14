@@ -25,7 +25,7 @@ Now all VMs should be in *Stopped* state.
 [[clone_customize_template]]
 == Clone and Customize a Template
 
-By default pre-configured the templates provided by Red Hat OpenShift Virtualization cannot be customized. However you can clone a template and make adjustments to it for your particular workload in order to make it easier to request specific types of virtual machines for specific workloads. In this section of the lab we are going to do just this, by creating a template that will provide a preconfigured database server on demand for our end users.
+By default the pre-configured templates provided by Red Hat OpenShift Virtualization cannot be customized. However you can clone a template and make adjustments to it for your particular workload in order to make it easier to request specific types of virtual machines for specific workloads. In this section of the lab we are going to do just this, by creating a template that will provide a preconfigured database server on demand for our end users.
 
 . To begin, navigate to *Virtualization* -> *Templates* and select *openshift* for your project (you may need to open the *Project* drop-down and click the radio button next to *Show default projects*).
 +
@@ -69,10 +69,10 @@ userData: |-
   password: ${CLOUD_USER_PASSWORD}
   chpasswd: { expire: False }
   packages:
-  - mariadb-server
+    - mariadb-server
   runcmd:
-  - systemctl enable mariadb
-  - systemctl start mariadb
+    - systemctl enable mariadb
+    - systemctl start mariadb
 ----
 +
 image::module-07-tempinst/10_Cloud_Init_Script.png[link=self, window=blank, width=100%]
@@ -324,7 +324,7 @@ image::module-07-tempinst/25_CD_Import.png[link=self, window=blank, width=100%]
 +
 image::module-07-tempinst/26_Windows_2k19_Console.png[link=self, window=blank, width=100%]
 
-. Once the VM installation process is complete (provisioning will take 3-5 minutes, starting and configuring will take about 10 minutes), go ahead and power it off with the stop button. 
+. Once the VM installation process is complete (provisioning will take 3-5 minutes, starting and configuring will take about 10 minutes), go ahead and power it off with the stop button.
 +
 image::module-07-tempinst/27_Stop_Button.png[link=self, window=blank, width=100%]
 
@@ -334,7 +334,7 @@ image::module-07-tempinst/27_Stop_Button.png[link=self, window=blank, width=100%
 +
 image::module-07-tempinst/28_Storage_PVC.png[link=self, window=blank, width=100%]
 
-. Find the *windows* PVC that is listed and using the three-dot menu on the right select *Clone PVC*. On the menu that pops up, name the new PVC *windows-2k19-sysprep-template*, and set the *Access mode* to *Shared access (RWX)* then click the *Clone* button. Select the *StorageClass* named *ocs-external-storagecluster-ceph-rbd-immediate*
+. Find the *windows* PVC that is listed and using the three-dot menu on the right select *Clone PVC*. On the menu that pops up, name the new PVC *windows-2k19-sysprep-template*, set the *Access mode* to *Shared access (RWX)* and change the *StorageClass* to *ocs-external-storagecluster-ceph-rbd-immediate*. Ultimately, click the *Clone* button.
 +
 image::module-07-tempinst/29_Clone_Menu.png[link=self, window=blank, width=100%]
 
@@ -346,7 +346,7 @@ image::module-07-tempinst/30_Windows_Template.png[link=self, window=blank, width
 
 . Configure BIOS and press *Create VirtualMachine*
 +
-image::module-07-tempinst/30_Windows_Template_BIOS.png
+image::module-07-tempinst/30_Windows_Template_BIOS.png[link=self, window=blank, width=100%]
 
 [[instance_types]]
 == Introduction to Instance Types
@@ -357,7 +357,7 @@ In order to simplify the deployment process for virtual machines, starting with 
 +
 image::module-07-tempinst/31_Left_Menu_Catalog.png[link=self, window=blank, width=100%]
 
-. The first step to using an instance type is to select a volume to boot from. Similar to the templates that provide boot sources, those boot sources are available to use for guests provisioned with an InstanceType. You can see the included volumes by selecting the *openshift-virtualization-os-images* project, or you can upload your own with the *Add volume* button.
+. The first step in using an instance type is to select a volume to boot from. Similar to the templates that provide boot sources, these boot sources are available to use for guests provisioned with an InstanceType. You can see the included volumes by selecting the *openshift-virtualization-os-images* project, or you can upload your own with the *Add volume* button.
 +
 NOTE: The *Add Volume* option will be greyed out if you aren't in a project that you have read/write access to.
 
@@ -376,14 +376,14 @@ image::module-07-tempinst/34_Select_InstanceType.png[link=self, window=blank, wi
 ** n1: Designed for network intensive workloads like VNF
 ** cx1: Intended for compute intensive workloads
 ** u1: The most general and "universal" workloads
-** gn1: Dedicated for VMs making use of the nVidia GPU operator.
+** gn1: Dedicated for VMs making use of the Nvidia GPU operator.
 ** m1: Designed for memory intensive workloads.
 
 . Click on the *U series* tile to see a dropdown list of defined resources for general instance types. The default option here is *medium: 1 CPUs, 4 GiB Memory*. Select it.
 +
 image::module-07-tempinst/35_InstanceType_Resources.png[link=self, window=blank, width=100%]
 
-. The last section that needs to be completed to provision using an instance type is similar to the template section. You need to provide a name for the virtual machine, and select the storage class to be used for a backing disk. By default, a name will be generated for the VM, and the default storage class will be selected. When you are satisfied, click the *Create VirtualMachine* button.
+. The last section that needs to be completed when provisioning using an instance type is similar to the template section. You need to provide a name for the virtual machine, and select the storage class to be used for a backing disk. By default, a name will be generated for the VM, and the default storage class will be selected. When you are satisfied, click the *Create VirtualMachine* button.
 +
 image::module-07-tempinst/36_VM_Details.png[link=self, window=blank, width=100%]
 

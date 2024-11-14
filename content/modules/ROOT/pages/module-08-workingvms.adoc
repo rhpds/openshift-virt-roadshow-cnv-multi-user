@@ -7,13 +7,13 @@ This section of our lab is dedicated to the Day-2 operations that many administr
 [[service_route]]
 == Exposing an Application with a Service/Route
 
-By default, virtual machines are connected to the SDN, which is a convenient and easy way to give them access to the rest of the network, but can be challenging for the virtual machines, and other pods in the OpenShift cluster, to find and connect to the virtualized applications. To solve this, we will use a *Service* to balance connections across the two Windows-based web servers, and create a DNS entry for each service discovery, then create a *Route* to allow external clients to access the application hosted within the virtual machines.
+By default, virtual machines are connected to the SDN, which is a convenient and easy way to give them access to the rest of the network. However, it can be challenging for the virtual machines, and other pods in the OpenShift cluster, to find and connect to the virtualized applications. To solve this, we will use a *Service* to balance connections across the two Windows-based web servers, and create a DNS entry for each service discovery, then create a *Route* to allow external clients to access the application hosted within the virtual machines.
 
 IMPORTANT: If you have not completed the module *Migrating Existing Virtual Machines*, it is recommended that you do that module first. If you have not completed it, or the migration process is still pending, you can use pre-existing virtual machines that have been prepared for you, which are available in the *vmimported* project. If you are using these pre-imported virtual machines, please replace all instances of the *vmexamples* namespace with *vmimported* in the examples below.
 
 === Introduction to Services
 
-The *Service* identifies the source/target for traffic, and directs clients to, the endpoints based on labels. Currently, the VMs do not have a label assigned yet.
+The *Service* identifies the source/target for traffic, and directs clients to the endpoints based on labels. Currently, the VMs do not have a label assigned yet.
 
 In order to successfully associate the  VMs with the Service, we need to do the following:
 
@@ -33,7 +33,7 @@ image::module-08-workingvms/11_Imported_VMs_List.png[link=self, window=blank, wi
 NOTE: Ensure you select the correct project, *vmexamples-{user}* if you completed the *Migrating Existing Virtual Machines* module or *vmimported-{user}* if you did not.
 
 . Select to the *winweb01-{user}* VM and navigate to the *YAML* tab.
-. Find the *spec:* section and under the *template.metadata* add the following lines to *labels* section in the VM resources:
+. Find the *spec:* section and under the *template.metadata* add the following to the *labels* section:
 +
 [source,yaml,role=execute]
 ----
@@ -89,7 +89,7 @@ image::module-08-workingvms/16_Imported_VMs_Pods.png[link=self, window=blank, wi
 
 === Create the Route
 
-Now the Windows IIS servers are accessible from within the OpenShift cluster. Other virtual machines are able to access them using the DNS name *webapp.vmexamples*, which is determined by the name of the Service + the namespace. However, since these web servers are the front end to an application we want to be externally accessible, we will expose it using a *Route*.
+Now the Windows IIS servers are accessible from within the OpenShift cluster. Other virtual machines are able to access them using the DNS name *webapp.vmexamples*, which is determined by the name of the service + the namespace. However, since these web servers are the front end to an application, we want it to be externally accessible. This will be done by exposing it using a *Route*.
 
 . Navigate to *Networking* -> *Routes* in the left navigation menu, verify that you're using the correct project name. Press *Create Route*.
 +
