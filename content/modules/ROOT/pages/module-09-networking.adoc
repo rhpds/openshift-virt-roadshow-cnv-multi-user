@@ -1,0 +1,120 @@
+=  Network Management
+
+== Introduction
+
+By default, all virtual machines are attached to the OpenShift software-defined network (SDN), which enables access from other workloads on the OpenShift cluster, including other VMs and any OpenShift native applications.
+
+* The SDN provides additional features for abstracting, connecting, and exposing applications in a controlled manner, whether deployed as VMs or Pods in the cluster. These include the `Service` and `Route` features of OpenShift.
+* OpenShift's network policy engine allows the VM user or administrator to create rules which allow or deny network traffic to and from individual VMs or entire projects/namespaces.
+
+However, virtual machines may also connect directly to one or more physical networks, such as untagged network or VLANs, when needed. This is in addition to the SDN, which means that, for example, the administrator can connect to the VM from an external IP address and VMs can connect directly using a Layer2 network.
+
+At a high level, this is done by configuring the host networking, such as a Linux bridge. This workshop segment will walk through the next step in that process, creating a network attachment definition to allow VMs to connect to that bridge and, therefore, directly to the physical network. 
+
+[NOTE]
+The OpenShift environment has already been configured with a Linux Bridge on each compute node your virtual machines will connect to, thus allowing for easy connectivity with/from outside network resources.
+
+== Review environment
+
+The *Kubernetes NMState Operator* provides a Kubernetes API for performing state-driven network configuration across the OpenShift Container Platform cluster's nodes with NMState. The Kubernetes NMState Operator provides users with functionality to configure various network interface types, DNS, and routing on cluster nodes. Additionally, the daemons on the cluster nodes periodically report on the state of each node's network interfaces to the API server.
+
+. From the OpenShift console, navigate to *Networking* -> *NodeNetworkState* to review the configuration.
++
+image::module-09-networking/01_NodeNetworkState_List.png[link=self, window=blank, width=100%]
+
+. Notice workers have a linux bridge already configured to be used for this module. Expand one of the workers to obtain more information.
++
+image::module-09-networking/02_NodeNetworkState_Info.png[link=self, window=blank, width=100%]
+
+. Bridge named `br-flat` was created using the *Kubernetes NMState Operator*. Navigate to *Networking* -> *NodeNetworkConfigurationPolicy*
++
+image::module-09-networking/03_NodeNetworkConfigurationPolicy_List.png[link=self, window=blank, width=100%]
+
+. Select `br-flat` to get information 
++
+image::module-09-networking/04_NodeNetworkConfigurationPolicy_Info.png[link=self, window=blank, width=100%]
+
+. Switch to *YAML* to see the definition, expect similar definition as shown below:
++
+[source,yaml]
+----
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: br-flat
+spec:
+  desiredState:
+    interfaces:
+      - bridge:
+          options:
+            stp:
+              enabled: false
+          port:
+            - name: enp3s0
+        description: Linux bridge with enp3s0 as a port
+        ipv4:
+          dhcp: false
+          enabled: false
+        name: br-flat
+        state: up
+        type: linux-bridge
+----
+
+== Create Network Attachment Definition
+
+In order to use the Linux Bridge with your VM you need to create a *Network Attachment Definition*. This is what tells OpenShift about the network and allows the virtual machines to connect to it. Network Attachment Definitions are specific to the project/namespace they're created in, unless they're created in the `default` project. This gives you, the administrator, the ability to control which networks are and aren't available to users who have access to manage their own Vms. Once the Network Attachment Definition has been created, it can then be used by virtual machines when configuring their network adapters.
+
+[NOTE]
+A network attachment definition instructs openshift to utilise an existing network device. In our case that device was previously created and is named br-flat. You must use that name or OpenShift won’t be able to place your VM on any compute nodes as it can only utilise nodes with that specifically named network device on it.
+
+. Navigate to *Networking* -> *Network Attachment Definitions* and click *Create network attachment definition*:
++
+image::module-09-networking/05_NetworkAttachDefinition_Create.png[link=self, window=blank, width=100%]
++
+[IMPORTANT]
+====
+Select project `vmexamples-{user}`.
+====
+
+. Complete the form for the `vmexamples` project as follows, then click *Create network attachment definition*:
+* *Name*: `flatnetwork`
+* *Network Type*: `CNV Linux Bridge`
+* *Bridge Name*: `br-flat`
++
+image::module-09-networking/06_NetworkAttachDefinition_Create_Form.png[link=self, window=blank, width=100%]
++
+[NOTE]
+The form above has an input for `VLAN Tag Number`, which is used when connecting to a network that needs to have a VLAN tag assigned. This lab uses an untagged network, so no VLAN number is required here.
++
+A single Linux Bridge on the host can have many different VLANs. In this scenario, you only need to create a Network Attachment Definition for each one, not a separate host interface and bridge.
+
+. Examine the details of the network attachment definition. Because this was created in the `vmexamples-{user}` project, it will not be available in other projects.
++
+image::module-09-networking/07_NetworkAttachDefinition_Created.png[link=self, window=blank, width=100%]
+
+
+== Connect a virtual machine to the external network
+
+. Navigate to *Virtualization* -> *VirtualMachines*, select the `fedora01` VM. Click *Configuration* tab and then click the *Network* left tab:
++
+image::module-09-networking/08_VM_Network_Tab.png[link=self, window=blank, width=100%]
+
+. Click *Add Network Interface*, complete the form as shown, then click *Save*.
++
+Because this is a bridge connecting to the external network, we don't need to rely on any OpenShift features or capabilities to enable access, such as masquerade (NAT) for the virtual machines using the network. As a result, *type* should be `Bridge` here.
++
+image::module-09-networking/09_VM_Network_Attach.png[link=self, window=blank, width=100%]
+
+. Use the *Actions* menu to restart the VM. After rebooting, navigate to the *Console* tab:
++
+image::images/Networking/09_VM_Network_Attach.png[]
++
+The `enp2s0` interface obtains an IP address from the flat network (`192.168.64.0/18`). That network has a DHCP server providing IPs to that network. 
++
+image::module-09-networking/10_VM_Network_Console.png[link=self, window=blank, width=100%]
+
+. Ask another participant about the VM IP and try communicate using `ping`, or you can for the test the DHCP server `192.168.127.254`
+
+== Summary
+
+In this module, you explored working with physical networks and connecting Virtual Machines (VMs) directly to an existing network. By attaching VMs to a physical network—whether untagged or VLAN-tagged—administrators can directly access the VMs while also enabling the VMs to connect to specialized networks, such as storage or administration networks.
