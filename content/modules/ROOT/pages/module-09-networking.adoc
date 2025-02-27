@@ -1,4 +1,4 @@
-=  Network Management
+=  Network Management for Virtual Machines
 
 == Introduction
 
@@ -14,6 +14,7 @@ At a high level, this is done by configuring the host networking, such as a Linu
 [NOTE]
 The OpenShift environment has already been configured with a Linux Bridge on each compute node your virtual machines will connect to, thus allowing for easy connectivity with/from outside network resources.
 
+[[review]]
 == Review environment
 
 The *Kubernetes NMState Operator* provides a Kubernetes API for performing state-driven network configuration across the OpenShift Container Platform cluster's nodes with NMState. The Kubernetes NMState Operator provides users with functionality to configure various network interface types, DNS, and routing on cluster nodes. Additionally, the daemons on the cluster nodes periodically report on the state of each node's network interfaces to the API server.
@@ -60,6 +61,7 @@ spec:
         type: linux-bridge
 ----
 
+[[nad]]
 == Create Network Attachment Definition
 
 In order to use the Linux Bridge with your VM you need to create a *Network Attachment Definition*. This is what tells OpenShift about the network and allows the virtual machines to connect to it. Network Attachment Definitions are specific to the project/namespace they're created in, unless they're created in the `default` project. This gives you, the administrator, the ability to control which networks are and aren't available to users who have access to manage their own Vms. Once the Network Attachment Definition has been created, it can then be used by virtual machines when configuring their network adapters.
@@ -92,9 +94,8 @@ A single Linux Bridge on the host can have many different VLANs. In this scenari
 +
 image::module-09-networking/07_NetworkAttachDefinition_Created.png[link=self, window=blank, width=100%]
 
-
+[[attach]]
 == Connect a virtual machine to the external network
-
 . Navigate to *Virtualization* -> *VirtualMachines*, select the `fedora01` VM. Click *Configuration* tab and then click the *Network* left tab:
 +
 image::module-09-networking/08_VM_Network_Tab.png[link=self, window=blank, width=100%]
