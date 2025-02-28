@@ -108,13 +108,17 @@ image::module-09-networking/09_VM_Network_Attach.png[link=self, window=blank, wi
 
 . Use the *Actions* menu to restart the VM. After rebooting, navigate to the *Console* tab:
 +
-image::images/Networking/09_VM_Network_Attach.png[]
+image::module-09-networking/09_VM_Network_Attach.png[]
 +
 The `enp2s0` interface obtains an IP address from the flat network (`192.168.64.0/18`). That network has a DHCP server providing IPs to that network. 
 +
 image::module-09-networking/10_VM_Network_Console.png[link=self, window=blank, width=100%]
 
-. Ask another participant about the VM IP and try communicate using `ping`, or you can for the test the DHCP server `192.168.127.254`
+. Repeat the actions to attach the fedora02 VM to the same `flatnetwork` network. 
+
+. Try direct communication between your two VMs (fedora01 and fedora01)
++
+image::module-09-networking/11_VM_Network_Ping.png[link=self, window=blank, width=100%]
 
 == Summary
 
