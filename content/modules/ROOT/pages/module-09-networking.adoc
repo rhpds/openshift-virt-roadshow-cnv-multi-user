@@ -120,6 +120,7 @@ image::module-09-networking/10_VM_Network_Console.png[link=self, window=blank, w
 +
 image::module-09-networking/11_VM_Network_Ping.png[link=self, window=blank, width=100%]
 
+[[udn]]
 == User Defined Network
 
 Before the implementation of user-defined networks (UDN), the OVN-Kubernetes CNI plugin for OpenShift Container Platform only supported a Layer 3 topology on the primary or main network. Due to Kubernetes design principles: all pods are attached to the main network, all pods communicate with each other by their IP addresses, and inter-pod traffic is restricted according to network policy.
