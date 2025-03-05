@@ -203,8 +203,8 @@ image::module-09-networking/15_UDN_Created.png[link=self, window=blank, width=10
 image::module-09-networking/16_UDN_NAD.png[link=self, window=blank, width=100%]
 
 
-Creating a Virtual Machine attached to a UserDefinedNetwork requiress some adjustment in the YAML definition. To make it easier the task, you can use the following YAML to run a Fedora connected to UserDefinedNetwork
-
+. Creating a Virtual Machine attached to a UserDefinedNetwork requires some https://docs.openshift.com/container-platform/4.18//virt/vm_networking/virt-connecting-vm-to-primary-udn.html#virt-attaching-vm-to-primary-udn_virt-connecting-vm-to-primary-udn[adjustment in the YAML definition,window=_blank]. To make it easier the task, you can use the following YAML to run a Fedora connected to UserDefinedNetwork
++
 [source,yaml,role=execute,subs="attributes"]
 ----
 apiVersion: kubevirt.io/v1
@@ -269,9 +269,27 @@ spec:
             chpasswd: { expire: False }
         name: cloudinitdisk
 ----
++
+. You can use the top menu to import a YAML as is shown in the following image:
++
+image::module-09-networking/17_UDN_Import_YAML.png[link=self, window=blank, width=100%]
+
+. After the VM is created, you can navigate to *Virtualization* -> *VirtualMachines* and review the vm `fedora-udn`. In the Overview tab, it will will show the IP assigned from the UserDefinedNetwork
++
+image::module-09-networking/18_UDN_Network_Tile.png[link=self, window=blank, width=100%]
+
+. Switch to the Console tab and login to the VM. 
++
+image::module-09-networking/19_UDN_Fedora_Console.png[link=self, window=blank, width=100%]
++
+.. The VM has assigned a IP from the subnet defined
+.. The VM automatically gets the gateway configuration from a DHCP
+.. The VM has access to internet using the User Defined Network.
 
 
 
 == Summary
 
 In this module, you explored working with physical networks and connecting Virtual Machines (VMs) directly to an existing network. By attaching VMs to a physical network—whether untagged or VLAN-tagged—administrators can directly access the VMs while also enabling the VMs to connect to specialized networks, such as storage or administration networks.
+
+User-defined networks provide cluster administrators and users with highly customizable network configuration options for both primary and secondary network types. 
