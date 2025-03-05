@@ -98,7 +98,7 @@ image::module-05-bcdr/06_Backup_Completed.png[link=self, window=blank, width=100
 [[restore_backup]]
 == Restore From a Backup
 
-. Navigate to *Virtualization* -> *VirtualMachines*, click on the three-dot menu to the right of the *fedora02* VM and select *Delete* from the menu that appears (you may need to switch back to the *vmexamples-{user}* project).
+. Navigate to *Virtualization* -> *VirtualMachines*, click on the three-dot menu to the right of the *fedora02* VM and select *Stop* from the menu that appears (you may need to switch back to the *vmexamples-{user}* project). When the VM is stopped, click on the three-dot menu and select *Delete*.
 +
 image::module-05-bcdr/07_Delete_VM.png[link=self, window=blank, width=100%]
 

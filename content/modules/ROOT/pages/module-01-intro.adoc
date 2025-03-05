@@ -184,7 +184,7 @@ image::module-01-intro/20_VM_Info_Node.png[link=self, window=blank, width=100%]
 Only cluster administrators can see the Node - the screenshot is an example of what an admin would see. But you can still migrate the VM - you just won't see the node change.
 ====
 
-. Using the *Actions* menu, select the option to *Migrate*.
+. Using the *Actions* menu, select the option to *Migrate* -> *Compute*.
 +
 image::module-01-intro/21_VM_Dialog_Migrate.png[link=self, window=blank, width=100%]
 
