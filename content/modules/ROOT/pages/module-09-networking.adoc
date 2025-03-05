@@ -120,6 +120,157 @@ image::module-09-networking/10_VM_Network_Console.png[link=self, window=blank, w
 +
 image::module-09-networking/11_VM_Network_Ping.png[link=self, window=blank, width=100%]
 
+== User Defined Network
+
+Before the implementation of user-defined networks (UDN), the OVN-Kubernetes CNI plugin for OpenShift Container Platform only supported a Layer 3 topology on the primary or main network. Due to Kubernetes design principles: all pods are attached to the main network, all pods communicate with each other by their IP addresses, and inter-pod traffic is restricted according to network policy.
+
+UDN improves the flexibility and segmentation capabilities of the default Layer 3 topology for a Kubernetes pod network by enabling custom Layer 2, Layer 3, and localnet network segments, where all these segments are isolated by default. These segments act as either primary or secondary networks for container pods and virtual machines that use the default OVN-Kubernetes CNI plugin. UDNs enable a wide range of network architectures and topologies, enhancing network flexibility, security, and performance.
+
+A cluster administrator can use a UDN to create and define additional networks that span multiple namespaces at the cluster level by leveraging the ClusterUserDefinedNetwork custom resource (CR). Additionally, a cluster administrator or a cluster user can use a UDN to define additional networks at the namespace level with the UserDefinedNetwork CR.
+
+User-defined networks provide the following benefits:
+
+. Enhanced network isolation for security
+
+.. Tenant isolation: Namespaces can have their own isolated primary network, similar to how tenants are isolated in Red Hat OpenStack Platform (RHOSP). This improves security by reducing the risk of cross-tenant traffic.
+
+. Network flexibility
+
+.. Layer 2 and layer 3 support: Cluster administrators can configure primary networks as layer 2 or layer 3 network types. This provides the flexibility of a secondary network to the primary network.
+
+. Simplified network management
+
+.. Reduced network configuration complexity: With user-defined networks, the need for complex network policies are eliminated because isolation can be achieved by grouping workloads in different networks.
+
+. Advanced capabilities
+
+.. Consistent and selectable IP addressing: Users can specify and reuse IP subnets across different namespaces and clusters, providing a consistent networking environment.
+
+.. Support for multiple networks: The user-defined networking feature allows administrators to connect multiple namespaces to a single network, or to create distinct networks for different sets of namespaces.
+
+
+=== User Defined Network with OpenShift Virtualization
+
+You can connect a virtual machine (VM) to a user-defined network (UDN) on the VM's primary interface by using the OpenShift Container Platform web console or the CLI. The primary user-defined network replaces the default pod network in your specified namespace. Unlike the pod network, you can define the primary UDN per project, where each project can use its specific subnet and topology.
+
+With the layer 2 topology, OVN-Kubernetes creates an overlay network between nodes. You can use this overlay network to connect VMs on different nodes without having to configure any additional physical networking infrastructure.
+
+The layer 2 topology enables seamless migration of VMs without the need for Network Address Translation (NAT) because persistent IP addresses are preserved across cluster nodes during live migration.
+
+You must consider the following limitations before implementing a primary UDN:
+
+. You cannot use the virtctl ssh command to configure SSH access to a VM.
+
+. You cannot use the oc port-forward command to forward ports to a VM.
+
+. You cannot use headless services to access a VM.
+
+. You cannot define readiness and liveness probes to configure VM health checks.
+
+[NOTE]
+OpenShift Virtualization currently does not support secondary user-defined networks.
+
+=== Working with User Defined Network 
+
+You must create the namespace and network before creating pods. Assigning a namespace with pods to a new network or creating a UDN in an existing namespace will not be accepted by OVN-Kubernetes.
+
+This task has to be performed by a cluster administrator. You have assigned a namespace called `vmexamples-{user}-udn` with the proper label (`k8s.ovn.org/primary-user-defined-network`)
+
+. Navigate to *Networking* -> *UserDefinedNetworks* and ensure you select the project `vmexamples-{user}-udn`
++
+image::module-09-networking/12_UDN_List.png[link=self, window=blank, width=100%]
+
+. Click on *Create* and selet *UserDefinedNetwork*
++
+image::module-09-networking/13_UDN_Create.png[link=self, window=blank, width=100%]
+
+. Specify the subnet `192.168.254.0/24` and press *Create*
++
+image::module-09-networking/14_UDN_Form.png[link=self, window=blank, width=100%]
+
+. Review the configuration of the UDN just created
++
+image::module-09-networking/15_UDN_Created.png[link=self, window=blank, width=100%]
++
+.. Default name when is created using the form is `primary-udn`
+.. By default is Layer 2 (the only Layer supported at this moment for OpenShift Virtualization)
+.. The Role is primary (Virtual Machines can only use, at this moment, primary networks)
+.. A Network Attach definition is created automatically.
+
+. Navigate to *Networking* -> *NetworkAttachmentDefinitions* to review the NAD automatically created
++
+image::module-09-networking/16_UDN_NAD.png[link=self, window=blank, width=100%]
+
+
+Creating a Virtual Machine attached to a UserDefinedNetwork requiress some adjustment in the YAML definition. To make it easier the task, you can use the following YAML to run a Fedora connected to UserDefinedNetwork
+
+[source,yaml,role=execute,subs="attributes"]
+----
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  labels:
+    kubevirt.io/vm: fedora-udn
+  name: fedora-udn
+  namespace: vmexamples-{user}-udn
+spec:
+  dataVolumeTemplates:
+    - apiVersion: cdi.kubevirt.io/v1beta1
+      kind: DataVolume
+      metadata:
+        creationTimestamp: null
+        name: fedora-udn
+      spec:
+        sourceRef:
+          kind: DataSource
+          name: fedora
+          namespace: openshift-virtualization-os-images
+        storage:
+          resources:
+            requests:
+              storage: 30Gi
+  runStrategy: Always
+  template:
+    metadata:
+      name: fedora-udn
+      namespace: vmexamples-{user}-udn
+    spec:
+      domain:
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: rootdisk
+          - disk:
+              bus: virtio
+            name: cloudinitdisk
+          interfaces:
+          - name: primary-udn
+            binding:
+              name: l2bridge
+          rng: {}
+        resources:
+          requests:
+            memory: 2048M
+      networks:
+      - pod: {}
+        name: primary-udn
+      terminationGracePeriodSeconds: 0
+      volumes:
+      - dataVolume:
+          name: fedora-udn
+        name: rootdisk
+      - cloudInitNoCloud:
+          userData: |-
+            #cloud-config
+            user: fedora
+            password: fedora
+            chpasswd: { expire: False }
+        name: cloudinitdisk
+----
+
+
+
 == Summary
 
 In this module, you explored working with physical networks and connecting Virtual Machines (VMs) directly to an existing network. By attaching VMs to a physical network—whether untagged or VLAN-tagged—administrators can directly access the VMs while also enabling the VMs to connect to specialized networks, such as storage or administration networks.
