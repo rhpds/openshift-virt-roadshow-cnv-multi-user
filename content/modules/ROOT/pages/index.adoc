@@ -38,7 +38,7 @@ These are the *six* main sections that will be covered:
 * OpenShift Virtualization is based on the “container-native virtualization” technology being developed upstream under the KubeVirt project, a sandbox project in the Cloud Native Computing Foundation (CNCF).
 * It leverages the Red Hat Enterprise Linux KVM hypervisor (RHEL KVM), which is a mature and highly performant open-source hypervisor used by many organizations and cloud service providers globally and which has been under development for over 15 years.
 * OpenShift Virtualization leverages the RHEL KVM hypervisor and allows the VM to be managed by Kubernetes and KubeVirt. An OpenShift Virtualization VM uses Kubernetes scheduling, network, and storage infrastructure.
-* OpenShift Virtualization includes entitlements for **unlimited virtual RHEL guests**. Guest licensing for other supported operating systems will need to be purchased separately.
+
 * OpenShift Virtualization is SVVP certified with Microsoft for Windows guest support per the same rules that apply to Red Hat’s other KVM virtualization offerings.
 * OpenShift Virtualization is currently only supported on bare metal physical servers, typically on-premises or through dedicated hosting. Support for other topologies (OpenShift deployed on virtualized infrastructure like RHV or vSphere) is not available at this time.
 * Support for https://www.redhat.com/en/blog/managing-virtual-machines-and-containers-as-code-with-openshift-virtualization-on-red-hat-openshift-service-on-aws[AWS / ROSA^] has already been announced, and we are in the process of adding support for OpenShift Virtualization to additional Managed OpenShift Cloud services.
