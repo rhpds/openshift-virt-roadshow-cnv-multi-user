@@ -68,17 +68,17 @@ OpenShift is an inclusive platform wherein all of the features are accesible to 
 
 Subscriptions for OpenShift fall into one of four categories, all of which provide access to OpenShift Virtualization:
 
-**OpenShift Platform Plus** 
-Red Hat OpenShift Platform Plus is a unified platform to build, modernize, and deploy applications at scale. Multicluster security, compliance, application and data management work across infrastructures to provide consistency throughout the software supply chain. Red Hat OpenShift Platform Plus helps you work smarter and faster with a complete set of services for bringing apps to market on your hybrid cloud.
+**Red Hat OpenShift Platform Plus** 
+is a unified platform to build, modernize, and deploy applications at scale. Multicluster security, compliance, application and data management work across infrastructures to provide consistency throughout the software supply chain. Red Hat OpenShift Platform Plus helps you work smarter and faster with a complete set of services for bringing apps to market on your hybrid cloud.
 
-**OpenShift Container Platform**
-Red Hat OpenShift is a trusted, comprehensive, and consistent platform to develop, modernize, and deploy applications at scale, including today’s AI-enabled apps. Innovate faster with a complete set of services for bringing apps to market on your choice of infrastructure.
+**Red Hat OpenShift Container Platform**
+is a trusted, comprehensive, and consistent platform to develop, modernize, and deploy applications at scale, including today’s AI-enabled apps. Innovate faster with a complete set of services for bringing apps to market on your choice of infrastructure.
 
-**OpenShift Kubernetes Engine**
-Red Hat OpenShift Kubernetes Engine provides you with the basic functionality of Red Hat OpenShift. It offers a subset of the features that Red Hat OpenShift Container Platform offers, like full access to an enterprise-ready Kubernetes environment and an extensive compatibility test matrix with many of the software elements that you might use in your datacenter.
+**Red Hat OpenShift Kubernetes Engine**
+provides you with the basic functionality of Red Hat OpenShift. It offers a subset of the features that Red Hat OpenShift Container Platform offers, like full access to an enterprise-ready Kubernetes environment and an extensive compatibility test matrix with many of the software elements that you might use in your datacenter.
 
-**OpenShift Virtualization Engine**
-Red Hat® OpenShift Virtualization Engine provides the proven virtualization functionality of Red Hat OpenShift to deploy, manage, and scale virtual machines (VMs). Only pay for what you need with a streamlined solution focused exclusively on VM workloads.
+**Red Hat OpenShift Virtualization Engine**
+provides the proven virtualization functionality of Red Hat OpenShift to deploy, manage, and scale virtual machines (VMs). Only pay for what you need with a streamlined solution focused exclusively on VM workloads.
 
 The following chart explains the features that are entitled with each subscription and may help you decide which version of OpenShift is best for your environment.
 
