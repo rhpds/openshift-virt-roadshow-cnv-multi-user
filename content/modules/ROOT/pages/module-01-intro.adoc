@@ -23,6 +23,7 @@ Your login is available with:
 == Switch to the Virtualization Persona
 
 . When you first log in, you will show up in the Developer view, with an introductory prompt. Click the *Skip tour* button to close the window.
++
 image::2025_spring/module-01-intro/00_Dev_Perspective.png[link=self, window=blank, width=100%]
 
 . Now, click on *Developer* in the upper left corner and switch to the *Virtualization* persona.
@@ -37,9 +38,9 @@ image::2025_spring/module-01-intro/02_Welcome_Virt.png[link=self, window=blank, 
 == Exploring OpenShift Virtualization
 
 When you arrive in the Virtualization view you will be on the *Overview* page which provides a high-level view of all virtualization resources currently in use, lets take a moment to explore.
-
++
 image::2025_spring/module-01-intro/03_Virt_Overview.png[link=self, window=blank, width=100%]
-
++
 NOTE: The *Virtualization* persona is available only when Red Hat OpenShift Virtualization is installed and properly configured. In this lab environment the installation and configuration has already been performed for us.
 
 . Click on the *VirtualMachines* item in the left side menu and you will be presented with the virtualization tree view of all VM assets.
@@ -92,53 +93,53 @@ NOTE: The virtual machine overview column is changed to view this new project im
 +
 NOTE: VMs can also be created from an InstanceType wizard as well as created by entering a custom YAML definition, but for this current lab scenario we are going to stick with creating VMs based on existing templates.
 +
-image::spring_2025/module-01-intro/12_Create_VM_Button.png[link=self, window=blank, width=100%]
+image::2025_spring/module-01-intro/12_Create_VM_Button.png[link=self, window=blank, width=100%]
 
 . You will be taken to the *Catalog* screen, where a number of tiles will appear showing the available pre-defined VM templates.
 +
 Reviewing the list of available templates you’ll notice that some have a blue badge which indicates "Source available". These are templates which are using automatically downloaded and stored template source disks. If you were deploying in your own environment where you can customize the options available, you can modify the availability of these boot sources by default, and/or removing these source disks, in favor of creating custom disks for your organizations needs.
 +
-image::spring_2025/module-01-intro/13_Create_VM_Templates.png[link=self, window=blank, width=100%]
+image::2025_spring/module-01-intro/13_Create_VM_Templates.png[link=self, window=blank, width=100%]
 
 . Select the *Fedora VM* tile, and a dialog opens.
 +
-image::spring_2025/module-01-intro/14_Create_VM_Quick.png[link=self, window=blank, width=100%]
+image::2025_spring/module-01-intro/14_Create_VM_Quick.png[link=self, window=blank, width=100%]
 
 . Change the name to *fedora01* and press *Quick create VirtualMachine*:
 +
-image::spring_2025/module-01-intro/15_Create_VM_Quick_Name.png[link=self, window=blank, width=100%]
+image::2025_spring/module-01-intro/15_Create_VM_Quick_Name.png[link=self, window=blank, width=100%]
 
 . We will return to our tree view and see information about our new VM in the virtual machine overview column. Notice also that we now see our `vmexamples-{user}` project listed in the center column as it contains a VM, and that it is highlighted within the project. If we watch closely we can see the VM Status switch from *Provisioning* to *Starting* and finally *Running* in the virtual machine overview column when it is ready. During this time, the storage provider has cloned the template disk so that it can be used by the newly created virtual machine. The amount of time this takes can vary based on the storage provider being used to create the boot disk, and the current load on the system.
 +
-image::spring_2025/module-01-intro/16_Fedora_Running.png[link=self, window=blank, width=100%]
+image::2025_spring/module-01-intro/16_Fedora_Running.png[link=self, window=blank, width=100%]
 
 Once the virtual machine is running we can do some further exploration of the *Overview* page in the right side column.  
 +
-* The _Details_ tile shows us 
-The IP address of the virtual machine on the software-defined network (SDN) is also displayed on this page, along with information about the storage devices, system utilization, and more. By default VMs are attached to the default pod network. Later in this lab we will explore advanced networking options, and how to customize connectivity for VMs.
+* The _Details_ tile shows us information about our VM, including it's name, status, creation time, OS, virtual resources, and the template from which it was created. It also contains a minature VNC terminal, and the ability to launch a fullscreen web console.
+
+* The _General_ tile shows us information specific to OpenShift, including the Namespace (Project), instance name, and Kubernetes pod where the guest is running.
+
+* The _Snapshots_ tile gives us information about any existing snapshots, and also has the button to quickly create a snapshot.
+
+* The _Network_ tile gives us the IP address of the virtual machine on the software-defined network (SDN) and it's internal hostname. If no advanced networks are defined, VMs are automatically attached to the pod network. Later in this lab we will explore advanced networking options, and how to customize connectivity for VMs.
+
+* The _Utilization_ tile gives us an overview of the resources currently in use by this virtual machine, including CPU, Memory, Storage, and Network throughput.
 +
-image::module-01-intro/17_Fedora_Details.png[link=self, window=blank, width=100%]
+image::2025_spring/module-01-intro/17_Fedora_Details.png[link=self, window=blank, width=100%]
 
-
-
-. After you are done looking at the VM details, examine the *Events* tab to see some details of the process. If there are any issues with the creation of the VM, they will show up on this tab as well.
-+
-image::spring_2025/module-01-intro/18_Fedora_Events.png[link=self, window=blank, width=100%]
+. After you are done looking at the VM details, click the *Events* tab to see some details of the provisioning process that just took place. If there are any issues with the creation of the VM, they will show up on this tab as well. The following events took place during creation:
 +
 * A _DataVolume_ is created. _DataVolumes_ are used to manage the creation of a VM disk, abstracting the clone or import process onto OpenShift native storage during the virtual machine's creation flow.
 * The _VM_ is started.
-
 +
-The IP address of the virtual machine on the software-defined network (SDN) is also displayed on this page, along with information about the storage devices, system utilization, and more. By default VMs are attached to the default pod network. Later in this lab we will explore advanced networking options, and how to customize connectivity for VMs.
-+
-image::module-01-intro/17_Fedora_Details.png[link=self, window=blank, width=100%]
+image::2025_spring/module-01-intro/18_Fedora_Events.png[link=self, window=blank, width=100%]
 
 [[admin_vms]]
 == Administering Virtual Machines
 
 Administering and using virtual machines is more than simply creating and customizing their configuration. As the platform administrator, we also need to be able to control the VM states and trigger live migrations so that we can balance resources, perform maintenance tasks, and reconfigure nodes.
 
-. Click the *Configuration* tab, this is the entry point to obtain information about the resources of the Virtual Machine.
+. Click the *Configuration* tab, this is the entry point to obtain information about the resources of the virtual machine.
 +
 image::module-01-intro/11_Configuration_Tab_Nav.png[link=self, window=blank, width=100%]
 +
