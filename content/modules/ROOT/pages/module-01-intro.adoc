@@ -37,10 +37,10 @@ image::2025_spring/module-01-intro/02_Welcome_Virt.png[link=self, window=blank, 
 [[exploring_virt_persona]]
 == Exploring OpenShift Virtualization
 
-When you arrive in the Virtualization view you will be on the *Overview* page which provides a high-level view of all virtualization resources currently in use, lets take a moment to explore.
+When you arrive in the *Virtualization* view you will be on the *Overview* page which provides a high-level view of all virtualization resources currently in use, lets take a moment to explore.
 +
 image::2025_spring/module-01-intro/03_Virt_Overview.png[link=self, window=blank, width=100%]
-+
+
 NOTE: The *Virtualization* persona is available only when Red Hat OpenShift Virtualization is installed and properly configured. In this lab environment the installation and configuration has already been performed for us.
 
 . Click on the *VirtualMachines* item in the left side menu and you will be presented with the virtualization tree view of all VM assets.
@@ -64,7 +64,7 @@ image::2025_spring/module-01-intro/07_VM_List.png[link=self, window=blank, width
 . From the center column click on the project `vmimported-{user}` to see the virtual machines that are currently deployed and available to your specific user account.
 +
 image::2025_spring/module-01-intro/08_VM_Imported_Project.png[link=self, window=blank, width=100%]
-+
+
 IMPORTANT: While the lab guide is configured to be dynamic and show your specific user account and project names whenever possible, the images in the lab guide are static and may show a different user, please perform these tasks in reference to your own user account and associated projects.
 
 . The virtual machine overview column will update to only show the virtual machines in the `vmimported-{user}` project. You should see three VMs listed, but they are not currently turned on, these are for a later part of the lab.
@@ -72,6 +72,7 @@ IMPORTANT: While the lab guide is configured to be dynamic and show your specifi
 image::2025_spring/module-01-intro/09_VMs_Stopped.png[link=self, window=blank, width=100%]
 
 [[create_project]]
+== Create a New Project
 
 . Before creating a VM we need to create a new project. Virtual machines are deployed to a specific project, or namespace, where by default, users without permission to the namespace cannot access, manage, or control them. Administrators can access all projects, and therefore view all virtual machines, however regular users must be given access to projects as needed.
 +
@@ -97,7 +98,9 @@ image::2025_spring/module-01-intro/12_Create_VM_Button.png[link=self, window=bla
 
 . You will be taken to the *Catalog* screen, where a number of tiles will appear showing the available pre-defined VM templates.
 +
-Reviewing the list of available templates you’ll notice that some have a blue badge which indicates "Source available". These are templates which are using automatically downloaded and stored template source disks. If you were deploying in your own environment where you can customize the options available, you can modify the availability of these boot sources by default, and/or removing these source disks, in favor of creating custom disks for your organizations needs.
+Reviewing the list of available templates you’ll notice that some have a blue badge which indicates _Source available_. These are templates which are using automatically downloaded and stored template source disks. 
++
+If you were deploying in your own environment where you can customize the options available, you can choose to modify the availability of these boot sources by default, and/or remove these source disks, in favor of creating custom disks for your organization's needs.
 +
 image::2025_spring/module-01-intro/13_Create_VM_Templates.png[link=self, window=blank, width=100%]
 
@@ -109,21 +112,21 @@ image::2025_spring/module-01-intro/14_Create_VM_Quick.png[link=self, window=blan
 +
 image::2025_spring/module-01-intro/15_Create_VM_Quick_Name.png[link=self, window=blank, width=100%]
 
-. We will return to our tree view and see information about our new VM in the virtual machine overview column. Notice also that we now see our `vmexamples-{user}` project listed in the center column as it contains a VM, and that it is highlighted within the project. If we watch closely we can see the VM Status switch from *Provisioning* to *Starting* and finally *Running* in the virtual machine overview column when it is ready. During this time, the storage provider has cloned the template disk so that it can be used by the newly created virtual machine. The amount of time this takes can vary based on the storage provider being used to create the boot disk, and the current load on the system.
+. We will return to our tree view and see information about our new VM in the virtual machine overview column. Notice also that we now see our `vmexamples-{user}` project listed in the center column as it contains a VM, and that it is highlighted within the project.
++
+If we watch closely we can see the VM Status switch from *Provisioning* to *Starting* and finally *Running* in the virtual machine overview column when it is ready. 
++
+During this time, the storage provider has cloned the template disk so that it can be used by the newly created virtual machine. The amount of time this takes can vary based on the storage provider being used to create the boot disk, and the current load on the system.
 +
 image::2025_spring/module-01-intro/16_Fedora_Running.png[link=self, window=blank, width=100%]
 
-Once the virtual machine is running we can do some further exploration of the *Overview* page in the right side column.  
+. Once the virtual machine is running we can do some further exploration of the *Overview* page in the right side column.  
 +
-* The _Details_ tile shows us information about our VM, including it's name, status, creation time, OS, virtual resources, and the template from which it was created. It also contains a minature VNC terminal, and the ability to launch a fullscreen web console.
-
-* The _General_ tile shows us information specific to OpenShift, including the Namespace (Project), instance name, and Kubernetes pod where the guest is running.
-
-* The _Snapshots_ tile gives us information about any existing snapshots, and also has the button to quickly create a snapshot.
-
-* The _Network_ tile gives us the IP address of the virtual machine on the software-defined network (SDN) and it's internal hostname. If no advanced networks are defined, VMs are automatically attached to the pod network. Later in this lab we will explore advanced networking options, and how to customize connectivity for VMs.
-
-* The _Utilization_ tile gives us an overview of the resources currently in use by this virtual machine, including CPU, Memory, Storage, and Network throughput.
+* *Details:* This tile shows us information about our VM, including it's name, status, creation time, OS, virtual resources, and the template from which it was created. It also contains a minature VNC terminal, and the ability to launch a fullscreen web console.
+* *General:* This tile shows us information specific to OpenShift, including the Namespace (Project), instance name, and Kubernetes pod where the guest is running.
+* *Snapshots:* This tile gives us information about any existing snapshots, and also has the button to quickly create a snapshot.
+* *Network:* This tile gives us the IP address of the virtual machine on the software-defined network (SDN) and it's internal hostname. If no advanced networks are defined, VMs are automatically attached to the pod network. Later in this lab we will explore advanced networking options, and how to customize connectivity for VMs.
+* *Utilization:* This tile gives us an overview of the resources currently in use by this virtual machine, including CPU, Memory, Storage, and Network throughput.
 +
 image::2025_spring/module-01-intro/17_Fedora_Details.png[link=self, window=blank, width=100%]
 
