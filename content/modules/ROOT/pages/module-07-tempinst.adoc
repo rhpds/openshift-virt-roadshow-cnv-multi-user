@@ -109,9 +109,6 @@ image::module-07-tempinst/15_MariaDB_Login.png[link=self, window=blank, width=10
 [[create_win]]
 == Create a Windows VM Template
 
-IMPORTANT: There is currently a bug in OpenShift Virtualization that is being addressed in a future fix. This bug causes an issue where you are not able to complete this section of the lab. A workaround has been found that will allow you to complete the lab. To address the issue, ensure that you are in your *vmexamples-{user}* project, click on Workloads -> Config Maps on the left side menu. You should find three entries that begin with the name of the migration plan that you created in section two of this lab. Delete those three entries. You may now continue with the lab.
-
-
 In this segment of our lab, we will install Microsoft Windows Server 2019 using an ISO hosted on a web server. This represents one way to install an operating system to a virtual machine that takes advantage of the ability to source disks from many locations, including a web server, object storage, or other persistent volumes in the cluster.
 
 This process can be streamlined after the initial operating system installation by creating a cloned root disk from a sysprepped virtual machine to use with other templates. 
@@ -119,7 +116,6 @@ This process can be streamlined after the initial operating system installation 
 NOTE: The specific process for preparing the guest operating system to be used as a template will vary, be sure to follow your organization's guidelines and requirements when preparing a template OS.
 
 IMPORTANT: Please make sure that you are in the *vmexamples-{user}* project for this portion of lab.
-
 
 . From the left menu, navigate to *Virtualization* -> *Catalog*, and click on the *Template catalog* tab near the top..
 

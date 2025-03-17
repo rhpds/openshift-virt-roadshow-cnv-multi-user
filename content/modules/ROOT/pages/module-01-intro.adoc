@@ -2,7 +2,7 @@
 
 == Introduction
 
-The beginning section of this lab will introduce you to the basics of creating and managing VMs in OpenShift Virtualization. You will see how the web console guides you through the whole process of creating a virtual machine from a pre-defined template. We will then review the properties of that VM, do some basic customizations, and perform actions like live migration, that are often expected of virtual machine administrators.
+The beginning section of this lab will introduce you to the basics of creating and managing VMs in OpenShift Virtualization. Starting with OpenShift 4.18 there is a new Virtualization persona and a tree view for virtual machines that make it easier to visualize and manage your virtualization-based assets. After exploring the UI changes, you will see how the web console guides you through the whole process of creating a virtual machine from a pre-defined template. We will then review the properties of that VM, do some basic customizations, and perform actions like live migration, that are often expected of virtual machine administrators.
 
 .*Goals*
 
@@ -20,88 +20,118 @@ Your login is available with:
 * *User:* {user}
 * *Password:* {password}
 
-== Switch to Administrator View
+== Switch to the Virtualization Persona
 
-After logging in you will show up in the Developer view,
+. When you first log in, you will show up in the Developer view, with an introductory prompt. Click the *Skip tour* button to close the window.
+image::2025_spring/module-01-intro/00_Dev_Perspective.png[link=self, window=blank, width=100%]
+
+. Now, click on *Developer* in the upper left corner and switch to the *Virtualization* persona.
++
+image::2025_spring/module-01-intro/01_Virt_Perspective.png[link=self, window=blank, width=100%]
+
+. You will be greated by an introductory prompt welcoming you to OpenShift Virtualization. Click the check box for *Do not show this again* and the window will disappear.
++
+image::2025_spring/module-01-intro/02_Welcome_Virt.png[link=self, window=blank, width=100%]
+
+[[exploring_virt_persona]]
+== Exploring OpenShift Virtualization
+
+When you arrive in the Virtualization view you will be on the *Overview* page which provides a high-level view of all virtualization resources currently in use, lets take a moment to explore.
+
+image::2025_spring/module-01-intro/03_Virt_Overview.png[link=self, window=blank, width=100%]
+
+NOTE: The *Virtualization* persona is available only when Red Hat OpenShift Virtualization is installed and properly configured. In this lab environment the installation and configuration has already been performed for us.
+
+. Click on the *VirtualMachines* item in the left side menu and you will be presented with the virtualization tree view of all VM assets.
++
+image::2025_spring/module-01-intro/04_Tree_View.png[link=self, window=blank, width=100%]
+
+. Lets explore this page for a few moments: notice that this view is divided into 3 columns, the left-side management menu, the central column for organization of VM-based projects, and then the virtual machine view.
+
+. The left menu is the main control for Virtualization integrated functions in OpenShift. We can see virtualization related items like the Catalog, Templates and InstanceTypes to build VMs from, and the menus to configure Storage and Netoworking for virtual machines.
++
+image::2025_spring/module-01-intro/05_Left_Menu.png[link=self, window=blank, width=100%]
+
+. The central column as mentioned is a project view. Like other objects in OpenShift, Projects (which are an abstraction for Kubernetes namespaces), are the boundaries for which permissions and other aspects of using and managing the resources are available to a user. By default there is a slider here that only shows projects with existing VMs. Currently the only project that we can see is `vmimported-{user}`, as it is the only project that we have access to with virtual machines.
++
+image::2025_spring/module-01-intro/06_Project_Tree.png[link=self, window=blank, width=100%]
+
+. In the virtual machine overview column, it will list *All projects* by default, which shows us the VM's for every user in our shared cluster environment. You can sort by columns to make locating VM's easier, or even arrange which columns are visable to make organization easier. This will change when you highlight a specific project in the center column.
++
+image::2025_spring/module-01-intro/07_VM_List.png[link=self, window=blank, width=100%]
+
+. From the center column click on the project `vmimported-{user}` to see the virtual machines that are currently deployed and available to your specific user account.
++
+image::2025_spring/module-01-intro/08_VM_Imported_Project.png[link=self, window=blank, width=100%]
++
+IMPORTANT: While the lab guide is configured to be dynamic and show your specific user account and project names whenever possible, the images in the lab guide are static and may show a different user, please perform these tasks in reference to your own user account and associated projects.
+
+. The virtual machine overview column will update to only show the virtual machines in the `vmimported-{user}` project. You should see three VMs listed, but they are not currently turned on, these are for a later part of the lab.
++
+image::2025_spring/module-01-intro/09_VMs_Stopped.png[link=self, window=blank, width=100%]
 
 [[create_project]]
-== Create a New Project
-
-Like other objects in OpenShift, Projects (which are an abstraction for Kubnernetes namespaces), are the boundaries for permissions and other aspects of using and manaing the resources. Creating a Project is an important first step for any deployment.
-
-. The first time you log into the console you will see the *Developer* perspective. Click *Skip tour* to dismiss the prompt. Then click on *Developer* and switch to *Administrator*.
-+
-image::module-01-intro/00_Admin_Perpspective.png[link=self, window=blank, width=100%]
-
-. Browse to *Virtualization* -> *VirtualMachines* using the left navigation menu:
-+
-image::module-01-intro/01_Left_Menu.png[link=self, window=blank, width=100%]
-+
-[NOTE]
-====
-The *Virtualization* tab is available only when Red Hat OpenShift Virtualization is installed and properly configured. In this lab environment the installation and configuration has already been performed for us.
-====
-
-. From the *Projects* dropdown switch to the project `vmimported-{user}`.
-+
-[NOTE]
-====
-The images in this lab guide may show different user numbers than your own. Do not worry, just create projects, etc with your user number.
-====
-
-. Examine the *VirtualMachines* dashboard that appears. There are currently several VMs listed, but they are not turned on:
-+
-image::module-01-intro/02_VM_List.png[link=self, window=blank, width=100%]
 
 . Before creating a VM we need to create a new project. Virtual machines are deployed to a specific project, or namespace, where by default, users without permission to the namespace cannot access, manage, or control them. Administrators can access all projects, and therefore view all virtual machines, however regular users must be given access to projects as needed.
 +
-.. Click *Project: vmimported-{user}* at the lop left of the window and then click *Create Project*.
+. Click *Create Project* at the top right of the center tree view column.
 +
-image::module-01-intro/02_All_Projects.png[link=self, window=blank, width=100%]
+image::2025_spring/module-01-intro/10_Column_Create.png[link=self, window=blank, width=100%]
 
-.. In the *Name* field, type *vmexamples-{user}* to name the project, then click *Create*.
+. In the *Name* field, type *vmexamples-{user}* to name the project, then click *Create*.
 +
-image::module-01-intro/03_Create_Project.png[link=self, window=blank, width=100%]
+image::2025_spring/module-01-intro/11_Create_Project.png[link=self, window=blank, width=100%]
++
+NOTE: The virtual machine overview column is changed to view this new project immediately, but it does not currently show up in the center column as there are no VMs in the project and we the option to not show it is toggled on by default.
+
 
 [[create_vm]]
 == Create a Linux Virtual Machine
 
-. From the Virtual Machines inventory, click on the *Create VirtualMachine* button and select *From template* from the drop-down menu.
+. From the virtual machine overview column, click on the *Create VirtualMachine* button and select *From template* from the drop-down menu.
 +
 NOTE: VMs can also be created from an InstanceType wizard as well as created by entering a custom YAML definition, but for this current lab scenario we are going to stick with creating VMs based on existing templates.
 +
-image::module-01-intro/04_Create_VM_Button.png[link=self, window=blank, width=100%]
+image::spring_2025/module-01-intro/12_Create_VM_Button.png[link=self, window=blank, width=100%]
 
-. The wizard will appear showing the available pre-defined VM templates.
+. You will be taken to the *Catalog* screen, where a number of tiles will appear showing the available pre-defined VM templates.
 +
-Reviewing the list of available templates you’ll notice that some have a blue badge which indicates "Source available". These are templates which are using automatically downloaded and stored template source disks. If you were deploying in your own environment, you have the option of preventing these from being created and/or removing those source disks, followed by creating and uploading custom disks for your organization.
+Reviewing the list of available templates you’ll notice that some have a blue badge which indicates "Source available". These are templates which are using automatically downloaded and stored template source disks. If you were deploying in your own environment where you can customize the options available, you can modify the availability of these boot sources by default, and/or removing these source disks, in favor of creating custom disks for your organizations needs.
 +
-image::module-01-intro/05_Create_VM_Templates.png[link=self, window=blank, width=100%]
+image::spring_2025/module-01-intro/13_Create_VM_Templates.png[link=self, window=blank, width=100%]
 
 . Select the *Fedora VM* tile, and a dialog opens.
 +
-image::module-01-intro/06_Create_VM_Quick.png[link=self, window=blank, width=100%]
+image::spring_2025/module-01-intro/14_Create_VM_Quick.png[link=self, window=blank, width=100%]
 
 . Change the name to *fedora01* and press *Quick create VirtualMachine*:
 +
-image::module-01-intro/07_Create_VM_Quick_Name.png[link=self, window=blank, width=100%]
+image::spring_2025/module-01-intro/15_Create_VM_Quick_Name.png[link=self, window=blank, width=100%]
 
-. After a few seconds, expect to see the VM is *Running*. During this time, the storage provider has cloned the template disk so that it can be used by the newly created virtual machine. The amount of time this takes can vary based on the storage provider being used to create the boot disk.
+. We will return to our tree view and see information about our new VM in the virtual machine overview column. Notice also that we now see our `vmexamples-{user}` project listed in the center column as it contains a VM, and that it is highlighted within the project. If we watch closely we can see the VM Status switch from *Provisioning* to *Starting* and finally *Running* in the virtual machine overview column when it is ready. During this time, the storage provider has cloned the template disk so that it can be used by the newly created virtual machine. The amount of time this takes can vary based on the storage provider being used to create the boot disk, and the current load on the system.
 +
-image::module-01-intro/08_Fedora_Running.png[link=self, window=blank, width=100%]
+image::spring_2025/module-01-intro/16_Fedora_Running.png[link=self, window=blank, width=100%]
 
-. After the VM is created, examine the *Events* tab to see some details of the process. If there are any issues with the creation of the VM, they will show up on this tab as well.
+Once the virtual machine is running we can do some further exploration of the *Overview* page in the right side column.  
 +
-image::module-01-intro/09_Fedora_Events.png[link=self, window=blank, width=100%]
+* The _Details_ tile shows us 
+The IP address of the virtual machine on the software-defined network (SDN) is also displayed on this page, along with information about the storage devices, system utilization, and more. By default VMs are attached to the default pod network. Later in this lab we will explore advanced networking options, and how to customize connectivity for VMs.
++
+image::module-01-intro/17_Fedora_Details.png[link=self, window=blank, width=100%]
+
+
+
+. After you are done looking at the VM details, examine the *Events* tab to see some details of the process. If there are any issues with the creation of the VM, they will show up on this tab as well.
++
+image::spring_2025/module-01-intro/18_Fedora_Events.png[link=self, window=blank, width=100%]
 +
 * A _DataVolume_ is created. _DataVolumes_ are used to manage the creation of a VM disk, abstracting the clone or import process onto OpenShift native storage during the virtual machine's creation flow.
 * The _VM_ is started.
 
-. Click the *Overview* tab to return to the primary screen detailing information related to the VM. Note that for this template, the default is 1 CPU and 2 GiB of memory. As the administrator, you can create templates that customize the default configuration of virtual machines. Later in this lab we will have the opportunity to explore the creation of custom templates.
 +
-The IP address of the virtual machine on the software-defined network (SDN) is also displayed on this page, along with information about the storage devices, system utilization, the cluster node hosting the virtual machine, and more. By default VMs are attached to the default pod network. Later in this lab we will explore advanced networking options, and how to customize connectivity for VMs.
+The IP address of the virtual machine on the software-defined network (SDN) is also displayed on this page, along with information about the storage devices, system utilization, and more. By default VMs are attached to the default pod network. Later in this lab we will explore advanced networking options, and how to customize connectivity for VMs.
 +
-image::module-01-intro/10_Fedora_Details.png[link=self, window=blank, width=100%]
+image::module-01-intro/17_Fedora_Details.png[link=self, window=blank, width=100%]
 
 [[admin_vms]]
 == Administering Virtual Machines
