@@ -38,7 +38,7 @@ image::2025_spring/module-01-intro/02_Welcome_Virt.png[link=self, window=blank, 
 == Exploring OpenShift Virtualization
 
 When you arrive in the *Virtualization* view you will be on the *Overview* page which provides a high-level view of all virtualization resources currently in use, lets take a moment to explore.
-+
+
 image::2025_spring/module-01-intro/03_Virt_Overview.png[link=self, window=blank, width=100%]
 
 NOTE: The *Virtualization* persona is available only when Red Hat OpenShift Virtualization is installed and properly configured. In this lab environment the installation and configuration has already been performed for us.
