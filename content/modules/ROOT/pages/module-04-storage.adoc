@@ -1,12 +1,21 @@
 = Storage Management
 
-Red Hat OpenShift supports multiple types of storage, both for on-premises and cloud providers. OpenShift Virtualization can use any supported container storage interface (CSI) provisioner in the environment you're running on. For example, OpenShift Data Foundation, NetApp, Dell/EMC, Fujitsu, Hitachi, Pure Storage, Portworx, and many others support on-premises, CSI provisioned, ReadWriteMany (RWX) volumes with OpenShift Virtualization.
+Red Hat OpenShift supports multiple types of storage, both for on-premises and cloud providers. OpenShift Virtualization can use any supported container storage interface (CSI) provisioner in the environment you're running on. 
+
+
+Physical storage system examples include: Dell/EMC, Fujitsu, Hitachi, NetApp, and Pure Storage. 
+
+Software-defined storage examples include: IBM Storage Fusion, OpenShift Data Foundation and Portworx. 
+
+NOTE: This list is not exhaustive, please see the https://catalog.redhat.com/platform/red-hat-openshift/virtualization#virtualization-infrastructure[Red Hat EcoSystem Catalog^] for information on all of the supported storage solutions.
 
 This workshop segment will explore Persistent Volume Claims (PVCs), which are used to request storage from the provider and store a VM disk. Many storage providers also support snapshots and clones of their devices, be sure to check with your vendor to verify the features supported by the CSI driver and storage device.
 
-Notably, there are no restrictions on storage protocol (e.g. NFS, iSCSI, FC, etc.) specific to OpenShift Virtualization. The only requirement is that the RWX access mode is available to support live migration of VMs within the cluster. Otherwise, the storage that best meets the needs of your VMs and applications is always the right choice.
+Notably, there are no restrictions on storage protocol (e.g. NFS, iSCSI, FC, etc.) specific to OpenShift Virtualization. The only requirement is that the *RWX access mode* is available as it is required to support live migration of VMs within the cluster. Otherwise, the right choice for storage is that which best meets the needs of your organization's VMs and Applications.
 
-image::module-04-storage/00_disk_concepts.png[link=self, window=blank, width=100%]
+Please observe the following graphic for a demonstration of the CSI workflow for provisioning storage in Red Hat OpenShift.
+
+image::2025_spring/module-04-storage/00_Disk_Concepts.png[link=self, window=blank, width=100%]
 
 [[examine_pvc]]
 
@@ -16,6 +25,8 @@ In this lab, we are going to take a closer look at the storage behind the virtua
 
 . Start by clicking on the left menu for *Storage* -> *Persistent Volume Claims*. Make sure you are in the *vmexamples-{user}* namespace, you should see the *fedora01* PVC that was created when you created the *fedora01* VM in the previous section.
 +
+image::2025_spring/module-04-storage/01_PVC_List.png[link=self, window=blank, width=100%]
+
 . Click on the *fedora01* PVC and you will be presented with a screen that shows additional details about the storage volume backing the VM.
 +
 . Notice the following information about the persistent volume claim:
@@ -25,21 +36,16 @@ In this lab, we are going to take a closer look at the storage behind the virtua
 .. The Volume mode of the PVC is Block
 .. The volume is using the *ocs-external-storagecluster-ceph-rbd* storage class.
 +
-image::module-04-storage/02_Fedora01_PVC_Details.png[link=self, window=blank, width=100%]
+image::2025_spring/module-04-storage/02_Fedora01_PVC_Details.png[link=self, window=blank, width=100%]
 
 [[managing_snapshots]]
 == Managing Snapshots
 
-OpenShift Virtualization relies on the CSI storage provider's snapshot capability to create disk snapshots for the virtual machine, which can be taken "online" while the VM is running or "offline" while the VM is powered off. If the KVM integrations are installed on the VM, you will also have the option of quiescing the guest operating system (quiescing ensures that the snapshot of the disk represents a consistent state of the guest file systems, e.g., buffers are flushed and the journal is consistent).
+OpenShift Virtualization relies on the CSI storage provider's snapshot capability to create disk snapshots for the virtual machine, which can be taken "online" while the VM is running or "offline" while the VM is powered off. If the KVM integrations (qemu-tools) are installed on the VM, you will also have the option of quiescing the guest operating system (quiescing ensures that the snapshot of the disk represents a consistent state of the guest file systems, e.g., buffers are flushed and the journal is consistent).
 
-Since disk snapshots are dependent on the storage implementation, abstracted by the CSI, performance impact and capacity used will depend on the storage provider. Work with your storage vendor to determine how the system will manage PVC snapshots and the impact they may or may not have.
+Since disk snapshots are dependent on the storage implementation, abstracted by the CSI, performance impact and capacity used will depend on the storage provider. Work with your storage vendor to determine how the system will manage PVC snapshots and the impact they may or may not have on your expected performance.
 
-[IMPORTANT]
-====
-Snapshots, by themselves, are not a backup or disaster recovery capability. The data needs to be protected in other ways, such as one or more copies stored in a different location, to recover from the storage system failing.
-
-In addition to the OpenShift API for Data Protection (OADP), partners such as Kasten by Veeam, Trilio, and Storware support the ability to backup and restore virtual machines to the same cluster or other clusters as needed.
-====
+IMPORTANT: Snapshots, by themselves, are not a backup or disaster recovery capability as they are usually stored locally on the same storage system as the physical volume. The data will need to be protected in other ways, such as having one or more copies stored in a different location, or mirrored to a storage system at a remote location in order to recover from the storage system itself failing.
 
 With the VM snapshots feature, cluster administrators and application developers can:
 
@@ -50,36 +56,35 @@ With the VM snapshots feature, cluster administrators and application developers
 
 === Creating and Using Snapshots
 
-. Navigate back to *Virtualization* -> *VirtualMachines* and select the virtual machine, *fedora01* in the project *vmexamples-{user}*.
+. Navigate back to *Virtualization* persona dropdown, and then on *VirtualMachines* in the left-side menu. Expand the project *vmexamples-{user}* in the center column and highlight the *fedora01* virtual machine.
 +
-image::module-04-storage/03_VM_Overview.png[link=self, window=blank, width=100%]
+image::2025_spring/module-04-storage/03_VM_Overview.png[link=self, window=blank, width=100%]
 
 . Notice there are currently no snapshots of this VM listed on the overview page.
 +
-image::module-04-storage/04_Snapshots_Overview.png[link=self, window=blank, width=100%]
+image::2025_spring/module-04-storage/04_Snapshots_Overview.png[link=self, window=blank, width=100%]
 
-. Navigate to the *Snapshots* tab.
+. Navigate to the *Snapshots* tab at the top of the page.
 +
-image::module-04-storage/05_Snapshot_Menu.png[link=self, window=blank, width=100%]
+image::2025_spring/module-04-storage/05_Snapshot_Menu.png[link=self, window=blank, width=100%]
 
-. Press *Take snapshot* and a dialog will open
+. Press *Take snapshot* and a dialog will open.
 +
-[NOTE]
-There is a warning about the *cloudinitdisk* not being included in the snapshot. This is expected and happens because it is an ephemeral disk.
+image::2025_spring/module-04-storage/06_VM_Snapshot_Dialog.png[link=self, window=blank, width=100%]
 +
-image::module-04-storage/06_VM_Snapshot_Dialog.png[link=self, window=blank, width=100%]
+NOTE: There is a warning about the *cloudinitdisk* not being included in the snapshot. This is expected and happens because it is an ephemeral disk used for inital boot.
 
-. Press *Save* and wait till the _Snapshot_ has been created and the *status* shows as *Operation complete*.
+. A name will be auto-generated for the Snapshot. Press *Save* and wait until the *status* shows as *Operation complete*.
 +
-image::module-04-storage/07_VM_Snapshot_Taken.png[link=self, window=blank, width=100%]
+image::2025_spring/module-04-storage/07_VM_Snapshot_Taken.png[link=self, window=blank, width=100%]
 
 . Press the three-dot menu, and see that the *Restore* option is greyed out because the VM is currently running.
 +
-image::module-04-storage/08_VM_Restore_Disabled.png[link=self, window=blank, width=100%]
+image::2025_spring/module-04-storage/08_VM_Restore_Disabled.png[link=self, window=blank, width=100%]
 
 . Next, switch to the *Console* tab. We are going to login and perform a modification that prevents the VM from being able to boot.
 +
-image::module-04-storage/09_Console_Login.png[link=self, window=blank, width=100%]
+image::2025_spring/module-04-storage/09_Console_Login.png[link=self, window=blank, width=100%]
 +
 . Click on the *Guest login credentials* dropdown to gather the username and password to log into your console.
 +
@@ -94,7 +99,7 @@ sudo rm -rf /boot/grub2; sudo shutdown -r now
 +
 . The virtual machine will no longer be able to boot.
 +
-image::module-04-storage/10_Bootloader_Broken.png[link=self, window=blank, width=100%]
+image::2025_spring/module-04-storage/10_Bootloader_Broken.png[link=self, window=blank, width=100%]
 +
 [IMPORTANT]
 ====
@@ -105,27 +110,27 @@ In the previous step, the operating system was shutdown from within the guest. H
 
 . You can click on the *Overview* tab to confirm that the VM has stopped. You can also see the snapshot we recently took listed in the *Snapshots* tile. (You may need to *Force Stop* the VM via the dropdown. This is fine as we are about to restore the snapshot.)
 +
-image::module-04-storage/11_VM_Stopped_Snapshot.png[link=self, window=blank, width=100%]
+image::2025_spring/module-04-storage/11_VM_Stopped_Snapshot.png[link=self, window=blank, width=100%]
 
 . Navigate back to the *Snapshots* tab, click the three-dot menu, and with the VM stopped, you will find *Restore* is no longer greyed out. Click it.
 +
-image::module-04-storage/12_VM_Restore.png[link=self, window=blank, width=100%]
+image::2025_spring/module-04-storage/12_VM_Restore.png[link=self, window=blank, width=100%]
 
 . In the dialog shown, press *Restore*.
 +
-image::module-04-storage/13_VM_Restore_Dialog.png[link=self, window=blank, width=100%]
+image::2025_spring/module-04-storage/13_VM_Restore_Dialog.png[link=self, window=blank, width=100%]
 
 . Wait until the VM is restored, the process should be fairly quick.
 +
-image::module-04-storage/14_VM_Restored.png[link=self, window=blank, width=100%]
+image::2025_spring/module-04-storage/14_VM_Restored.png[link=self, window=blank, width=100%]
 
 . Return to *Overview* tab, and start the VM.
 +
-image::module-04-storage/15_VM_Start.png[link=self, window=blank, width=100%]
+image::2025_spring/module-04-storage/15_VM_Start.png[link=self, window=blank, width=100%]
 
 . Click on the console tab to confirm that the VM has now restarted successfully.
 +
-image::module-04-storage/16_VM_Running.png[link=self, window=blank, width=100%]
+image::2025_spring/module-04-storage/16_VM_Running.png[link=self, window=blank, width=100%]
 
 [[clone_vm]]
 == Clone a Virtual Machine
@@ -134,21 +139,21 @@ Cloning creates a new VM that uses it's own disk image for storage, but most of 
 
 . Return to the *Overview* screen, and click the *Actions* dropdown menu to see the option to clone the VM.
 +
-image::module-04-storage/17_Overview_Actions_Clone.png[link=self, window=blank, width=100%]
+image::2025_spring/module-04-storage/17_Overview_Actions_Clone.png[link=self, window=blank, width=100%]
 
 . Press *Clone* from the *Actions* menu, and a dialog will open. Name the cloned VM *fedora02*, and select the check box to *Start VirtualMachine on clone*, then click *Clone*.
 +
-image::module-04-storage/18_VM_Clone_Dialog.png[link=self, window=blank, width=100%]
+image::2025_spring/module-04-storage/18_VM_Clone_Dialog.png[link=self, window=blank, width=100%]
 
 . A new VM is created, the disks are cloned and automatically the portal will redirect you to the new VM, and you can see the *Created* time as very recently.
 +
-image::module-04-storage/19_VM_Cloned.png[link=self, window=blank, width=100%]
+image::2025_spring/module-04-storage/19_VM_Cloned.png[link=self, window=blank, width=100%]
 +
 IMPORTANT: The cloned VM will have the same identity as the source VM, which may cause conflicts with applications and other clients interacting with the VM. Use caution when cloning a VM connected to an external network or in the same project.
 
 . Click on the *YAML* menu at the top of the screen, you will see that the name of the VM is *fedora02*, however there are labels that remain from the *fedora01* source VM that will need to be manually updated.
 +
-image::module-04-storage/20_Cloned_VM_YAML.png[link=self, window=blank, width=100%]
+image::2025_spring/module-04-storage/20_Cloned_VM_YAML.png[link=self, window=blank, width=100%]
 
 . Modify the the *app* and *kubevirt.io/domain* values in the YAML so that they are set to *fedora02* then click the *Save* button at the bottom, this will allow us to work with this VM in future modules much more easily.
 
