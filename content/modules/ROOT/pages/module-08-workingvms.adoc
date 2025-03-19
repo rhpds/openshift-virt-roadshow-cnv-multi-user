@@ -26,7 +26,7 @@ To begin, we'll add labels to the virtual machines by modifying their definition
 
 === Label the Virtual Machines
 
-. Click on *VirtualMachines* in the left-side column, and start your three imported virtual machines if they are not already running. You can verify this easily by sorting by the *Status* column in the right-side tree view.
+. Click on *VirtualMachines* in the left-side column, and *start* your three imported virtual machines if they are not already running. You can verify this easily by sorting by the *Status* column in the right-side tree view.
 +
 image::2025_spring/module-08-workingvms/11_Imported_VMs_List.png[link=self, window=blank, width=100%]
 +
@@ -45,14 +45,13 @@ IMPORTANT: Make sure to get the indentation exactly right - just like in the scr
 image::2025_spring/module-08-workingvms/12_Imported_VMs_YAML.png[link=self, window=blank, width=100%]
 
 . *Repeat* the process for the VM *winweb02-{user}*.
-. Start the *database-{user}* virtual machine if it's not already running.
-. Start, or restart if already running, the *winweb01-{user}* and *winweb02-{user}* virtual machines.
+. Restart both the *winweb01-{user}* and *winweb02-{user}* virtual machines.
 +
 NOTE: Ensure the VMs are properly working by accessing to the console tab of each VM.
 
 === Create the Service
 
-. Navigate to *Networking* -> *Services* and press *Create Service*.
+. In the left-side menu expand *Networking* and click on *Services*. On the screen that loads, click the *Create Service* button in the corner.
 +
 image::2025_spring/module-08-workingvms/13_Navigate_Service.png[link=self, window=blank, width=100%]
 
@@ -78,7 +77,7 @@ IMPORTANT: Ensure the *namespace* with your virtual machines, *vmexamples-{user}
 +
 image::2025_spring/module-08-workingvms/14_Service_YAML.png[link=self, window=blank, width=100%]
 
-. Press *Create*.
+. Click the *Create* button at the bottom. You will get a notification that the YAML has been saved.
 . From the details page for the newly created *webapp* Service, locate *Pod selector* link and click it.
 +
 image::2025_spring/module-08-workingvms/15_Imported_VMs_PodSelector.png[link=self, window=blank, width=100%]
@@ -89,13 +88,13 @@ image::2025_spring/module-08-workingvms/16_Imported_VMs_Pods.png[link=self, wind
 
 === Create the Route
 
-Now the Windows IIS servers are accessible from within the OpenShift cluster. Other virtual machines are able to access them using the DNS name *webapp.vmexamples*, which is determined by the name of the service + the namespace. However, since these web servers are the front end to an application, we want it to be externally accessible. This will be done by exposing it using a *Route*.
+Now the Windows IIS servers are accessible from within the OpenShift cluster. Other virtual machines are able to access them using the DNS name *`webapp.vmexamples-{user}`*, which is determined by the name of the service + the namespace. However, since these web servers are the front end to an application, we want it to be externally accessible. This will be done by exposing itpublicly using a *Route*.
 
-. Navigate to *Networking* -> *Routes* in the left navigation menu, verify that you're using the correct project name. Press *Create Route*.
+. Under *Networking* now click on the *Routes* option in the left navigation menu.  Click the *Create Route* button in the center of the screen.
 +
 image::2025_spring/module-08-workingvms/17_Route_Navigation.png[link=self, window=blank, width=100%]
 
-. Fill the form using the information below, press *Create* when done.
+. Fill the form using the information below, scroll to the bottom and click the *Create* when done.
 +
 .. *Name*: *route-webapp*
 .. *Service*: *webapp*
@@ -110,11 +109,11 @@ image::2025_spring/module-08-workingvms/18_Create_Route.png[link=self, window=bl
 +
 image::2025_spring/module-08-workingvms/19_Route_Access.png[link=self, window=blank, width=100%]
 
-. When the page loads, you will see an error. This is because the Windows web servers are not able to currently connect to the database VM after it's migration.
+. When the page loads, you will see an error, something must be wrong. This is because the Windows web servers are not able to currently connect to the database VM after it's migration.
 +
 image::2025_spring/module-08-workingvms/20_WebApp_Error.png[link=self, window=blank, width=100%]
 +
-NOTE: To fix the connectivity issue, we need to create a Service for the database VM so that it can be accessed by the web servers.
+NOTE: To address our connectivity issue, we will need to create a service for the database VM so that it can be accessed by the web servers.
 
 . Once again, navigate to *Networking* -> *Services* and press *Create Service*. Replace the YAML with the following definition:
 +
@@ -134,20 +133,15 @@ spec:
     targetPort: 3306
 ----
 +
-NOTE: This time we used the name of the virtual machine to attach it to the service we are creating, make sure that you update the YAML when you copy/paste it to ensure that you are using the correct name for the database instance in your lab environment.
-+
 image::2025_spring/module-08-workingvms/21_Database_YAML.png[link=self, window=blank, width=100%]
 
-. When the YAML is pasted, click the *Create* button.
-+
 IMPORTANT: Ensure the namespace with your virtual machines, *vmexamples-{user}* or *vmimported-{user}* is the one used in the Service YAML.
 +
-. Reload the webapp URL and expect to get the proper result
+. When the YAML is pasted, click the *Create* button.
+. Reload the webapp URL in your browser and expect to get the proper result of a working migrated web application.
 +
 image::2025_spring/module-08-workingvms/22_WebApp_Success.png[link=self, window=blank, width=100%]
 
 == Summary
 
-In this module you were able to experience working with the virtual machines that you migrated into the OpenShift Virtualization environment from VMware vSphere by making them accessible outside of the cluster in different manners.
-
-I hope you have enjoyed the OpenShift Virtualization Roadshow and this lab that accompanied it. Please fill out the survey link that your proctor has made available to provide feedback on your experience.
+In this module you were able to experience working with the virtual machines that you migrated into the OpenShift Virtualization environment from VMware vSphere by making them accessible outside of the cluster in a more modernized approach by using the native services and routes features in Red Hat OpenShift
