@@ -203,7 +203,11 @@ image::2025_spring/module-09-networking/17_UDN_Created.png[link=self, window=bla
 +
 image::2025_spring/module-09-networking/18_UDN_NAD.png[link=self, window=blank, width=100%]
 
-. Creating a Virtual Machine attached to a UserDefinedNetwork requires some https://docs.openshift.com/container-platform/4.18//virt/vm_networking/virt-connecting-vm-to-primary-udn.html#virt-attaching-vm-to-primary-udn_virt-connecting-vm-to-primary-udn[adjustment in the YAML definition,window=_blank]. To make it easier the task, you can use the following YAML to run a Fedora connected to UserDefinedNetwork
+. Creating a Virtual Machine attached to a UserDefinedNetwork requires some https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/networking#virt-connecting-vm-to-primary-udn[adjustment in the YAML definition^]. For this lab to make the task easier, we are just going to define the whole VM connected to the UserDefinedNetwork using the YAML definition below:
+
+. You can use the top menu to import a YAML as is shown in the following image:
++
+image::2025_spring/module-09-networking/19_UDN_Import_YAML.png[link=self, window=blank, width=100%]
 +
 [source,yaml,role=execute,subs="attributes"]
 ----
@@ -269,18 +273,18 @@ spec:
             chpasswd: { expire: False }
         name: cloudinitdisk
 ----
-+
-. You can use the top menu to import a YAML as is shown in the following image:
-+
-image::2025_spring/module-09-networking/19_UDN_Import_YAML.png[link=self, window=blank, width=100%]
 
-. After the VM is created, you can navigate to *Virtualization* -> *VirtualMachines* and review the vm `fedora-udn`. In the Overview tab, it will will show the IP assigned from the UserDefinedNetwork
+. Once pasted in, you can click the blue *Create* button at the bottom to begin the VM creation process.
 +
-image::2025_spring/module-09-networking/20_UDN_Network_Tile.png[link=self, window=blank, width=100%]
+image::2025_spring/module-09-networking/20_Create_VM_YAML.png[link=self, window=blank, width=100%]
 
-. Switch to the Console tab and login to the VM. 
+. Switch to the *VirtualMachines* and watch at the VM is created. Once it is up and runing, review the newly created `fedora-udn` virtual machine. In the *Overview* tab, the *Network* tile will show the IP assigned from the UserDefinedNetwork.
 +
-image::2025_spring/module-09-networking/21_UDN_Fedora_Console.png[link=self, window=blank, width=100%]
+image::2025_spring/module-09-networking/21_UDN_Network_Tile.png[link=self, window=blank, width=100%]
+
+. Switch to the Console tab and login to the VM using the provided guest credentials. 
++
+image::2025_spring/module-09-networking/22_UDN_Fedora_Console.png[link=self, window=blank, width=100%]
 +
 .. The VM has assigned a IP from the subnet defined
 .. The VM automatically gets the gateway configuration from a DHCP
