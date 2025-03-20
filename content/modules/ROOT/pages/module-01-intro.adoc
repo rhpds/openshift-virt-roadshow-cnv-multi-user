@@ -186,10 +186,10 @@ As a user with granted permissions to manage a  Virtualization environment: you 
 +
 image::2025_spring/module-01-intro/23_VM_State_Actions.png[link=self, window=blank, width=100%]
 +
-.. *Stop*: Starts a graceful shutdown of the Virtual Machine.
-.. *Restart*: This will send a signal to the operating system to reboot the Virtual Machine. Guest integrations are needed for this to work properly.
-.. *Pause*: The process is frozen without further access to CPU resources and I/O, but the memory used by the VM at the hypervisor level will stay allocated.
-.. *Start*: Starts up a stopped virtual machine. It will be greyed out if the machine is running.
+* *Stop*: Starts a graceful shutdown of the Virtual Machine.
+* *Restart*: This will send a signal to the operating system to reboot the Virtual Machine. Guest integrations are needed for this to work properly.
+* *Pause*: The process is frozen without further access to CPU resources and I/O, but the memory used by the VM at the hypervisor level will stay allocated.
+* *Start*: Starts up a stopped virtual machine. It will be greyed out if the machine is running.
 
 . While the shortcut buttons are handy, you can also access these options and more by clicking on the *Actions* menu and seeing the options available in the drop down list.
 +

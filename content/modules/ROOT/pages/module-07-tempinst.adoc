@@ -133,13 +133,13 @@ NOTE: Notice that there is intially no option to quick create this VM because th
 image::2025_spring/module-07-tempinst/17_Windows_2k19_Dialog.png[link=self, window=blank, width=100%]
 +
 . In this dialog:
-.. Specify the name *win-sysprep*
-.. Enable the checkbox *Boot from CD*
-.. Choose URL *(creates PVC)* from the drop-down menu
-.. Specify the *image URL*: https://catalog-item-assets.s3.us-east-2.amazonaws.com/qcow_images/Windows2019.iso
-.. Reduce the CD disk size to *5 GiB*
-.. Keep the *Disk source* as *Blank* and the size set to the default value *60 GiB*
-.. Ensure the *Mount Windows drivers disk* checkbox is enabled. **This is required to install Windows systems, which will provide the drivers for VirtIO.**
+* Specify the name *win-sysprep*
+* Enable the checkbox *Boot from CD*
+* Choose URL *(creates PVC)* from the drop-down menu
+* Specify the *image URL*: https://catalog-item-assets.s3.us-east-2.amazonaws.com/qcow_images/Windows2019.iso
+* Reduce the CD disk size to *5 GiB*
+* Keep the *Disk source* as *Blank* and the size set to the default value *60 GiB*
+* Ensure the *Mount Windows drivers disk* checkbox is enabled. **This is required to install Windows systems, which will provide the drivers for VirtIO.**
 +
 
 . With the options filled out, we want to click on the *Customize VirtualMachine* button at the bottom to continue configuring our Template.
