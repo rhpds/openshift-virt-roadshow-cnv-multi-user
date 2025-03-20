@@ -28,7 +28,7 @@ We hope you have enjoyed learning more about *OpenShift Virtualization* and how 
 * Learn how to get started through no cost demonstrations or a Virtual Migration Assessment.
 
 Scan the QR code below to learn more:
-+
+
 image::2025_spring/conclusion/01_Ebook.png[[link=self, window=blank, width=100%]
 
 === Red Hat Learning Services: DO317 Managing Virtual Machines with Red Hat OpenShift Virtualization
@@ -40,7 +40,7 @@ image::2025_spring/conclusion/01_Ebook.png[[link=self, window=blank, width=100%]
 * Strategies to migrate VMs from compatible hypervisors to OpenShift Virtualization by using the Migration Toolkit for Virtualization operator.
 
 Scan the QR code below to learn more:
-+
+
 image::2025_spring/conclusion/02_DO317_Training.png[[link=self, window=blank, width=100%]
 
 === Virtualization Migration Assessment
@@ -52,6 +52,6 @@ image::2025_spring/conclusion/02_DO317_Training.png[[link=self, window=blank, wi
 * This can help with understanding of where you're going, how you'll get there, how long it will take, and how much it will cost.
 
 Scan the QR code below to learn more:
-+
+
 image::2025_spring/conclusion/03_VMA_QR.png[[link=self, window=blank, width=100%]
 
