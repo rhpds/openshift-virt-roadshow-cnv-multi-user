@@ -9,7 +9,7 @@ This section of our lab is dedicated to the Day-2 operations that many administr
 
 By default, virtual machines are connected to the SDN, which is a convenient and easy way to give them access to the rest of the network. However, it can be challenging for the virtual machines, and other pods in the OpenShift cluster, to find and connect to the virtualized applications. To solve this, we will use a *Service* to balance connections across the two Windows-based web servers, and create a DNS entry for each service discovery, then create a *Route* to allow external clients to access the application hosted within the virtual machines.
 
-IMPORTANT: If you have not completed the module *Migrating Existing Virtual Machines*, it is recommended that you do that module first. If you have not completed it, or the migration process is still pending, you can use pre-existing virtual machines that have been prepared for you, which are available in the `vmimported-{user}` project. If you are using these pre-imported virtual machines, please replace all instances of the `vmexamples-{user}` namespace with `vmimported-{user}` in the examples below.
+IMPORTANT: If you have not completed the module *Migrating Existing Virtual Machines*, it is recommended that you do that module first. If you have not completed it, or the migration process is still pending, you can use pre-existing virtual machines that have been prepared for you, which are available in the *vmimported-{user}* project. If you are using these pre-imported virtual machines, please replace all instances of the *vmexamples-{user}* namespace with *vmimported-{user}* in the examples below.
 
 === Introduction to Services
 
@@ -88,7 +88,7 @@ image::2025_spring/module-08-workingvms/16_Imported_VMs_Pods.png[link=self, wind
 
 === Create the Route
 
-Now the Windows IIS servers are accessible from within the OpenShift cluster. Other virtual machines are able to access them using the DNS name *`webapp.vmexamples-{user}`*, which is determined by the name of the service + the namespace. However, since these web servers are the front end to an application, we want it to be externally accessible. This will be done by exposing itpublicly using a *Route*.
+Now the Windows IIS servers are accessible from within the OpenShift cluster. Other virtual machines are able to access them using the DNS name **webapp.vmexamples-{user}**, which is determined by the name of the service + the namespace. However, since these web servers are the front end to an application, we want it to be externally accessible. This will be done by exposing itpublicly using a *Route*.
 
 . Under *Networking* now click on the *Routes* option in the left navigation menu.  Click the *Create Route* button in the center of the screen.
 +
@@ -134,7 +134,7 @@ spec:
 ----
 +
 image::2025_spring/module-08-workingvms/21_Database_YAML.png[link=self, window=blank, width=100%]
-
++
 IMPORTANT: Ensure the namespace with your virtual machines, *vmexamples-{user}* or *vmimported-{user}* is the one used in the Service YAML.
 +
 . When the YAML is pasted, click the *Create* button.
@@ -144,4 +144,4 @@ image::2025_spring/module-08-workingvms/22_WebApp_Success.png[link=self, window=
 
 == Summary
 
-In this module you were able to experience working with the virtual machines that you migrated into the OpenShift Virtualization environment from VMware vSphere by making them accessible outside of the cluster in a more modernized approach by using the native services and routes features in Red Hat OpenShift
+In this module you were able to experience working with the virtual machines that you migrated into the OpenShift Virtualization environment from VMware vSphere by making them accessible outside of the cluster in a more modernized approach by using the native services and routes features in Red Hat OpenShift.

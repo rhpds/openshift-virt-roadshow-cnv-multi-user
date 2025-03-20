@@ -17,11 +17,11 @@ The *Templates* page displays four types of virtual machine templates:
 . The tasks that we are about to perform will require us to provision a few additional VMs. In preparation we are going to ask that you shut down the existing *fedora01* and *fedora02* virtual machines to ensure that your shared environment has enough resources to complete the lab.
 
 . Navigate to *Virtualization* persona in the left-side menu and then click on *Virtualmachines*.
-. Each project that you have access to that is hosting VM workloads will be listed in the center column treeview. (At a minimum you should expand projects `vmimported-{user}` and `vmexamples-{user}` to check virtual machine status.)
+. Each project that you have access to that is hosting VM workloads will be listed in the center column treeview. (At a minimum you should expand projects *vmimported-{user}* and *vmexamples-{user}* to check virtual machine status.)
 . If any VMs are showing a status of *Running*, highlight the VM in the center tree column, and select the *Stop* button or option from the *Actions* dropdown menu..
 
 Now all VMs should be in *Stopped* state.
-+
+
 image::2025_spring/module-07-tempinst/00_VMs_Stopped.png[link=self, window=blank, width=100%]
 
 [[clone_customize_template]]
@@ -35,7 +35,7 @@ image::2025_spring/module-07-tempinst/01_Project_Toggle.png[link=self, window=bl
 +
 image::2025_spring/module-07-tempinst/01_Template_List.png[link=self, window=blank, width=100%]
 
-. In the search bar type in *centos9* and in the list of templates that appear find the template for *centos-stream9-server-small*.
+. In the search bar type in *centos9* and press Enter. In the list of templates that appear find the template for *centos-stream9-server-small*.
 +
 image::2025_spring/module-07-tempinst/02_Search_Centos9.png[link=self, window=blank, width=100%]
 
@@ -48,7 +48,7 @@ image::2025_spring/module-07-tempinst/03_Create_Custom_Template.png[link=self, w
 * *Template name:* centos-stream9-server-db-small
 * *Template project:* vmexamples-{user}
 * *Template display name:* CentOS Stream 9 VM - Database Template Small
-* *Template provider:* Roadshow `{user}`
+* *Template provider:* Roadshow {user}
 +
 image::2025_spring/module-07-tempinst/04_Clone_Template_Options.png[link=self, window=blank, width=100%]
 
@@ -109,7 +109,7 @@ sudo mysql -u root
 +
 image::2025_spring/module-07-tempinst/15_MariaDB_Login.png[link=self, window=blank, width=100%]
 
-. Hit `Ctrl-D` twice to log out of the VM.
+. Hit *Ctrl-D* twice to log out of the VM.
 
 [[create_win]]
 == Create a Windows VM Template
@@ -120,8 +120,6 @@ This process can be streamlined after the initial operating system installation 
 
 NOTE: The specific process for preparing the guest operating system to be used as a template will vary, be sure to follow your organization's guidelines and requirements when preparing a template OS.
 
-IMPORTANT: Please make sure that you are in the *vmexamples-{user}* project for this portion of lab.
-
 . From the left menu, navigate to *Catalog*, and click on the *Template catalog* tab near the top..
 
 . Type the word *win* in the search bar, or scroll down until you find the *Microsoft Windows Server 2019 VM* tile.
@@ -130,7 +128,7 @@ image::2025_spring/module-07-tempinst/16_Windows_2k19_Tile.png[link=self, window
 
 . A dialog will appear showing the default configuration related to the template.
 +
-NOTE: Notice that there is intially no option to quick create this VM, and we must customize the VM to fit our needs.
+NOTE: Notice that there is intially no option to quick create this VM because there is no provided boot source. We must customize the VM to fit our needs.
 +
 image::2025_spring/module-07-tempinst/17_Windows_2k19_Dialog.png[link=self, window=blank, width=100%]
 +
@@ -140,7 +138,7 @@ image::2025_spring/module-07-tempinst/17_Windows_2k19_Dialog.png[link=self, wind
 .. Choose URL *(creates PVC)* from the drop-down menu
 .. Specify the *image URL*: https://catalog-item-assets.s3.us-east-2.amazonaws.com/qcow_images/Windows2019.iso
 .. Reduce the CD disk size to *5 GiB*
-.. Keep the *Disk source* size disk set to the default value *60 GiB*
+.. Keep the *Disk source* as *Blank* and the size set to the default value *60 GiB*
 .. Ensure the *Mount Windows drivers disk* checkbox is enabled. **This is required to install Windows systems, which will provide the drivers for VirtIO.**
 +
 
@@ -337,7 +335,10 @@ image::2025_spring/module-07-tempinst/27_Stop_Button.png[link=self, window=blank
 +
 image::2025_spring/module-07-tempinst/28_Storage_PVC.png[link=self, window=blank, width=100%]
 
-. On the menu that pops up, name the new PVC *windows-2k19-sysprep-template*, set the *Access mode* to *Shared access (RWX)* and change the *StorageClass* to *ocs-external-storagecluster-ceph-rbd-immediate*. Lastly, click the *Clone* button.
+. On the menu that pops up, fill in the following options, then click the *Clone* button:
+* *Name*: windows-2k19-sysprep-template
+* *Access mode*:  Shared access (RWX) 
+* *StorageClass*: ocs-external-storagecluster-ceph-rbd-immediate 
 +
 image::2025_spring/module-07-tempinst/29_Clone_Menu.png[link=self, window=blank, width=100%]
 
@@ -359,7 +360,7 @@ image::2025_spring/module-07-tempinst/32_Windows_Template_Running.png[link=self,
 == Introduction to Instance Types
 
 In order to simplify the deployment process for virtual machines, starting with OpenShift 4.14 the default configuration mechanism was changed to emphasize the use of *Instance Types*. An instance type is a reusable object where you can define resources and characteristics to apply to a new VM. You can define custom instance types or use the variety that are included when you install OpenShift Virtualization when provisioning your own VM. This is much more akin to what users experience when using a self-service catalog in popular cloud providers.
-+
+
 This section explores provisioning a VM using an instance type.
 
 . To get started click on *Catalog* on the left-side menu. You will see the default catalog item is *InstanceType*.
@@ -403,7 +404,7 @@ image::2025_spring/module-07-tempinst/39_VM_Overview.png[link=self, window=blank
 To save resources for the next lab, please stop any VMs that you created in this module.
 
 . Navigate to *Virtualization* persona in the left-side menu and then click on *Virtualmachines*.
-. Each project that you have access to that is hosting VM workloads will be listed in the center column treeview. (At a minimum you should expand projects `vmimported-{user}` and `vmexamples-{user}` to check virtual machine status.)
+. Each project that you have access to that is hosting VM workloads will be listed in the center column treeview. (At a minimum you should expand projects *vmimported-{user}* and *vmexamples-{user}* to check virtual machine status.)
 . If any VMs are showing a status of *Running*, highlight the VM in the center tree column, and select the *Stop* button or option from the *Actions* dropdown menu..
 
 Now all VMs should be in *Stopped* state.

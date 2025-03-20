@@ -103,11 +103,12 @@ image::2025_spring/module-05-bcdr/06_Backup_Completed.png[link=self, window=blan
 [[restore_backup]]
 == Restore From a Backup
 
-. In the left-side menu, click on *Virtualization* and then *VirtualMachines*. In the center tree column expand the `vmexamples-{user}` project and click on the *fedora02* VM.
+. In the left-side menu, click on *Virtualization* and then *VirtualMachines*. In the center tree column expand the *vmexamples-{user}* project and click on the *fedora02* VM.
 +
 image::2025_spring/module-05-bcdr/07_Fedora02_Overview.png[link=self, window=blank, width=100%]
 
 . Stop the virtual machine, and then once it is stopped, click on the *Actions* dropdown and select the option to *Delete* the VM.
++
 image::2025_spring/module-05-bcdr/08_Delete_VM.png[link=self, window=blank, width=100%]
 
 . When prompted, click the red *Delete* button to confirm deleting the virtual machine.
@@ -118,7 +119,7 @@ image::2025_spring/module-05-bcdr/09_Confirm_Delete.png[link=self, window=blank,
 +
 image::2025_spring/module-05-bcdr/10_Deleted_VM.png[link=self, window=blank, width=100%]
 
-. Click on *Operators* and then *Installed Operators* and select the *OADP Operator* once again. (You may need to switch back to the `OADP-{user}` project.)
+. Click on *Operators* and then *Installed Operators* and select the *OADP Operator* once again. (You may need to switch back to the *OADP-{user}* project.)
 
 . Use the horizontal navigation bar to locate the the *Restore* tab, click the *Restore* tab, and then press *Create Restore*.
 +

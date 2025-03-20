@@ -31,9 +31,13 @@
 
 * xref:module-08-workingvms.adoc[Working with Virtual Machines and Applications]
 ** xref:module-08-workingvms.adoc#service_route[Exposing an Application with a Service/Route]
+
 * xref:module-09-networking.adoc[Network Management for Virtual Machines]
 ** xref:module-09-networking.adoc#review[Review Environment]
-** xref:module-09-networking.adoc#nad[Configure Network Attach Definition]
-** xref:module-09-networking.adoc#attach[Attach Virtual Machine to network]
-** xref:module-09-networking.adoc#udn[User Defined Network]
+** xref:module-09-networking.adoc#nad[Create Network Attachment Definition]
+** xref:module-09-networking.adoc#attach[Attach Virtual Machine to Network]
+** xref:module-09-networking.adoc#udn[User Defined Networks]
 
+* xref:conclusion.adoc[Conclusion]
+** xref:conclusion.adoc#key_takeaways[Key Takeaways]
+** xref:conclusion.adoc#additional_info[Additional Information]

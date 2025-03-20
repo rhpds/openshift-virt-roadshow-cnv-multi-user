@@ -23,7 +23,7 @@ Your login is available with:
 [[virt_persona]]
 == Switch to the Virtualization Persona
 
-. When you first log in, you will show up in the Developer view, with an introductory prompt. Click the *Skip tour* button to close the window.
+. When you first log in, you will be placed in the *Developer* persona, with an introductory prompt. Click the *Skip tour* button to close the window.
 +
 image::2025_spring/module-01-intro/00_Dev_Perspective.png[link=self, window=blank, width=100%]
 
@@ -54,21 +54,21 @@ image::2025_spring/module-01-intro/04_Tree_View.png[link=self, window=blank, wid
 +
 image::2025_spring/module-01-intro/05_Left_Menu.png[link=self, window=blank, width=100%]
 
-. The central column as mentioned is a project view. Like other objects in OpenShift, Projects (which are an abstraction for Kubernetes namespaces), are the boundaries for which permissions and other aspects of using and managing the resources are available to a user. By default there is a slider here that only shows projects with existing VMs. Currently the only project that we can see is `vmimported-{user}`, as it is the only project that we have access to with virtual machines.
+. The central column as mentioned is a project view. Like other objects in OpenShift, Projects (which are an abstraction for Kubernetes namespaces), are the boundaries for which permissions and other aspects of using and managing the resources are available to a user. By default there is a slider here that only shows projects with existing VMs. Currently the only project that we can see is *vmimported-{user}*, as it is the only project that we have access to with virtual machines in it.
 +
 image::2025_spring/module-01-intro/06_Project_Tree.png[link=self, window=blank, width=100%]
 
-. In the virtual machine overview column, it will list *All projects* by default, which shows us the VM's for every user in our shared cluster environment. You can sort by columns to make locating VM's easier, or even arrange which columns are visable to make organization easier. This will change when you highlight a specific project in the center column.
+. In the virtual machine overview column, it will list *All projects* by default, which shows us the VM's for every user in our shared cluster environment. You can sort by columns to make locating VM's easier, or even arrange which columns are visable to make organization easier. This view will change when you highlight a specific project or virtual machine in the center column.
 +
 image::2025_spring/module-01-intro/07_VM_List.png[link=self, window=blank, width=100%]
 
-. From the center column click on the project `vmimported-{user}` to see the virtual machines that are currently deployed and available to your specific user account.
+. From the center column click on the project *vmimported-{user}* to see the virtual machines that are currently deployed and available to your specific user account.
 +
 image::2025_spring/module-01-intro/08_VM_Imported_Project.png[link=self, window=blank, width=100%]
 +
 IMPORTANT: While the lab guide is configured to be dynamic and show your specific user account and project names whenever possible, the images in the lab guide are static and may show a different user, please perform these tasks in reference to your own user account and associated projects.
 
-. The virtual machine overview column will update to only show the virtual machines in the `vmimported-{user}` project. You should see three VMs listed, but they are not currently turned on, these are for a later part of the lab.
+. The virtual machine overview column will update to only show the virtual machines in the *vmimported-{user}* project. You should see three VMs listed, but they are not currently turned on, these are for a later part of the lab.
 +
 image::2025_spring/module-01-intro/09_VMs_Stopped.png[link=self, window=blank, width=100%]
 
@@ -113,7 +113,7 @@ image::2025_spring/module-01-intro/14_Create_VM_Quick.png[link=self, window=blan
 +
 image::2025_spring/module-01-intro/15_Create_VM_Quick_Name.png[link=self, window=blank, width=100%]
 
-. We will return to our tree view and see information about our new VM in the virtual machine overview column. Notice also that we now see our `vmexamples-{user}` project listed in the center column as it contains a VM, and that it is highlighted within the project.
+. We will return to our tree view and see information about our new VM in the virtual machine overview column. Notice also that we now see our *vmexamples-{user}* project listed in the center column as it contains a VM, and that it is highlighted within the project.
 +
 If we watch closely we can see the VM Status switch from *Provisioning* to *Starting* and finally *Running* in the virtual machine overview column when it is ready. 
 +
@@ -171,7 +171,9 @@ In this environment, the default StorageClass, which defines the source and type
 +
 image::2025_spring/module-01-intro/22_Network_Tab.png[link=self, window=blank, width=100%]
 +
-When a VM is created, an interface on the *Pod Networking* network of type *masquerade* is created by default. This connects the VM to the SDN and provides access from the VM to outside the OpenShift cluster. Other VMs, and Pods, in the cluster can access the virtual machine using this interface. Furthermore, a VM connected to the SDN can be accessed externally using a Route, or Service with type load balancer, or even have a Network Attachment Definition configured to allow direct access to external networks.
+When a VM is created, an interface on the *Pod Networking* network of type *masquerade* is created by default. This connects the VM to the SDN and provides access from the VM to outside the OpenShift cluster. Other VMs, and Pods, in the cluster can access the virtual machine using this interface.
++
+Furthermore, a VM connected to the SDN can be accessed externally using a Route, or Service with type load balancer, or even have a Network Attachment Definition configured to allow direct access to external networks, a concept we will explore in more depth later.
 
 [[vm_state]]
 == Controlling Virtual Machine State
@@ -180,15 +182,16 @@ As a user with granted permissions to manage a  Virtualization environment: you 
 
 . Click the *Overview* tab to return to the summary screen.
 
-. In the top right corner you will notice shortcut buttons for running state: stop, restart, and pause. As well as a dropdown menu title *Actions*.
+. In the top right corner you will notice shortcut buttons for running state: stop, restart, pause, and start. As well as a dropdown menu title *Actions*.
 +
 image::2025_spring/module-01-intro/23_VM_State_Actions.png[link=self, window=blank, width=100%]
 +
 .. *Stop*: Starts a graceful shutdown of the Virtual Machine.
 .. *Restart*: This will send a signal to the operating system to reboot the Virtual Machine. Guest integrations are needed for this to work properly.
 .. *Pause*: The process is frozen without further access to CPU resources and I/O, but the memory used by the VM at the hypervisor level will stay allocated.
+.. *Start*: Starts up a stopped virtual machine. It will be greyed out if the machine is running.
 
-. You can also access these options and more by clicking on the *Actions* menu and seeing the options available in the drop down list.
+. While the shortcut buttons are handy, you can also access these options and more by clicking on the *Actions* menu and seeing the options available in the drop down list.
 +
 image::2025_spring/module-01-intro/24_VM_Actions_Menu.png[link=self, window=blank, width=100%]
 

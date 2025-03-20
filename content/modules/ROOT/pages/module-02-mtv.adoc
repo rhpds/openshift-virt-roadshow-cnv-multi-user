@@ -44,9 +44,9 @@ A three-tier application has been deployed on VMware for you to migrate to OpenS
 
 The application consists of the following four virtual machines:
 
-* One HAproxy system that redirects traffic to the web servers
-* One Linux system running a MariaDB database
-* Two Microsoft Windows servers with IIS hosting a PHP application connecting to the database
+* One HAproxy system that redirects traffic to the web servers.
+* One Linux system running a MariaDB database.
+* Two Microsoft Windows servers with IIS hosting a PHP application connecting to the database.
 
 For this lab, you will be tasked with migrating three of the four virtual machines using cold migration.
 
@@ -116,7 +116,7 @@ image::2025_spring/module-02-mtv/07_Create_VMWARE_Plan.png[link=self, window=bla
 +
 image::2025_spring/module-02-mtv/08_VMware_Source_Provider.png[link=self, window=blank, width=100%]
 
-. A large number of virtual machines in the environment will be displayed, use the provided search bar and search for your user account: `{user}` to search for the VMs you'd like to select.
+. A large number of virtual machines in the environment will be displayed, use the provided search bar and search for your user account: *{user}* to search for the VMs you'd like to select.
 +
 image::2025_spring/module-02-mtv/09_VM_Search.png[link=self, window=blank, width=100%] 
 
@@ -134,15 +134,15 @@ image::2025_spring/module-02-mtv/10_VM_Select_VMWARE_Plan.png[link=self, window=
 +
 Please fill in your migration plan with the following values:
 
-* Plan name: *move-webapp-vmware*
-* Target provider: *host*
-* Target namespace: *vmexamples-{user}*
-* Network map: *Pod Networking*
-* Storage map: *ocs-external-storagecluster-ceph-rbd*
+* *Plan name*: move-webapp-vmware
+* *Target provider*: host
+* *Target namespace*: vmexamples-{user}
+* *Network map*: Pod Networking
+* *Storage map*: ocs-external-storagecluster-ceph-rbd
 +
 NOTE: Both the Network and Storage maps will automatically detect the Networks and Datastores that the discovered virtual machines currently make use of on the source provider. You will just need to make sure that their respective values are set correctly on the OpenShift side.
 
-. Click *Create migration plan*.
+. Click the *Create migration plan* button.
 +
 image::2025_spring/module-02-mtv/11_Create_Migration_Plan.png[link=self, window=blank, width=100%]
 
@@ -171,9 +171,9 @@ image::2025_spring/module-02-mtv/16_VMs_Migrating_Details.png[link=self, window=
 image::2025_spring/module-02-mtv/17_VM_Migration_Stages.png[link=self, window=blank, width=100%]
 +
 
-IMPORTANT: Having many participants performing the same task in parallel in a simulated lab environment can cause this task to perform much slower than in a real environment. Please be patient with this process as it completes. You may continue with other sections in the roadshow as the migrations complete in the background. We will return to work with these machines at a later step.
+IMPORTANT: It is suggested to have a 10gbps network for virtual machine migrations which we do not have in our simulated lab environment. This, combined with having many participants performing the same task in parallel can cause this task to perform much slower than in a real environment. Please be patient with this process as it completes. You may continue with other sections in the roadshow as the migrations complete in the background. We will return to work with these machines in a later module.
 
-. Official documentation suggests a dedicated 10gbps network for virtual machine migrations, while this is not available in our lab, after several minutes we will see that the migration has completed successfully.
+. After several minutes we will see that the migration has completed successfully.
 +
 image::2025_spring/module-02-mtv/18_Completed_VMWARE_Plan.png[link=self, window=blank, width=100%]
 
