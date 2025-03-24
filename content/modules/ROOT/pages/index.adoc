@@ -111,3 +111,15 @@ For access, please use the following credentials:
 
 * *vcenter_user:* {vcenter_full_user}
 * *vcenter_password:* {vcenter_password}
+
+=== Version Information
+
+This edition of the  OpenShift Virtualization Roadshow has been developed using the following software versions:
+
+* Red Hat OpenShift 4.18.3
+* Red Hat OpenShift Virtualization 4.18.0
+* Red Hat OpenShift Data Foundation 4.18.1
+* Red Hat OADP 1.4.4
+* Red Hat Migration Toolkit for Virtual Machines 2.7.2
+
+(Accurate as of March 24, 2025)
