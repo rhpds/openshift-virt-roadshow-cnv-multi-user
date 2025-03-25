@@ -1,13 +1,14 @@
 ---
 name: modules
-title: Experience OpenShift Virtualization
+title: "lb1755: Migrate now with the migration toolkit for virtualization"
+
 version: master
 nav:
 - modules/ROOT/nav.adoc
 
 asciidoc:
   attributes:
-    lab_name: Experience OpenShift Virtualization
+    lab_name: "lb1755: Migrate now with the migration toolkit for virtualization"
     release-version: master
     page-pagination: true
   page-links:
