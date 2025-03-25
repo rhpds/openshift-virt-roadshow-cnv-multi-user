@@ -1,6 +1,9 @@
 ---
 site:
-  title: Experience Red Hat OpenShift Virtualization
+  title: "lb1755: Migrate Now with OpenShift Migration Toolkit for Virtualization"
+  # https://rhpds.github.io/lb1755-mtv-showroom/modules/index.html
+  # url: "file:///Users/jmaltin/Development/lb1755-mtv-showroom/www/modules/index.html"
+  url: "/lb1755-mtv-showroom/modules/index.html"
   start_page: modules::index.adoc
 
 content:
@@ -10,7 +13,7 @@ content:
 
 ui:
   bundle:
-    url: https://github.com/rhpds/rhdp_showroom_theme/releases/download/v0.0.1/ui-bundle.zip
+    url: https://github.com/rhpds/rhdp_showroom_theme/releases/download/rh-summit-2025/ui-bundle.zip
 
 runtime:
   cache_dir: ./.cache/antora
@@ -22,4 +25,4 @@ antora:
   extensions:
   - id: dev-mode
     require: ./content/lib/dev-mode.js
-    enabled: false
+    enabled: true

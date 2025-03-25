@@ -1,13 +1,20 @@
 ---
 name: modules
-title: Experience OpenShift Virtualization
+title: "lb1755: Migrate now with MTV"
+
 version: master
 nav:
 - modules/ROOT/nav.adoc
 
 asciidoc:
   attributes:
-    lab_name: Experience OpenShift Virtualization
+    user: sample_user
+    password: sample_password
+    vcenter_full_user: sample_vcenter_full_user
+    vcenter_console: sample_vcenter_console
+    vcenter_password: sample_vcenter_password
+    openshift_console_url: sample_openshift_console_url
+    lab_name: "lb1755: Migrate now with the migration toolkit for virtualization"
     release-version: master
     page-pagination: true
   page-links:
