@@ -1,5 +1,5 @@
 
-image::2025_spring/conclusion/00_Thank_You.png[[link=self, window=blank, width=100%]
+image::2025_spring/conclusion/00_Thank_You.png[link=self, window=blank, width=100%]
 
 We hope you have enjoyed {lab_name} and learning more about *OpenShift Virtualization* and how it can be a useful tool for both the import and management of legacy virtual machines, as well as a stepping stone on the path of application modernization.
 
@@ -26,9 +26,9 @@ We hope you have enjoyed {lab_name} and learning more about *OpenShift Virtualiz
 * Learn about deploying a consistent foundation for innovation.
 * Learn how to get started through no cost demonstrations or a Virtual Migration Assessment.
 
-Scan the QR code below to learn more:
+Click the link https://www.redhat.com/en/resources/15-reasons-adopt-openshift-virtualization-ebook[here^] or scan the QR code below to learn more:
 
-image::2025_spring/conclusion/01_Ebook.png[[link=self, window=blank, width=50%]
+image::2025_spring/conclusion/01_Ebook.png[link=self, window=blank, width=50%]
 
 === Red Hat Learning Services: DO317 Managing Virtual Machines with Red Hat OpenShift Virtualization
 
@@ -38,9 +38,10 @@ image::2025_spring/conclusion/01_Ebook.png[[link=self, window=blank, width=50%]
 * Strategies to connect VMs on OpenShift to data center services outside of their OpenShift cluster, such as storage and databases.
 * Strategies to migrate VMs from compatible hypervisors to OpenShift Virtualization by using the Migration Toolkit for Virtualization operator.
 
-Scan the QR code below to learn more:
+Click the link https://www.redhat.com/en/services/training/managing-virtual-machines-red-hat-openshift-virtualization-exam[here^] or scan the QR code below to learn more:
 
-image::2025_spring/conclusion/02_DO317_Training.png[[link=self, window=blank, width=50%]
+
+image::2025_spring/conclusion/02_DO317_Training.png[link=self, window=blank, width=50%]
 
 === Virtualization Migration Assessment
 
@@ -50,7 +51,7 @@ image::2025_spring/conclusion/02_DO317_Training.png[[link=self, window=blank, wi
 * You recieve a VMA report with a tailored proposal for your complete migration incluing high-level recommendations and design considerations.
 * This can help with understanding of where you're going, how you'll get there, how long it will take, and how much it will cost.
 
-Scan the QR code below to learn more:
+Click the link https://www.redhat.com/en/resources/virtualization-migration-assessment-datasheet[here^] or scan the QR code below to learn more:
 
-image::2025_spring/conclusion/03_VMA_QR.png[[link=self, window=blank, width=50%]
+image::2025_spring/conclusion/03_VMA_QR.png[link=self, window=blank, width=50%]
 
