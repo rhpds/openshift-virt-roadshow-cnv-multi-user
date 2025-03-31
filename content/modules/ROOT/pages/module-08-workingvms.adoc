@@ -154,4 +154,5 @@ image::2025_spring/module-08-workingvms/22_WebApp_Success.png[link=self, window=
 
 In this module you were able to experience working with the virtual machines that you migrated into the OpenShift Virtualization environment from VMware vSphere by making them accessible outside of the cluster in different manners.
 
-I hope you have enjoyed this lab. Please fill out the survey link that your proctor has made available to provide feedback on your experience.
+We hope you have enjoyed this lab.
+Look out for a survey link in your inbox to tell us how we did in the coming days.

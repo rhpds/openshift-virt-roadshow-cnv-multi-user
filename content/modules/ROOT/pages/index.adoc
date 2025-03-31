@@ -52,8 +52,8 @@ We will also look into how migration hooks can be used to automate a change in b
 
 * {openshift_console_url}[Your OpenShift cluster console is available here^].
 * Your login is available with:
-** User: {user}
-** Password: {password}
+** User: `{user}`
+** Password: `{password}`
 
 === vCenter Access
 
@@ -61,5 +61,5 @@ In the migration chapter of the lab, you will be asked to login and examine a VM
 
 For access, please use the following credentials:
 
-* vCenter user: {vcenter_full_user}
-* vCenter password: {vcenter_password}
+* vCenter user: `{vcenter_full_user}`
+* vCenter password: `{vcenter_password}`
