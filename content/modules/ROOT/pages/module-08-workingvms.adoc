@@ -2,7 +2,15 @@
 
 == Introduction
 
-This section of our lab is dedicated to the Day-2 operations that many administrators would need to perform when working with virtual machines in their OpenShift Virtualization environment. We will make use of the understanding we have developed throughout this roadshow of how VMs operate in an OpenShift environment, and use those skills to complete the tasks in this section. In this particular case, we are going to work with the three virtual machines that we imported from VMware vSphere earlier in this roadshow, and we are going to make some minor configuration changes to enable the applications hosted on those servers to be accessed as they now run in OpenShift Virtualization. To accomplish this, we will expose our applications using the service/route method that is the default when making use of the OpenShift SDN pod network so that the application is reachable from outside of the cluster a more modernized approach to the exposure of applications that reside on the VMs..
+This section of our lab is dedicated to the Day-2 operations that many administrators would need to perform when working with virtual machines in their OpenShift Virtualization environment. In this particular case, we are going to work with the three virtual machines that we imported from VMware vSphere earlier, and we are going to make some minor configuration changes to enable the applications hosted on those servers to be accessed as they now run in OpenShift Virtualization. To accomplish this, we will expose our applications using the service/route method that is the default when making use of the OpenShift SDN pod network so that the application is reachable from outside of the cluster.
+
+[[general_networking]]
+== Integrating OpenShift Virtualization Networking with External Networks
+
+In the following sections, you will learn how to access applications running in VMs from outside the OpenShift cluster by utilizing services and routes.
+However, there are several other ways that VMs can participate in your coporate network, such as the creation of network bridges on the worker nodes that allow VMs to behave like any other server on your network.
+Many VM administrators may find these methods beneficial, but the configuration steps depend greatly on your network configuration.
+Therefore, this session focuses only on using services and routes as it is an option that will work in any environment.
 
 [[service_route]]
 == Exposing an Application with a Service/Route
@@ -144,4 +152,6 @@ image::2025_spring/module-08-workingvms/22_WebApp_Success.png[link=self, window=
 
 == Summary
 
-In this module you were able to experience working with the virtual machines that you migrated into the OpenShift Virtualization environment from VMware vSphere by making them accessible outside of the cluster in a more modernized approach by using the native services and routes features in Red Hat OpenShift.
+In this module you were able to experience working with the virtual machines that you migrated into the OpenShift Virtualization environment from VMware vSphere by making them accessible outside of the cluster in different manners.
+
+I hope you have enjoyed this lab. Please fill out the survey link that your proctor has made available to provide feedback on your experience.
