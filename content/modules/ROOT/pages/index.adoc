@@ -82,7 +82,9 @@ provides the proven virtualization functionality of Red Hat OpenShift to deploy,
 
 The following chart explains the features that are entitled with each subscription and may help you decide which version of OpenShift is best for your environment.
 
-image::2025_spring/index/00_openshift_comparison_chart.png[link=self, window=blank, width=100%]
+image::2025_spring/index/01_openshift_comparison_chart.png[link=self, window=blank, width=100%]
+
+A full feature breakdown across all OpenShift editions can be found in the https://www.redhat.com/en/resources/self-managed-openshift-subscription-guide#section-13[subscription guide^].
 
 == Next steps
 
