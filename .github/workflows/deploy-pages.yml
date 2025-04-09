@@ -1,14 +1,10 @@
 name: github pages
 
 on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["lb1755-mtv-summit2025-network"]
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
   push:
-    branches: [lb1755-mtv-summit2025-network]
+    branches: ["lb1755-mtv-summit2025-network"]
     paths-ignore:
       - "README.adoc"
       - ".gitignore"
