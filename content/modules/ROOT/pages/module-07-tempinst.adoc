@@ -135,7 +135,7 @@ image::2025_spring/module-07-tempinst/17_Windows_2k19_Dialog.png[link=self, wind
 . In this dialog:
 * Specify the name *win-sysprep*
 * Enable the checkbox *Boot from CD*
-* Choose URL *(creates PVC)* from the drop-down menu
+* Choose *URL (creates PVC)* from the drop-down menu
 * Specify the *image URL*: https://catalog-item-assets.s3.us-east-2.amazonaws.com/qcow_images/Windows2019.iso
 * Reduce the CD disk size to *5 GiB*
 * Keep the *Disk source* as *Blank* and the size set to the default value *60 GiB*
@@ -162,7 +162,7 @@ image::2025_spring/module-07-tempinst/20_Customize_Scripts.png[link=self, window
 +
 image::2025_spring/module-07-tempinst/21_Sysprep.png[link=self, window=blank, width=100%]
 
-. Copy and paste the following code block into the *autounattend.xml* section:
+. Copy and paste the following code block, which helps to automate the installation and configuration of the Windows server into the *autounattend.xml* section:
 +
 [source,xml,role=execute]
 ----
