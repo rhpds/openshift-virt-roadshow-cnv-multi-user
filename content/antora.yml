@@ -11,9 +11,9 @@ asciidoc:
     user: sample_user
     password: sample_password
     vcenter_full_user: sample_vcenter_full_user
-    vcenter_console: sample_vcenter_console
+    vcenter_console: https://example.com
     vcenter_password: sample_vcenter_password
-    openshift_console_url: sample_openshift_console_url
+    openshift_console_url: https://example.com
     lab_name: "lb1755: Migrate now with the migration toolkit for virtualization"
     release-version: master
     page-pagination: true
