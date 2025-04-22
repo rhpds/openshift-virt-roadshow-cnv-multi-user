@@ -3,7 +3,7 @@ image::2025_spring/conclusion/00_Thank_You.png[link=self, window=blank, width=10
 
 We hope you have enjoyed {lab_name} and learning more about *OpenShift Virtualization* and how it can be a useful tool for both the import and management of legacy virtual machines, as well as a stepping stone on the path of application modernization.
 
-[key_takeaways]
+[[key_takeaways]]
 == Key Takeaways
 
 * OpenShift Virtualization is solution oriented, providing you with a mature, stable, and scalable solution that's easy to get started with.
@@ -15,7 +15,7 @@ We hope you have enjoyed {lab_name} and learning more about *OpenShift Virtualiz
 * OpenShift Virtualization can help you set a strong foundation for tradtional workloads, while building skills for the future with a modern application platform.
 
 
-[additional_info]
+[[additional_info]]
 == Additonal Information
 
 === Free Ebook: 15 Reasons to Adopt Red Hat OpenShift Virtualization
@@ -45,7 +45,7 @@ image::2025_spring/conclusion/02_DO317_Training.png[link=self, window=blank, wid
 
 === Virtualization Migration Assessment
 
-* A two-week onsite interactive workshop and follow-up report. 
+* A two-week onsite interactive workshop and follow-up report.
 * Experienced Red Hat architects run a short series of onsite workshops to help develop your migration journey.
 * They provide an extensive review of your virtualization environment and it's current integrations including: networking, storage, security, backup, and disaster recovery.
 * You recieve a VMA report with a tailored proposal for your complete migration incluing high-level recommendations and design considerations.
@@ -54,4 +54,3 @@ image::2025_spring/conclusion/02_DO317_Training.png[link=self, window=blank, wid
 Click the link https://www.redhat.com/en/resources/virtualization-migration-assessment-datasheet[here^] or scan the QR code below to learn more:
 
 image::2025_spring/conclusion/03_VMA_QR.png[link=self, window=blank, width=50%]
-

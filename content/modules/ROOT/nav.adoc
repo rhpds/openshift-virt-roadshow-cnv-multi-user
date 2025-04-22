@@ -16,9 +16,9 @@
 ** xref:module-02-mtv.adoc#prerequisites[Prerequisites for Migrations]
 ** xref:module-02-mtv.adoc#migrating_vms[Migrating Virtual Machines from VMware]
 
-* xref:module-02-warm-migration.adoc[Advanced Migration Options]
-** xref:module-02-warm-migration.adoc#config_hooks[Automated Configuration Hooks]
-** xref:module-02-warm-migration.adoc#warm_migration[Warm Migration]
+* xref:module-03-advanced.adoc[]
+** xref:module-03-advanced.adoc#config_hooks[Automated Configuration Hooks]
+** xref:module-03-advanced.adoc#warm_migration[Warm Migration]
 
 ////
 * xref:module-04-storage.adoc[Storage Management]
