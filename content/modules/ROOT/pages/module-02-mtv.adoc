@@ -37,6 +37,19 @@ The following prerequisites apply to all migrations:
 
 NOTE: The *Migration Toolkit for Virtualization* will automatically assign a new name to a VM that does not comply with the rules, doing so allows the migration to proceed without issue.
 
+== Create a Namespace for Your Migrations
+
+. In the left-side menu, click on *Virtualization* and from the top dropdown
+
+. Click on *Namespaces* and click on *Create Namespace*.
+
+. In the *Create Namespace* dialog, enter the following:
+
+- *Name:* {migration_namespace}
+- *Description:* Migrations for {user}
+
+. Click *Create*.
+
 [[migrating_vms]]
 == Migrating Virtual Machines from VMware
 
@@ -86,7 +99,7 @@ image::2025_spring/module-02-mtv/04_vSphere_Datastore.png[link=self, window=blan
 
 Now that we have completed our review of VMware vSphere and the virtual machines that reside there, you may close the window and return to your OpenShift web console.
 
-NOTE: The *Migration Toolkit for Virtualization (MTV)* is officially a separate tool from OpenShift Virtualization, and cannot be accessed from the *Virtualization* persona. 
+NOTE: The *Migration Toolkit for Virtualization (MTV)* is officially a separate tool from OpenShift Virtualization, and cannot be accessed from the *Virtualization* persona.
 
 . In the left-side menu, click on *Virtualization* and from the dropdown select *Administrator*.
 +
@@ -118,7 +131,7 @@ image::2025_spring/module-02-mtv/08_VMware_Source_Provider.png[link=self, window
 
 . A large number of virtual machines in the environment will be displayed, use the provided search bar and search for your user account: *{user}* to search for the VMs you'd like to select.
 +
-image::2025_spring/module-02-mtv/09_VM_Search.png[link=self, window=blank, width=100%] 
+image::2025_spring/module-02-mtv/09_VM_Search.png[link=self, window=blank, width=100%]
 
 . On the next page select the three VMs you would like to move:
 
