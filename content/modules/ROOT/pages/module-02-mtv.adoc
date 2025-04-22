@@ -37,19 +37,6 @@ The following prerequisites apply to all migrations:
 
 NOTE: The *Migration Toolkit for Virtualization* will automatically assign a new name to a VM that does not comply with the rules, doing so allows the migration to proceed without issue.
 
-== Create a Namespace for Your Migrations
-
-. In the left-side menu, click on *Virtualization* and from the top dropdown
-
-. Click on *Namespaces* and click on *Create Namespace*.
-
-. In the *Create Namespace* dialog, enter the following:
-
-- *Name:* {migration_namespace}
-- *Description:* Migrations for {user}
-
-. Click *Create*.
-
 [[migrating_vms]]
 == Migrating Virtual Machines from VMware
 
@@ -116,6 +103,21 @@ NOTE: MTV 2.4 and later are project/namespace aware and do not require administr
 By default, there is a provider called *host* which represents *OpenShift Virtualization* as a target platform.
 
 Additionally, this lab has already been configured with an additional provider named *vmware* which you can see has an endpoint address of the VMware vSphere cluster we were just exploring.
+
+=== Create a Target Namespace for Your Migration
+
+You'll need a namespace to house your migrated virtual machines.
+
+In OpenShift, namespaces are enhanced in a custom resource called projects.
+Creating a project creates a namespace.
+
+. In the left-side menu, click on *Home->Projects* and on the upper right, click *Create Project*
+
+. In the *Create Project* dialog, enter the following:
+
+- *Name:* vmexamples-{user}
+
+. Click *Create*.
 
 === Create a Migration Plan
 
