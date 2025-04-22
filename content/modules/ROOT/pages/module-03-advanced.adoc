@@ -1,0 +1,23 @@
+= Advanced Migration Options
+
+== Introduction
+
+[[config_hooks]]
+== Automated Configuration Hooks
+
+[[warm_migration]]
+== Warm Migration
+
+++++
+<iframe
+  src="https://demo.arcade.software/XavEz1uQrK12baAJqYnm?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
+  width="100%"
+  height="600px"
+  frameborder="0"
+  allowfullscreen>
+</iframe>
+++++
+
+== Summary
+
+For more information about these other migration toolkits, please reach out to your Red Hat account team.
