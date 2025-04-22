@@ -16,6 +16,10 @@
 ** xref:module-02-mtv.adoc#prerequisites[Prerequisites for Migrations]
 ** xref:module-02-mtv.adoc#migrating_vms[Migrating Virtual Machines from VMware]
 
+* xref:module-02-warm-migration.adoc[Advanced Migration Options]
+** xref:module-02-warm-migration.adoc#config_hooks[Automated Configuration Hooks]
+** xref:module-02-warm-migration.adoc#warm_migration[Warm Migration]
+
 ////
 * xref:module-04-storage.adoc[Storage Management]
 ** xref:module-04-storage.adoc#examine_pvc[Examine the PVC for a VM]
@@ -40,11 +44,11 @@
 * xref:module-08-workingvms.adoc[Working with Virtual Machines and Applications]
 ** xref:module-08-workingvms.adoc#service_route[Exposing an Application with a Service/Route]
 
-* xref:module-09-networking.adoc[Network Management for Virtual Machines]
-** xref:module-09-networking.adoc#review[Review Environment]
-** xref:module-09-networking.adoc#nad[Create Network Attachment Definition]
-** xref:module-09-networking.adoc#attach[Attach Virtual Machine to Network]
-** xref:module-09-networking.adoc#udn[User Defined Networks]
+// * xref:module-09-networking.adoc[Network Management for Virtual Machines]
+// ** xref:module-09-networking.adoc#review[Review Environment]
+// ** xref:module-09-networking.adoc#nad[Create Network Attachment Definition]
+// ** xref:module-09-networking.adoc#attach[Attach Virtual Machine to Network]
+// ** xref:module-09-networking.adoc#udn[User Defined Networks]
 
 * xref:conclusion.adoc[Conclusion]
 ** xref:conclusion.adoc#key_takeaways[Key Takeaways]
