@@ -2,30 +2,33 @@
 
 == Introduction
 
-While the example we are currently doing in this lab exercise is that of a cold migration, there are other configuration options to meet various customer use cases that the Migration Toolkit for Virtualization can support. While we are waiting on the cold migration for our lab to complete so that we can work with those VMs, we thought we would take this opportunity to introduce some of these advanced migration options, and allow you to see how they work with interactive video demos.
+While we are waiting on the cold migration for our lab to complete so that we can work with those virtual machines, we thought we would take this opportunity to introduce some additional advanced migration options that can be performed by the Migration Toolkit for Virtualization. In this section we plan to cover automated reconfiguraiton of virtual machines during the migration process, as well as how to perform a warm migration which reduces downtime during a migration operation.
 
-Please take the time to read the following sections and review the interactive demo videos.
+Please take this time to review the following sections and enjoy the interactive demo videos.
 
 
 [[config_hooks]]
 == Automated Configuration Hooks
 
-Automated configuration hooks are a really awesome and powerful feature built into the Migration Toolkit for Virtualization. They allow you to leverage the power of Ansible automation to perform actions against virtual machines both prior to and after the migration process completes.
+Automated configuration hooks are a really awesome and powerful feature built into the Migration Toolkit for Virtualization.
 
-Pre- and Post-migration hooks are included as a feature in the Migraiton Toolkit for Virtualization and do not require a seperate Ansible Automation Platform subscription. They run by executing a separate ansible-runner pod with runs the playbook provided against the target virtual machines during the migraiton process.
+Configuration hooks are included as a feature in the Migration Toolkit for Virtualization. They can be set up as either a pre- or post-configuration hook to modify the properties of a virtual machine either before or after the migration process completed. They leverage the power of Ansible automation to performed their desired actions through YAML formatted playbooks, but they do not require a separate subscription for https://www.redhat.com/en/hybrid-cloud-solutions/automation?sc_cid=RHCTN0250000435827&gad_source=1&gad_campaignid=20322566154&gbraid=0AAAAADsbVMRTUlnZMtmJPEadK_tiBW92m&gclid=EAIaIQobChMIqt2m1oHxjAMVjnFHAR1rXhMLEAAYASAAEgIdAfD_BwE&gclsrc=aw.ds[Ansible Automation Platform^]. Instead, they run by executing inside of a separate *ansible-runner* pod with runs the playbook provided against the target virtual machines during the migration process.
 
-These automated tasks can be invaluable to ensuring that virtual machines that worked on a source hypervisor, work as expected on OpenShift Virtualization. You can perform
- simple tasks like editing files and permissions, or updating the configuration of hardware devices.
+These automated tasks can be invaluable to ensuring that virtual machines that worked on a source hypervisor, work as expected on OpenShift Virtualization. 
+
+You can perform simple tasks like editing files on the guest, or more complex tasks like updating the configuration of hardware devices.
+
+Check out the interactive demo below to see examples of both examples in action.
 
 === Interactive Demo
 
 In the interactive demo video embedded below, we will make use of both Pre- and Post-migration hooks.
 
-. The steps of the demo include the following:
-. We will discover a virtual machine on a remote ESXi host and configure a cold migration plan.
-. We will use a pre-migration hook to reconfigure the network adapters from VMware native format to VirtIO format for OpenShift Virtualization, and write a text file to timestamp the start of the migration process.
-. We will use a post-migration hook to clean up the network adapter configuration, and write another text file to timestamp the completion of the migration process.
-. We will verify our running virtual machine migrated successfully and that the changes we made persist.
+The steps of the demo include the following:
+* We will discover a virtual machine on a remote ESXi host and configure a cold migration plan.
+* We will use a pre-migration hook to reconfigure the network adapters from VMware native format to VirtIO format for OpenShift Virtualization, and write a text file to timestamp the start of the migration process.
+* We will use a post-migration hook to clean up the network adapter configuration, and write another text file to timestamp the completion of the migration process.
+* We will verify our running virtual machine migrated successfully and that the changes we made persist.
 
 ++++
 <iframe
@@ -56,12 +59,12 @@ The warm migration process is achieved by taking advantage of Changed Block Trac
 
 === Interactive Demo 
 
-. The steps of the demo include the following:
-. We will explore our running Windows and Linux virtual machines.
-. We will review the configured Migration Toolkit for Virtualization providers.
-. We will Create and execute a warm migration plan, which stops at the cutover phase.
-. We will initialize the cutover operation after verifying that the guests are still running.
-. We will explore the environment after our migration plan has completed.
+The steps of the demo include the following:
+* We will explore our running Windows and Linux virtual machines.
+* We will review the configured Migration Toolkit for Virtualization providers.
+* We will Create and execute a warm migration plan, which stops at the cutover phase.
+* We will initialize the cutover operation after verifying that the guests are still running.
+* We will explore the environment after our migration plan has completed.
 
 ++++
 <iframe
