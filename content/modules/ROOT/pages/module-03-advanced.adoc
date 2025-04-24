@@ -2,11 +2,66 @@
 
 == Introduction
 
+While the example we are currently doing in this lab exercise is that of a cold migration, there are other configuration options to meet various customer use cases that the Migration Toolkit for Virtualization can support. While we are waiting on the cold migration for our lab to complete so that we can work with those VMs, we thought we would take this opportunity to introduce some of these advanced migration options, and allow you to see how they work with interactive video demos.
+
+Please take the time to read the following sections and review the interactive demo videos.
+
+
 [[config_hooks]]
 == Automated Configuration Hooks
 
+Automated configuration hooks are a really awesome and powerful feature built into the Migration Toolkit for Virtualization. They allow you to leverage the power of Ansible automation to perform actions against virtual machines both prior to and after the migration process completes.
+
+Pre- and Post-migration hooks are included as a feature in the Migraiton Toolkit for Virtualization and do not require a seperate Ansible Automation Platform subscription. They run by executing a separate ansible-runner pod with runs the playbook provided against the target virtual machines during the migraiton process.
+
+These automated tasks can be invaluable to ensuring that virtual machines that worked on a source hypervisor, work as expected on OpenShift Virtualization. You can perform
+ simple tasks like editing files and permissions, or updating the configuration of hardware devices.
+
+=== Interactive Demo
+
+In the interactive demo video embedded below, we will make use of both Pre- and Post-migration hooks.
+
+. The steps of the demo include the following:
+. We will discover a virtual machine on a remote ESXi host and configure a cold migration plan.
+. We will use a pre-migration hook to reconfigure the network adapters from VMware native format to VirtIO format for OpenShift Virtualization, and write a text file to timestamp the start of the migration process.
+. We will use a post-migration hook to clean up the network adapter configuration, and write another text file to timestamp the completion of the migration process.
+. We will verify our running virtual machine migrated successfully and that the changes we made persist.
+
+++++
+<iframe
+  src="https://demo.arcade.software/cfhTjX94HcFjuP2pX0Lm?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
+  width="100%"
+  height="600px"
+  frameborder="0"
+  allowfullscreen>
+</iframe>
+++++
+
+=== Additional Info
+
+If you are interested in additional informaiton about the tasks performed in this demo, please check out the following blog entries by https://www.redhat.com/en/authors/matthew-secaur[Matthew Secaur] at Red Hat, to discover more about the processes involved in creating the migration hooks, and modifying the network adapter configurations for OpenShift Virtualization:
+
+
+https://www.redhat.com/en/blog/migration-hooks-with-migration-toolkit-for-virtualization[Using Migration Hooks in the Migration Toolkit for Virtualization^]
+
+https://www.redhat.com/en/blog/openshift-virtualization-networking-for-vsphere-migration[Preparing Virtual Machine Networking for Migration from vSphere to Red Hat OpenShift Virtualization^]
+
+
 [[warm_migration]]
 == Warm Migration
+
+While the default migration type for the Migration Toolkit for Virtualization is that of a cold migration, requiring the source virtual machine be powered down through the entire migration window, there are many organizations with valuable workloads that cannot sustain a long period of downtime to perform a virtual machine migration. For these types of workloads the Migration Toolkit for Virtualization also supports warm migrations.
+
+The warm migration process is achieved by taking advantage of Changed Block Tracking (CBT) technology on the source hypervisor, which is often used for backup and disaster recovery operations to reduce the amount of data that is transferred over the wire during an operation. Once CBT is enabled on a virtual machine, snapshots are taken of the guest at regular intervals to keep a record of changes on the VM disk. When it's time to migrate the VM, an initial copy of the guest is transferred while it is still running. This allows for a large amount of machine data to be transferred while the machine is still operational with no down time. When an outage window can be scheduled, the Migration Toolkit for Virtualization triggers a cutover which powers down the guest, and transfers the changed CBT snapshot data, requiring a much more brief downtime for the VM.
+
+=== Interactive Demo 
+
+. The steps of the demo include the following:
+. We will explore our running Windows and Linux virtual machines.
+. We will review the configured Migration Toolkit for Virtualization providers.
+. We will Create and execute a warm migration plan, which stops at the cutover phase.
+. We will initialize the cutover operation after verifying that the guests are still running.
+. We will explore the environment after our migration plan has completed.
 
 ++++
 <iframe
@@ -20,4 +75,4 @@
 
 == Summary
 
-For more information about these other migration toolkits, please reach out to your Red Hat account team.
+In this section we have discussed and viewed two different interactive demos of advanced features that can be leveraged to ease your migration experience from your legacy hypervisor to Red Hat OpenShift Virtualization. Leveraging pre- and post-migration hooks can ease the transition of our virtual guests from one hypervisor environment to another by automating configuration options, and warm migrations can enable us to tranfer these machines with to their new home with extremely limited downtime. If you have any questions about either of these functions, please feel free to ask your lab proctors. You may now continue on to the next lab section where you will get to work with the virtual machines that you have imported.
