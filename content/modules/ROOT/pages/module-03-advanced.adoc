@@ -24,7 +24,7 @@ Check out the interactive demo below to see examples of both examples in action.
 
 In the interactive demo video embedded below, we will make use of both Pre- and Post-migration hooks.
 
-. The steps of the demo include the following:
+.The steps of the demo include the following:
 * We will discover a virtual machine on a remote ESXi host and configure a cold migration plan.
 * We will use a pre-migration hook to reconfigure the network adapters from VMware native format to VirtIO format for OpenShift Virtualization, and write a text file to timestamp the start of the migration process.
 * We will use a post-migration hook to clean up the network adapter configuration, and write another text file to timestamp the completion of the migration process.
@@ -59,7 +59,7 @@ The warm migration process is achieved by taking advantage of Changed Block Trac
 
 === Interactive Demo 
 
-. The steps of the demo include the following:
+.The steps of the demo include the following:
 * We will explore our running Windows and Linux virtual machines.
 * We will review the configured Migration Toolkit for Virtualization providers.
 * We will Create and execute a warm migration plan, which stops at the cutover phase.
