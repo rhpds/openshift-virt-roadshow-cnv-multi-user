@@ -60,9 +60,9 @@ The warm migration process is achieved by taking advantage of Changed Block Trac
 === Interactive Demo 
 
 .The steps of the demo include the following:
-* We will explore our running Windows and Linux virtual machines.
+* We will explore the running Windows and Linux virtual machines on our source hypervisor.
 * We will review the configured Migration Toolkit for Virtualization providers.
-* We will Create and execute a warm migration plan, which stops at the cutover phase.
+* We will create and execute a warm migration plan, which stops at the cutover phase.
 * We will initialize the cutover operation after verifying that the guests are still running.
 * We will explore the environment after our migration plan has completed.
 
