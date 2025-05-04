@@ -1,0 +1,57 @@
+
+image::2025_spring/conclusion/00_Thank_You.png[link=self, window=blank, width=100%]
+
+We hope you have enjoyed {lab_name} and learning more about *OpenShift Virtualization* and how it can be a useful tool for both the import and management of legacy virtual machines, as well as a stepping stone on the path of application modernization.
+
+[key_takeaways]
+== Key Takeaways
+
+* OpenShift Virtualization is solution oriented, providing you with a mature, stable, and scalable solution that's easy to get started with.
+
+* OpenShift Virtualization is available at every subscription level of Red Hat OpenShift from OpenShift Platform Plus which provides a full hybrid cloud application development platform, to OpenShift Virtualization Engine, an offering that specializes in providing support for virtualized workloads.
+
+* OpenShift Virtualization is fully integrated with a broad ecosystem of partner products, with more coming on board each day. Check with your preferred hardware and software vendors to see if they support OpenShift Virtualization.
+
+* OpenShift Virtualization can help you set a strong foundation for tradtional workloads, while building skills for the future with a modern application platform.
+
+
+[additional_info]
+== Additonal Information
+
+=== Free Ebook: 15 Reasons to Adopt Red Hat OpenShift Virtualization
+
+* Discover how virtualization infrastruture continues to evolve.
+* Explore options for migration of your existing virtual machines.
+* Take advantage of a large number of benefits across your organization.
+* Learn about deploying a consistent foundation for innovation.
+* Learn how to get started through no cost demonstrations or a Virtual Migration Assessment.
+
+Click the link https://www.redhat.com/en/resources/15-reasons-adopt-openshift-virtualization-ebook[here^] or scan the QR code below to learn more:
+
+image::2025_spring/conclusion/01_Ebook.png[link=self, window=blank, width=50%]
+
+=== Red Hat Learning Services: DO317 Managing Virtual Machines with Red Hat OpenShift Virtualization
+
+* Skills required to create, access, and manage VMs on OpenShift clusters.
+* Skills required to control usage and access of cpu, memory, storage, and networking resources from VMs using the same Kubernetes features that would also control usage and access to these resources for containers.
+* Sample architectures to manage High Availability (HA) of VMs using standard Kubernetes features and extensions from OpenShift Virtualization.
+* Strategies to connect VMs on OpenShift to data center services outside of their OpenShift cluster, such as storage and databases.
+* Strategies to migrate VMs from compatible hypervisors to OpenShift Virtualization by using the Migration Toolkit for Virtualization operator.
+
+Click the link https://www.redhat.com/en/services/training/managing-virtual-machines-red-hat-openshift-virtualization-exam[here^] or scan the QR code below to learn more:
+
+
+image::2025_spring/conclusion/02_DO317_Training.png[link=self, window=blank, width=50%]
+
+=== Virtualization Migration Assessment
+
+* A two-week onsite interactive workshop and follow-up report. 
+* Experienced Red Hat architects run a short series of onsite workshops to help develop your migration journey.
+* They provide an extensive review of your virtualization environment and it's current integrations including: networking, storage, security, backup, and disaster recovery.
+* You recieve a VMA report with a tailored proposal for your complete migration incluing high-level recommendations and design considerations.
+* This can help with understanding of where you're going, how you'll get there, how long it will take, and how much it will cost.
+
+Click the link https://www.redhat.com/en/resources/virtualization-migration-assessment-datasheet[here^] or scan the QR code below to learn more:
+
+image::2025_spring/conclusion/03_VMA_QR.png[link=self, window=blank, width=50%]
+

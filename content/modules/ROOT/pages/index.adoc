@@ -16,12 +16,11 @@ In this event we will explore many common management activities that virtualizat
 
 == What Content Is Covered In The Roadshow?
 
-// These are the *eight* main sections that will be covered:
-These are the *six* main sections that will be covered:
+These are the *seven* main sections that will be covered:
 
 * _Virtual Machine Management_: In this section we will provide a review of virtual machine management fundamentals, including creating a virtual machine, and modifying it's allotted resources.
 
-* _Migrating Existing Virtual Machines_: In this section, we will use the Migration Toolkit for Virtualization (MTV) to migrate a VM from an existing VMware vSphere environment to OpenShift Virtualization.
+* _Migrating Existing Virtual Machines_: In this section, we will use the Migration Toolkit for Virtualization (MTV) to migrate virtual machines from an existing VMware vSphere environment to OpenShift Virtualization.
 
 * _Storage Management_: The storage paradigm familiar to many administrators changes with OpenShift Virtualization. This section will explore many actions related to storage management for virtual machines.
 
@@ -29,20 +28,20 @@ These are the *six* main sections that will be covered:
 
 * _Template and InstanceType Management_: In order to streamline deployment of virtual machines, administrators will often create Templates or define InstanceTypes to ease deployment operations. This section will focus on those processes.
 
-* _Working with Virtual Machines and Applications_: In this section we will perform several day-2 activities with our imported virtual machines, including setting up a load-balancer, and exposing our VM hosted applications through services and routes.
+* _Working with Virtual Machines and Applications_: In this section we will perform some day-2 activities with our imported virtual machines, by exposing our VM hosted applications through services and routes.
+
+* _Network Management_: By default VMs are connected to the pod network in OpenShift. In this section we will explore creating new L2 network mappings as well as making use of user defined networks (UDN) for direct network connectivity.
 
 == What is OpenShift Virtualization?
 
-* OpenShift Virtualization is a feature of Red Hat OpenShift; it is not an add-on or a separate product and is included with all entitlements.
 * All current subscribers receive OpenShift Virtualization as part of their OpenShift subscription. It has been generally available since OpenShift 4.5.
-* OpenShift Virtualization is based on the “container-native virtualization” technology being developed upstream under the KubeVirt project, a sandbox project in the Cloud Native Computing Foundation (CNCF).
+* OpenShift Virtualization is based on the “container-native virtualization” technology being developed upstream under the KubeVirt project, an incubating project in the Cloud Native Computing Foundation (CNCF).
 * It leverages the Red Hat Enterprise Linux KVM hypervisor (RHEL KVM), which is a mature and highly performant open-source hypervisor used by many organizations and cloud service providers globally and which has been under development for over 15 years.
 * OpenShift Virtualization leverages the RHEL KVM hypervisor and allows the VM to be managed by Kubernetes and KubeVirt. An OpenShift Virtualization VM uses Kubernetes scheduling, network, and storage infrastructure.
 
 * OpenShift Virtualization is SVVP certified with Microsoft for Windows guest support per the same rules that apply to Red Hat’s other KVM virtualization offerings.
-* OpenShift Virtualization is currently only supported on bare metal physical servers, typically on-premises or through dedicated hosting. Support for other topologies (OpenShift deployed on virtualized infrastructure like RHV or vSphere) is not available at this time.
-* Support for https://www.redhat.com/en/blog/managing-virtual-machines-and-containers-as-code-with-openshift-virtualization-on-red-hat-openshift-service-on-aws[AWS / ROSA^] has already been announced, and we are in the process of adding support for OpenShift Virtualization to additional Managed OpenShift Cloud services.
-* OpenShift Virtualization allows OpenShift to deploy, manage, and connect virtual machines to an OpenShift cluster. This includes the ability to connect to and manage those VMs using Kubernetes-native methods and take advantage of OpenShift features like Pipelines, GitOps, Service Mesh, and more.
+* OpenShift Virtualization is currently only supported on bare metal physical servers, typically on-premises or through supported cloud providers. Support for other topologies (OpenShift deployed on virtualized infrastructure like OpenStack or vSphere) is not available at this time.
+* OpenShift Virtualization allows OpenShift to deploy, manage, and connect virtual machines to resources in an OpenShift cluster. This includes the ability to connect to and manage those VMs using Kubernetes-native methods and take advantage of OpenShift features like Pipelines, GitOps, Service Mesh, and more.
 
 == Why switch from a traditional VM platform?
 
@@ -64,13 +63,37 @@ Red Hat OpenShift runs consistently on bare metal, on-premises virtualization, o
 **Pure open source innovation:**
 The innovation in Kubernetes, serverless, service mesh, Kubernetes Operators, and more powered by the velocity of open source, with Red Hat in the lead.
 
+== Which OpenShift Subscription is right for me?
+
+OpenShift is an inclusive platform wherein all of the features are accesible to end users at any time, but their usage is governed by the subscription that that user has purchased.
+
+Subscriptions for OpenShift fall into one of four categories, all of which provide access to OpenShift Virtualization:
+
+**Red Hat OpenShift Platform Plus** 
+is a unified platform to build, modernize, and deploy applications at scale. Multicluster security, compliance, application and data management work across infrastructures to provide consistency throughout the software supply chain. Red Hat OpenShift Platform Plus helps you work smarter and faster with a complete set of services for bringing apps to market on your hybrid cloud.
+
+**Red Hat OpenShift Container Platform**
+is a trusted, comprehensive, and consistent platform to develop, modernize, and deploy applications at scale, including today’s AI-enabled apps. Innovate faster with a complete set of services for bringing apps to market on your choice of infrastructure.
+
+**Red Hat OpenShift Kubernetes Engine**
+provides you with the basic functionality of Red Hat OpenShift. It offers a subset of the features that Red Hat OpenShift Container Platform offers, like full access to an enterprise-ready Kubernetes environment and an extensive compatibility test matrix with many of the software elements that you might use in your datacenter.
+
+**Red Hat OpenShift Virtualization Engine**
+provides the proven virtualization functionality of Red Hat OpenShift to deploy, manage, and scale virtual machines (VMs). Only pay for what you need with a streamlined solution focused exclusively on VM workloads.
+
+The following chart explains the features that are entitled with each subscription and may help you decide which version of OpenShift is best for your environment.
+
+image::2025_spring/index/01_openshift_comparison_chart.png[link=self, window=blank, width=100%]
+
+A full feature breakdown across all OpenShift editions can be found in the https://www.redhat.com/en/resources/self-managed-openshift-subscription-guide#section-13[subscription guide^].
+
 == Next steps
 
-If you would like to learn more about OpenShift Virtualization, please visit the https://www.redhat.com/en/technologies/cloud-computing/openshift/virtualization[landing page^], review the https://docs.openshift.com/container-platform/latest/virt/about_virt/about-virt.html[documentation^], or view some of our demo videos on https://www.youtube.com/playlist?list=PLaR6Rq6Z4IqeQeTosfoFzTyE_QmWZW6n_[YouTube^].
+If you would like to learn more about OpenShift Virtualization, please visit the https://www.redhat.com/en/technologies/cloud-computing/openshift/virtualization[landing page^], review the https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/virtualization/about[documentation^], enjoy one of our https://www.redhat.com/en/interactive-experiences#virtualization[interactive experiences^], or view some of our demo videos on https://www.youtube.com/playlist?list=PLaR6Rq6Z4IqeQeTosfoFzTyE_QmWZW6n_[YouTube^].
 
 == Requirements for the Lab Environment
 
-* Participant needs to have their own computer with browser and internet access.
+* Participant needs to have their own computer with a web browser and internet access.
 * Chromium based browsers are recommended as some copy/paste functions don't work in Firefox for the time being.
 * Remote access console uses the US keyboard layout by default, so it's good to know where special characters reside for other country's layouts, or to use the copy/paste function in a supported browser.
 
@@ -91,3 +114,15 @@ For access, please use the following credentials:
 
 * *vcenter_user:* {vcenter_full_user}
 * *vcenter_password:* {vcenter_password}
+
+=== Version Information
+
+This edition of the  OpenShift Virtualization Roadshow has been developed using the following software versions:
+
+* Red Hat OpenShift 4.18.3
+* Red Hat OpenShift Virtualization 4.18.0
+* Red Hat OpenShift Data Foundation 4.18.1
+* Red Hat OADP 1.4.4
+* Red Hat Migration Toolkit for Virtual Machines 2.7.2
+
+(Accurate as of March 24, 2025)

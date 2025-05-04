@@ -6,53 +6,60 @@ Data Protection is a major topic of conversation when it comes to any enterprise
 
 Red Hat Solutions Include:
 
-* https://docs.openshift.com/container-platform/4.15/backup_and_restore/application_backup_and_restore/oadp-features-plugins.html[*OADP (OpenShift APIs for Data Protection)*]: A Red Hat Operator which provides a storage agnostic method to back up and restore OpenShift objects, including virtual machines.
-* https://access.redhat.com/documentation/en-us/red_hat_openshift_data_foundation/4.15/html/configuring_openshift_data_foundation_disaster_recovery_for_openshift_workloads/metro-dr-solution/[*OpenShift Data Foundation Metro-DR*]
+* https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/backup_and_restore/oadp-application-backup-and-restore[*OADP (OpenShift APIs for Data Protection)*^]: A Red Hat operator which provides a storage agnostic method to back up and restore OpenShift objects, including virtual machines.
+* https://docs.redhat.com/en/documentation/red_hat_openshift_data_foundation/4.18/html/configuring_openshift_data_foundation_disaster_recovery_for_openshift_workloads/metro-dr-solution[*OpenShift Data Foundation Metro-DR*^] and https://docs.redhat.com/en/documentation/red_hat_openshift_data_foundation/4.18/html/configuring_openshift_data_foundation_disaster_recovery_for_openshift_workloads/rdr-solution[*OpenShift Data Foundation Regional-DR*^]
 
 Ecosystem Partner Solutions Include:
 
-* https://portworx.com/blog/disaster-recovery-for-red-hat-openshift-virtualization/[*Portworx Disaster Recovery for OpenShift Virtualization*]
-* https://storware.eu/solutions/virtual-machine-backup-and-recovery/openshift-virtualization-and-kubevirt/[*Storware Backup and Recovery*]
-* https://docs.trilio.io/kubernetes/appendix/backup-and-restore-virtual-machine-running-on-openshift-virtualization[*Trilio for Kubernetes*]
-* https://docs.kasten.io/latest/usage/openshift_virtualization.html[*VEEAM Kasten*]
+* https://www.cohesity.com/press/cohesity-enhances-data-protection-and-cyber-resilience-for-red-hat-openshift-virtualization-workloads/[*Cohesity DataProtect*^]
+* https://docs.netapp.com/us-en/trident/index.html[*NetApp Trident Protect*^]
+* https://portworx.com/blog/disaster-recovery-for-red-hat-openshift-virtualization/[*Portworx Disaster Recovery for OpenShift Virtualization*^]
+* https://www.rubrik.com/solutions/openshift[*Rubrik for OpenShift*^]
+* https://storware.eu/solutions/virtual-machine-backup-and-recovery/openshift-virtualization-and-kubevirt/[*Storware Backup and Recovery*^]
+* https://docs.trilio.io/kubernetes/appendix/backup-and-restore-virtual-machine-running-on-openshift-virtualization[*Trilio for Kubernetes*^]
+* https://docs.kasten.io/latest/usage/openshift_virtualization.html[*VEEAM Kasten*^]
 
-NOTE: This is not intended to be an exhaustive list of partners offering a supported backup and recovery solution. Please check with your storage or data protection vendor(s) to determine the compatibility of their product with OpenShift Virtualization.
+NOTE: This is not intended to be an exhaustive list of partners offering a supported backup and recovery solution. Please check with your storage or data protection vendor(s) to determine the compatibility of their product with OpenShift Virtualization, or check the https://catalog.redhat.com/platform/red-hat-openshift/virtualization#virtualization-infrastructure[Red Hat EcoSystem Catalog^] for additional information.
 
-In this portion of the lab, we will use OADP to perform a virtual machine backup and restore.
+In this portion of the lab, we will make use of OADP to perform a virtual machine backup and restore operation.
 
 [[review_operator]]
 == Review the OADP Operator
 
-. Navigate in the left menu to *Operators* -> *Installed Operators* and ensure that project *oadp-{user}* is selected. Type *OADP* in the Name search field and you should be presented with the installed version of the *OADP Operator*. Click on the operator to see it's details.
+. Navigate to the Administrator persona once again, and in the left menu click on *Operators* and then *Installed Operators*.  Ensure that the project *oadp-{user}* is selected. Type *OADP* 
 +
-image::module-05-bcdr/00_Left_Menu.png[link=self, window=blank, width=100%]
+image::2025_spring/module-05-bcdr/00_Left_Menu.png[link=self, window=blank, width=100%]
+
+. Click on the operator to see it's details.
 
 . Review the *Provided APIs* available. In this module, the *Backup* and *Restore* functions will be used.
 +
-image::module-05-bcdr/01_Overview.png[link=self, window=blank, width=100%]
+image::2025_spring/module-05-bcdr/01_Overview.png[link=self, window=blank, width=100%]
 
 . Use the horizontal scrollbar at the top to navigate to the tab *DataProtectionApplication*. This object represents the configuration of the deployed OADP instance.
 +
-image::module-05-bcdr/02_DPA.png[link=self, window=blank, width=100%]
+image::2025_spring/module-05-bcdr/02_DPA.png[link=self, window=blank, width=100%]
 
 . Click on *oadp-dpa* to see the details of the _DataProtectionApplication_ and then click on the *YAML* button at the top to see how it is configured.
 +
-image::module-05-bcdr/03_OADP_YAML.png[link=self, window=blank, width=100%]
+image::2025_spring/module-05-bcdr/03_OADP_YAML.png[link=self, window=blank, width=100%]
 +
 Notice that *OADP* has been configured by adding the *kubevirt* plugin and it has been configured to use the internal object storage bucket provided by OpenShift Data Foundations running on your cluster.
 +
-IMPORTANT: For the sake of convenience our lab is setup to perform the backups to a local object bucket, however in a production environment you would want to ensure that backups are directed to an external storage system, or a cloud-based object storage bucket.
+IMPORTANT: For the sake of convenience our lab is setup to perform the backups to a local object bucket, however in a production environment you would want to ensure that backups are directed to an external storage system, or a cloud-based object storage bucket to ensure that workloads are protected against a localized disaster.
 
 [[create_backup]]
 == Create a Virtual Machine Backup
 
 You now will perform a backup of the VM *fedora02* which we created in the previous section. The selection of the objects to be backed up is defined by the labels *app* and *vm.kubevirt.io/name*. This includes the VM definition, disks, and additional objects being used by the virtual machine such as config maps and secrets.
 
+NOTE: If you did not complete the previous section, and you do not have the *fedora02* VM, change the label selectors in the YAML above to match a virtual machine in your inventory.
+
 . Navigate back to the *Operator details* and using the horizontal scrollbar, scroll back until you see the *Backup* tab.
 
 . Click on the *Backup* tab and press the *Create Backup* button.
 +
-image::module-05-bcdr/04_Backup_Tab.png[link=self, window=blank, width=100%]
+image::2025_spring/module-05-bcdr/04_Backup_Tab.png[link=self, window=blank, width=100%]
 
 . Switch to the _YAML view_ and replace the default content with the following one:
 +
@@ -87,29 +94,36 @@ spec:
 +
 Note that the content of this YAML indicates that any object with the labels *app: fedora02* in the namespace *vmexamples-{user}* will be backed up to the location specified in the *DataProtectionApplication* configuration.
 +
-image::module-05-bcdr/05_Create_Backup_YAML.png[link=self, window=blank, width=100%]
-+
-NOTE: If you did not complete the previous section, and you do not have the *fedora02* VM, change the label selectors in the YAML above to match a virtual machine in your inventory.
+image::2025_spring/module-05-bcdr/05_Create_Backup_YAML.png[link=self, window=blank, width=100%]
 
 . Wait until the *Status* column changes to *Completed*. This indicates that the virtual machine has been successfully backed up.
 +
-image::module-05-bcdr/06_Backup_Completed.png[link=self, window=blank, width=100%]
+image::2025_spring/module-05-bcdr/06_Backup_Completed.png[link=self, window=blank, width=100%]
 
 [[restore_backup]]
 == Restore From a Backup
 
-. Navigate to *Virtualization* -> *VirtualMachines*, click on the three-dot menu to the right of the *fedora02* VM and select *Delete* from the menu that appears (you may need to switch back to the *vmexamples-{user}* project).
+. In the left-side menu, click on *Virtualization* and then *VirtualMachines*. In the center tree column expand the *vmexamples-{user}* project and click on the *fedora02* VM.
 +
-image::module-05-bcdr/07_Delete_VM.png[link=self, window=blank, width=100%]
+image::2025_spring/module-05-bcdr/07_Fedora02_Overview.png[link=self, window=blank, width=100%]
+
+. Stop the virtual machine, and then once it is stopped, click on the *Actions* dropdown and select the option to *Delete* the VM.
++
+image::2025_spring/module-05-bcdr/08_Delete_VM.png[link=self, window=blank, width=100%]
 
 . When prompted, click the red *Delete* button to confirm deleting the virtual machine.
 +
-image::module-05-bcdr/08_Confirm_Delete.png[link=self, window=blank, width=100%]
+image::2025_spring/module-05-bcdr/09_Confirm_Delete.png[link=self, window=blank, width=100%]
 
-. Go back to *Operators* -> *Installed Operators* and select *OADP Operator* (you may need to switch back to the *oadp-{user}* project).
+. The virtual machine will disappear from your inventory.
++
+image::2025_spring/module-05-bcdr/10_Deleted_VM.png[link=self, window=blank, width=100%]
+
+. Click on *Operators* and then *Installed Operators* and select the *OADP Operator* once again. (You may need to switch back to the *OADP-{user}* project.)
+
 . Use the horizontal navigation bar to locate the the *Restore* tab, click the *Restore* tab, and then press *Create Restore*.
 +
-image::module-05-bcdr/09_Restore_Tab.png[link=self, window=blank, width=100%]
+image::2025_spring/module-05-bcdr/11_Restore_Tab.png[link=self, window=blank, width=100%]
 
 . Switch to the YAML view and replace the content with the following one:
 +
@@ -135,15 +149,15 @@ spec:
 
 . Press the *Create* button at the bottom.
 +
-image::module-05-bcdr/10_Create_Restore_YAML.png[link=self, window=blank, width=100%]
+image::2025_spring/module-05-bcdr/12_Create_Restore_YAML.png[link=self, window=blank, width=100%]
 
 . Wait until you see that the *Status* column changes to *Completed*.
 +
-image::module-05-bcdr/11_Restore_Completed.png[link=self, window=blank, width=100%]
+image::2025_spring/module-05-bcdr/13_Restore_Completed.png[link=self, window=blank, width=100%]
 
-. Navigate back to *Virtualization* -> *Virtual Machines* and confirm that the *fedora02* virtual machine was restored (in the *vmexamples-{user}* project).
+. Navigate back to *Virtualization* and click  *Virtual Machines* in the left-side menu and confirm that the *fedora02* virtual machine was restored (in the *vmexamples-{user}* project). You can see it's *Created* value should be a quite short time ago.
 +
-image::module-05-bcdr/12_VM_Restored.png[link=self, window=blank, width=100%]
+image::2025_spring/module-05-bcdr/14_VM_Restored.png[link=self, window=blank, width=100%]
 
 == Summary
 
