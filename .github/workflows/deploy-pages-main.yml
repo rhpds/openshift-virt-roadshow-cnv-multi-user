@@ -4,7 +4,7 @@ name: Deploy MAIN static content to Pages
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [network]
     paths-ignore:
       - "README.adoc"
       - ".gitignore"
