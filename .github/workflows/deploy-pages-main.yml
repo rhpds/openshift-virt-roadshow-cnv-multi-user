@@ -1,4 +1,4 @@
-name: Deploy MAIN static content to Pages
+name: Deploy "network" branch static content to Pages
 # Simple workflow fname: github pages
 
 on:
@@ -46,4 +46,4 @@ jobs:
     steps:
     - name: deploy github pages
       id: deployment
-      uses: actions/deploy-pages@v4or deploying static content to GitHub Pages
+      uses: actions/deploy-pages@v4
