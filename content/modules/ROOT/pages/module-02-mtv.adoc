@@ -123,6 +123,8 @@ Creating a project creates a namespace.
 
 Now that we have reviewed our environment, and have our providers created, it is time for us to create a *Migration Plan*. This plan selects which VMs to migrate from VMware vSphere to Red Hat OpenShift Virtualization and specifics about how to execute the migration.
 
+IMPORTANT: Switch to the mtv-{user} project to complete the steps in this section.
+
 . Navigate in the left menu to *Migration* -> *Plans for virtualization* and press *Create Plan*.
 +
 image::2025_spring/module-02-mtv/07_Create_VMWARE_Plan.png[link=self, window=blank, width=100%]
