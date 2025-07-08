@@ -241,15 +241,17 @@ The warm migration process is achieved by taking advantage of Changed Block Trac
 [[migration_wrapup]]
 == Migration Wrap-up
 
-. After several minutes we will see that the migration has completed successfully. While waiting on these to complete, please move on to the next section in this lab.
+. After several minutes we will see that the migration has completed successfully.
 +
-image::2025_summer/module-02-mtv/18_Completed_VMWARE_Plan.png[link=self, window=blank, width=100%]
+image::2025_spring/module-02-mtv/18_Completed_VMWARE_Plan.png[link=self, window=blank, width=100%]
 
 . The selected virtual machines have now been successfully migrated to OpenShift Virtalization.
 
 == Summary
 
-In this section we explored the Migration Toolkit for Virtualization, and used it to assist with the migration of existing virtual machines from a VMware vSphere environment to OpenShift Virtualization. In addition to the Migration Toolkit for Virtualization, there are two other migration toolkits currently available. The combination of these can be used to move many types of workloads into and within OpenShift clusters depending on your organization's needs.
+In this section we explored the Migration Toolkit for Virtualization, and used it to assist with the migration of existing virtual machines from a VMware vSphere environment to OpenShift Virtualization. We also viewed some interactive videos to that allowed us to demonstrate some advanced features that can be utilized in specific migration scenarios.
+
+In addition to the Migration Toolkit for Virtualization, there are two other migration toolkits currently available. The combination of these can be used to move many types of workloads into and within OpenShift clusters depending on your organization's needs.
 
 * https://docs.redhat.com/en/documentation/migration_toolkit_for_applications/7.2/html/introduction_to_the_migration_toolkit_for_applications/index[Migration Toolkit for Applications^] - Accelerate large-scale application modernization efforts to containers and Kubernetes.
 * https://https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/migration_toolkit_for_containers/about-mtc[Migration Toolkit for Containers^] - Migrate stateful application workloads between OpenShift clusters.

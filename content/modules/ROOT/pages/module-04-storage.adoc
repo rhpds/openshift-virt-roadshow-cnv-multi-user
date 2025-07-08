@@ -22,7 +22,7 @@ image::2025_spring/module-04-storage/00_Disk_Concepts.png[link=self, window=blan
 
 In this lab, we are going to take a closer look at the storage behind the virtual machine we just created *fedora01*.
 
-. Start by clicking on the left menu for *Storage* -> *Persistent Volume Claims*. Make sure you are in the *vmexamples-{user}* namespace, you should see the *fedora01* PVC that was created when you created the *fedora01* VM in the previous section.
+. Start by clicking on the left menu for *Storage* -> *PersistentVolumeClaims*. Make sure you are in the *vmexamples-{user}* namespace, you should see the *fedora01* PVC that was created when you created the *fedora01* VM in the previous section.
 +
 image::2025_spring/module-04-storage/01_PVC_List.png[link=self, window=blank, width=100%]
 
@@ -55,7 +55,7 @@ With the VM snapshots feature, cluster administrators and application developers
 
 === Creating and Using Snapshots
 
-. Navigate back to *Virtualization* persona dropdown, and then click on *VirtualMachines* in the left-side menu. Expand the project *vmexamples-{user}* in the center column and highlight the *fedora01* virtual machine.
+. Navigate back to *Virtualization* perspective dropdown, and then click on *VirtualMachines* in the left-side menu. Expand the project *vmexamples-{user}* in the center column and highlight the *fedora01* virtual machine.
 +
 image::2025_spring/module-04-storage/03_VM_Overview.png[link=self, window=blank, width=100%]
 
