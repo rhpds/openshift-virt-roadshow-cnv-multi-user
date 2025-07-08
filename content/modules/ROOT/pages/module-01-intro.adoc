@@ -20,7 +20,7 @@ Your login is available with:
 * *User:* {user}
 * *Password:* {password}
 
-[[virt_persona]]
+[[virt_perspective]]
 == Switch to the Virtualization Perspective
 
 . When you first log in, you will be placed in the *Developer* persona, with an introductory prompt. Click the *Skip tour* button to close the window.
