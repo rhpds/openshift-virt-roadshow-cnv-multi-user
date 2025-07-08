@@ -21,13 +21,13 @@ Your login is available with:
 * *Password:* {password}
 
 [[virt_persona]]
-== Switch to the Virtualization Persona
+== Switch to the Virtualization Perspective
 
 . When you first log in, you will be placed in the *Developer* persona, with an introductory prompt. Click the *Skip tour* button to close the window.
 +
 image::2025_spring/module-01-intro/00_Dev_Perspective.png[link=self, window=blank, width=100%]
 
-. Now, click on *Developer* in the upper left corner and switch to the *Virtualization* persona.
+. Now, click on *Developer* in the upper left corner and switch to the *Virtualization* perspective.
 +
 image::2025_spring/module-01-intro/01_Virt_Perspective.png[link=self, window=blank, width=100%]
 
@@ -42,7 +42,7 @@ When you arrive in the *Virtualization* view you will be on the *Overview* page 
 
 image::2025_spring/module-01-intro/03_Virt_Overview.png[link=self, window=blank, width=100%]
 
-NOTE: The *Virtualization* persona is available only when Red Hat OpenShift Virtualization is installed and properly configured. In this lab environment the installation and configuration has already been performed for us.
+NOTE: The *Virtualization* perspective is available only when Red Hat OpenShift Virtualization is installed and properly configured. In this lab environment the installation and configuration has already been performed for us.
 
 . Click on the *VirtualMachines* item in the left side menu and you will be presented with the virtualization tree view of all VM assets.
 +
@@ -171,9 +171,9 @@ In this environment, the default StorageClass, which defines the source and type
 +
 image::2025_spring/module-01-intro/22_Network_Tab.png[link=self, window=blank, width=100%]
 +
-When a VM is created, an interface on the *Pod Networking* network of type *masquerade* is created by default. This connects the VM to the SDN and provides access from the VM to outside the OpenShift cluster. Other VMs, and Pods, in the cluster can access the virtual machine using this interface.
+When a VM is quick created, an interface on the *Pod Networking* network of type *masquerade* is created by default. This connects the VM to the SDN and provides egress from the VM to the world outside the OpenShift cluster. Other VMs, and Pods within the cluster, can access the virtual machine using this interface.
 +
-Furthermore, a VM connected to the SDN can be accessed externally using a Route, or Service with type load balancer, or even have a Network Attachment Definition configured to allow direct access to external networks, a concept we will explore in more depth later.
+Furthermore, a VM connected to the SDN can be accessed externally using a Route, or Service with type load balancer, or even have a Network Attachment Definition or User-defined Network (UDN) define a VLAN or external network to directly attach it to. These options will be explored in depth a bit later.
 
 [[vm_state]]
 == Controlling Virtual Machine State
@@ -244,4 +244,4 @@ image::2025_spring/module-01-intro/33_Pod_Details_Node_Migrated.png[link=self, w
 
 == Summary
 
-In this lab, we did an overview of the Virtualization management environment in OpenShift Virtualization, and performed some basic virtual machine management tasks, including state management and live migration between physical hosts. Both of these are common and often necessary tasks as platform administrators and a great way to familiarize yourself with some basic features available when working with VMs in OpenShift Virtualization.
+In this lab, we did an overview of the Virtualization management environment in OpenShift Virtualization, provisioned a virtual machine from template, and performed some basic virtual machine management tasks: including state management and a live migration between physical hosts. Each of these tasks are common and often necessary tasks to be performed as platform administrators and a great way to familiarize yourself with some basic features available when working with VMs in OpenShift Virtualization.
