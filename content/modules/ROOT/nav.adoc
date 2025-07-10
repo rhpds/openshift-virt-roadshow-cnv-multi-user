@@ -2,7 +2,7 @@
 * xref:index.adoc[Introduction]
 
 * xref:module-01-intro.adoc[Virtual Machine Management ]
-** xref:module-01-intro.adoc#virt_persona[Switch to the Virtualization Persona]
+** xref:module-01-intro.adoc#virt_perspective[Switch to the Virtualization Perspective]
 ** xref:module-01-intro.adoc#explore_virt[Exploring OpenShift Virtualization]
 ** xref:module-01-intro.adoc#create_project[Create a New Project]
 ** xref:module-01-intro.adoc#create_vm[Create a Linux Virtual Machine]
@@ -13,6 +13,8 @@
 * xref:module-02-mtv.adoc[Migrating Existing Virtual Machines]
 ** xref:module-02-mtv.adoc#prerequisites[Prerequisites for Migrations]
 ** xref:module-02-mtv.adoc#migrating_vms[Migrating Virtual Machines from VMware]
+** xref:module-02-mtv.adoc#interactive_demos[Interactive Demos of Advanced Features]
+** xref:module-02-mtv.adoc#migration_wrapup[Migration Wrap-Up]
 
 * xref:module-04-storage.adoc[Storage Management]
 ** xref:module-04-storage.adoc#examine_pvc[Examine the PVC for a VM]

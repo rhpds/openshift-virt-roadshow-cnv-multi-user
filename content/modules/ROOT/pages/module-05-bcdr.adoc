@@ -6,7 +6,7 @@ Data Protection is a major topic of conversation when it comes to any enterprise
 
 Red Hat Solutions Include:
 
-* https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/backup_and_restore/oadp-application-backup-and-restore[*OADP (OpenShift APIs for Data Protection)*^]: A Red Hat operator which provides a storage agnostic method to back up and restore OpenShift objects, including virtual machines.
+* https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/backup_and_restore/oadp-application-backup-and-restore[*OpenShift APIs for Data Protection (OADP)*^]: A Red Hat operator which provides a storage agnostic method to back up and restore OpenShift objects, including virtual machines.
 * https://docs.redhat.com/en/documentation/red_hat_openshift_data_foundation/4.18/html/configuring_openshift_data_foundation_disaster_recovery_for_openshift_workloads/metro-dr-solution[*OpenShift Data Foundation Metro-DR*^] and https://docs.redhat.com/en/documentation/red_hat_openshift_data_foundation/4.18/html/configuring_openshift_data_foundation_disaster_recovery_for_openshift_workloads/rdr-solution[*OpenShift Data Foundation Regional-DR*^]
 
 Ecosystem Partner Solutions Include:
@@ -26,7 +26,7 @@ In this portion of the lab, we will make use of OADP to perform a virtual machin
 [[review_operator]]
 == Review the OADP Operator
 
-. Navigate to the Administrator persona once again, and in the left menu click on *Operators* and then *Installed Operators*.  Ensure that the project *oadp-{user}* is selected. Type *OADP* 
+. Navigate to the Administrator perspective once again, and in the left menu click on *Operators* and then *Installed Operators*.  Ensure that the project *oadp-{user}* is selected. 
 +
 image::2025_spring/module-05-bcdr/00_Left_Menu.png[link=self, window=blank, width=100%]
 
