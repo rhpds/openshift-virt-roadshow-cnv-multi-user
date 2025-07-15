@@ -32,7 +32,7 @@ The following prerequisites apply to all migrations:
 
 * ISO images and CD-ROM disks must be unmounted.
 * Each NIC contains either an IPv4 address or an IPv6 address, although a NIC may use both.
-* The VM operating system must be certified and supported for use as a guest operating system for https://access.redhat.com/articles/973163#ocpvirt[OpenShift Virtualization^].
+* The VM operating system must be https://access.redhat.com/articles/4234591[certified and supported^] for use as a guest operating system for OpenShift Virtualization.
 * VM names must contain only lowercase letters (a-z), numbers (0-9), or hyphens (-), up to a maximum of 253 characters. The first and last characters must be alphanumeric. The name must not contain uppercase letters, spaces, periods (.), or special characters.
 * VM names must not duplicate the name of an existing VM in the OpenShift Virtualization environment.
 
@@ -237,6 +237,7 @@ The warm migration process is achieved by taking advantage of Changed Block Trac
   webkitallowfullscreen
   mozallowfullscreen
   allowfullscreen
+>
 </iframe>
 ++++
 
