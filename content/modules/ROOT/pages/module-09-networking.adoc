@@ -69,7 +69,7 @@ spec:
 [[nad]]
 == Create Network Attachment Definition
 
-In order to use the Linux Bridge with your VM you need to create a *Network Attachment Definition*. This is what tells OpenShift about the network and allows the virtual machines to connect to it. Network Attachment Definitions are project scoped, to the project that they are created in and are only accessible to the virtual machines that are deployed in that project. If a Network Attachment Definition is created in the *default* project, then it becomes available globally. This gives you, the administrator, the ability to control which networks are and aren't available to specific users who have access to manage their own Vms.
+In order to use the Linux Bridge with your VM you need to create a *Network Attachment Definition*. This is what tells OpenShift about the network and allows the virtual machines to connect to it. Network Attachment Definitions are project scoped, to the project that they are created in and are only accessible to the virtual machines that are deployed in that project. If a Network Attachment Definition is created in the *default* project, then it becomes available globally. This gives you, the administrator, the ability to control which networks are and aren't available to specific users who have access to manage their own VMs.
 
 NOTE: A network attachment definition instructs Openshift to utilise an existing network device. In our case that device was previously created and is named *br-flat*. You must use that name or OpenShift won’t be able to place your VM on any compute nodes as it can only utilise nodes with that specifically named network device on it.
 
@@ -85,7 +85,7 @@ IMPORTANT: Ensure that you are in your vmexamples-{user} project when creating t
 * *Network Type*: Linux Bridge
 * *Bridge Name*: br-flat
 +
-image::2025_spring/module-09-networking/07_NetworkAttachDefinition_Create_Form.png[link=self, window=blank, width=100%]
+image::2025_summer/module-09-networking/07_NetworkAttachDefinition_Create_Form.png[link=self, window=blank, width=100%]
 +
 
 NOTE: The form above has an input for *VLAN Tag Number*, which is used when connecting to a network that needs to have a VLAN tag assigned. This lab uses an untagged network, so no VLAN number is required here.
@@ -94,7 +94,7 @@ NOTE: A single Linux Bridge on the host can have many different VLANs associated
 
 . Examine the details of the network attachment definition. Because this was created in the *vmexamples-{user}* project, it will not be available in other projects.
 +
-image::2025_spring/module-09-networking/08_NetworkAttachDefinition_Created.png[link=self, window=blank, width=100%]
+image::2025_summer/module-09-networking/08_NetworkAttachDefinition_Created.png[link=self, window=blank, width=100%]
 
 [[attach]]
 == Attach Virtual Machine to Network
