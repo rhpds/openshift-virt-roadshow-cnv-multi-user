@@ -168,14 +168,14 @@ image::2025_summer/module-02-mtv/15_VMs_Migrating.png[link=self, window=blank, w
 +
 image::2025_summer/module-02-mtv/16_VMs_Migrating_Details.png[link=self, window=blank, width=100%]
 
-. You can click the drop-down arrow next to the name of each VM being migrated to get additional details about the stages of the migration process. Click on thearrow next to *database-{user}* to expand it's details. 
+. You can click the drop-down arrow next to the name of each VM being migrated to get additional details about the stages of the migration process. Click on the arrow next to *database-{user}* to expand it's details. 
 +
 image::2025_summer/module-02-mtv/17_VM_Migration_Stages.png[link=self, window=blank, width=100%]
 +
 
 IMPORTANT: It is suggested to have a 10gbps network for virtual machine migrations which we do not have in our simulated lab environment. This, combined with having many participants performing the same task in parallel can cause this task to perform much slower than in a real environment. Please be patient with this process as it completes. You may continue with other sections in the roadshow as the migrations complete in the background. We will return to work with these machines in a later module.
 
-NOTE: The migration of these machines can take quite a bit of time depending on the number of users currently participating in the lab. Please feel free to move along to the next section of interactive videos, or to the next module while awaiting the completion of the migration plan. We will work with these migrated VMs in a later module.
+The migration of these machines can take quite a bit of time depending on the number of users currently participating in the lab. Please feel free to move along to the next section of interactive videos, or to the next module while awaiting the completion of the migration plan. We will work with these migrated VMs in a later module.
 
 [[interactive_demos]]
 == Interactive Demos of Advanced Features
@@ -200,7 +200,7 @@ Check out the interactive demo below to see examples of both examples in action.
 * We will discover a virtual machine on a remote ESXi host and configure a cold migration plan.
 * We will use a pre-migration hook to reconfigure the network adapters from VMware native format to VirtIO format for OpenShift Virtualization, and write a text file to timestamp the start of the migration process.
 * We will use a post-migration hook to clean up the network adapter configuration, and write another text file to timestamp the completion of the migration process.
-* We will verify our running virtual machine migrated successfully and that the changes we made persist.
+* We will verify our running virtual machine migrated successfully and that the changes we made persist after startup.
 
 ++++
 <iframe
@@ -234,7 +234,9 @@ The warm migration process is achieved by taking advantage of Changed Block Trac
   width="100%"
   height="600px"
   frameborder="0"
-  allowfullscreen>
+  webkitallowfullscreen
+  mozallowfullscreen
+  allowfullscreen
 </iframe>
 ++++
 

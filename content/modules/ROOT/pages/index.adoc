@@ -125,4 +125,4 @@ This edition of the  OpenShift Virtualization Roadshow has been developed using 
 * Red Hat OpenShift API for Data Protection (OADP) 1.4.4
 * Red Hat Migration Toolkit for Virtual Machines 2.8.5
 
-(Accurate as of July 8, 2025)
+(Accurate as of July 15, 2025)
