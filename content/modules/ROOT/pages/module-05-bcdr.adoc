@@ -28,17 +28,17 @@ In this portion of the lab, we will make use of OADP to perform a virtual machin
 
 . Navigate to the Administrator perspective once again, and in the left menu click on *Operators* and then *Installed Operators*.  Ensure that the project *oadp-{user}* is selected. 
 +
-image::2025_spring/module-05-bcdr/00_Left_Menu.png[link=self, window=blank, width=100%]
+image::2025_summer/module-05-bcdr/00_Left_Menu.png[link=self, window=blank, width=100%]
 
 . Click on the operator to see it's details.
 
 . Review the *Provided APIs* available. In this module, the *Backup* and *Restore* functions will be used.
 +
-image::2025_spring/module-05-bcdr/01_Overview.png[link=self, window=blank, width=100%]
+image::2025_summer/module-05-bcdr/01_Overview.png[link=self, window=blank, width=100%]
 
 . Use the horizontal scrollbar at the top to navigate to the tab *DataProtectionApplication*. This object represents the configuration of the deployed OADP instance.
 +
-image::2025_spring/module-05-bcdr/02_DPA.png[link=self, window=blank, width=100%]
+image::2025_summer/module-05-bcdr/02_DPA.png[link=self, window=blank, width=100%]
 
 . Click on *oadp-dpa* to see the details of the _DataProtectionApplication_ and then click on the *YAML* button at the top to see how it is configured.
 +
@@ -59,7 +59,7 @@ NOTE: If you did not complete the previous section, and you do not have the *fed
 
 . Click on the *Backup* tab and press the *Create Backup* button.
 +
-image::2025_spring/module-05-bcdr/04_Backup_Tab.png[link=self, window=blank, width=100%]
+image::2025_summer/module-05-bcdr/04_Backup_Tab.png[link=self, window=blank, width=100%]
 
 . Switch to the _YAML view_ and replace the default content with the following one:
 +
@@ -98,7 +98,7 @@ image::2025_spring/module-05-bcdr/05_Create_Backup_YAML.png[link=self, window=bl
 
 . Wait until the *Status* column changes to *Completed*. This indicates that the virtual machine has been successfully backed up.
 +
-image::2025_spring/module-05-bcdr/06_Backup_Completed.png[link=self, window=blank, width=100%]
+image::2025_summer/module-05-bcdr/06_Backup_Completed.png[link=self, window=blank, width=100%]
 
 [[restore_backup]]
 == Restore From a Backup
@@ -123,7 +123,7 @@ image::2025_spring/module-05-bcdr/10_Deleted_VM.png[link=self, window=blank, wid
 
 . Use the horizontal navigation bar to locate the the *Restore* tab, click the *Restore* tab, and then press *Create Restore*.
 +
-image::2025_spring/module-05-bcdr/11_Restore_Tab.png[link=self, window=blank, width=100%]
+image::2025_summer/module-05-bcdr/11_Restore_Tab.png[link=self, window=blank, width=100%]
 
 . Switch to the YAML view and replace the content with the following one:
 +
@@ -153,7 +153,7 @@ image::2025_spring/module-05-bcdr/12_Create_Restore_YAML.png[link=self, window=b
 
 . Wait until you see that the *Status* column changes to *Completed*.
 +
-image::2025_spring/module-05-bcdr/13_Restore_Completed.png[link=self, window=blank, width=100%]
+image::2025_summer/module-05-bcdr/13_Restore_Completed.png[link=self, window=blank, width=100%]
 
 . Navigate back to *Virtualization* and click  *Virtual Machines* in the left-side menu and confirm that the *fedora02* virtual machine was restored (in the *vmexamples-{user}* project). You can see it's *Created* value should be a quite short time ago.
 +
