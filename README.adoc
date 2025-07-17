@@ -43,7 +43,7 @@ This edition of the  OpenShift Virtualization Roadshow has been developed using 
 * Red Hat OpenShift 4.18.18
 * Red Hat OpenShift Virtualization 4.18.8
 * Red Hat OpenShift Data Foundation 4.18.6
-* Red Hat Openshift API for Data Protection (OADP) 1.4.4
+* Red Hat Openshift API for Data Protection (OADP) 1.4.5
 * Red Hat Migration Toolkit for Virtual Machines 2.8.5
 
-(Accurate as of July 15, 2025)
+(Accurate as of July 17, 2025)

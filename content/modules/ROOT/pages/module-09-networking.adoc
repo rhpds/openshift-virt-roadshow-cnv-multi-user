@@ -82,7 +82,7 @@ IMPORTANT: Ensure that you are in your vmexamples-{user} project when creating t
 
 . Complete the form for the *vmexamples-{user}* project as follows, then click *Create network attachment definition*:
 * *Name*: flatnetwork
-* *Network Type*: Linux Bridge
+* *Network Type*: Linux bridge
 * *Bridge Name*: br-flat
 +
 image::2025_summer/module-09-networking/07_NetworkAttachDefinition_Create_Form.png[link=self, window=blank, width=100%]
@@ -90,7 +90,7 @@ image::2025_summer/module-09-networking/07_NetworkAttachDefinition_Create_Form.p
 
 NOTE: The form above has an input for *VLAN Tag Number*, which is used when connecting to a network that needs to have a VLAN tag assigned. This lab uses an untagged network, so no VLAN number is required here.
 +
-NOTE: A single Linux Bridge on the host can have many different VLANs associated with it. In this scenario, you only need to create a Network Attachment Definition for each one, not a separate host interface and bridge.
+NOTE: A single Linux bridge on the host can have many different VLANs associated with it. In this scenario, you only need to create a Network Attachment Definition for each one, not a separate host interface and bridge.
 
 . Examine the details of the network attachment definition. Because this was created in the *vmexamples-{user}* project, it will not be available in other projects.
 +

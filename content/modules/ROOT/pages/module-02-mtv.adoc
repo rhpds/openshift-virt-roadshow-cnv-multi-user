@@ -123,7 +123,7 @@ image::2025_summer/module-02-mtv/08_VMware_Source_Provider.png[link=self, window
 +
 image::2025_summer/module-02-mtv/09_VM_List.png[link=self, window=blank, width=100%] 
 
-. On the next page select the three VMs you would like to move:
+. In the *Select virtual machines* section, click to select the three VMs you would like to move:
 
 * database-{user}
 * winweb01-{user}

@@ -109,7 +109,7 @@ image::2025_spring/module-08-workingvms/18_Create_Route.png[link=self, window=bl
 +
 image::2025_spring/module-08-workingvms/19_Route_Access.png[link=self, window=blank, width=100%]
 
-. When the page loads, you will see an error, something must be wrong. This is because the Windows web servers are not able to currently connect to the database VM after it's migration.
+. When the page loads, you will see an error, something must be wrong. This is because the Windows web servers are not currently able to connect to the database VM after it's migration.
 +
 image::2025_spring/module-08-workingvms/20_WebApp_Error.png[link=self, window=blank, width=100%]
 +
