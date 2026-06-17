@@ -9,6 +9,18 @@ Red Hat Solutions Include:
 * https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/backup_and_restore/oadp-application-backup-and-restore[*OpenShift APIs for Data Protection (OADP)*^]: A Red Hat operator which provides a storage agnostic method to back up and restore OpenShift objects, including virtual machines.
 * https://docs.redhat.com/en/documentation/red_hat_openshift_data_foundation/4.18/html/configuring_openshift_data_foundation_disaster_recovery_for_openshift_workloads/metro-dr-solution[*OpenShift Data Foundation Metro-DR*^] and https://docs.redhat.com/en/documentation/red_hat_openshift_data_foundation/4.18/html/configuring_openshift_data_foundation_disaster_recovery_for_openshift_workloads/rdr-solution[*OpenShift Data Foundation Regional-DR*^]
 
+Ecosystem Partner Solutions Include:
+
+* https://www.cohesity.com/press/cohesity-enhances-data-protection-and-cyber-resilience-for-red-hat-openshift-virtualization-workloads/[*Cohesity DataProtect*^]
+* https://docs.netapp.com/us-en/trident/index.html[*NetApp Trident Protect*^]
+* https://portworx.com/blog/disaster-recovery-for-red-hat-openshift-virtualization/[*Portworx Disaster Recovery for OpenShift Virtualization*^]
+* https://www.rubrik.com/solutions/openshift[*Rubrik for OpenShift*^]
+* https://storware.eu/solutions/virtual-machine-backup-and-recovery/openshift-virtualization-and-kubevirt/[*Storware Backup and Recovery*^]
+* https://docs.trilio.io/kubernetes/appendix/backup-and-restore-virtual-machine-running-on-openshift-virtualization[*Trilio for Kubernetes*^]
+* https://docs.kasten.io/latest/usage/openshift_virtualization.html[*VEEAM Kasten*^]
+
+NOTE: This is not intended to be an exhaustive list of partners offering a supported backup and recovery solution. Please check with your storage or data protection vendor(s) to determine the compatibility of their product with OpenShift Virtualization, or check the https://catalog.redhat.com/platform/red-hat-openshift/virtualization#virtualization-infrastructure[Red Hat EcoSystem Catalog^] for additional information.
+
 In this portion of the lab, we will make use of OADP to perform a virtual machine backup and restore operation.
 
 [[review_operator]]
